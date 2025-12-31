@@ -104,6 +104,7 @@ button {
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .brand-icon {
@@ -119,27 +120,26 @@ button {
 .brand-name {
   font-weight: 800;
   letter-spacing: 0.5px;
-}
-
-.brand-tagline {
-  color: var(--muted);
+  font-size: 1rem;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 8px;
+  flex-wrap: nowrap;
   flex: 1;
   justify-content: center;
 }
 
 .nav-links a {
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 0.9rem;
   color: var(--muted);
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -152,9 +152,10 @@ button {
 .top-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 8px;
+  flex-wrap: nowrap;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .lang-switch {
