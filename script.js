@@ -70,7 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const colors = ["", "gold", "red"];
     for (let i = 0; i < sparkCount; i += 1) {
       const spark = document.createElement("span");
-      spark.className = `spark ${colors[Math.floor(Math.random() * colors.length)]}`;
+      spark.className = `spark ${
+        colors[Math.floor(Math.random() * colors.length)]
+      }`;
       const angle = (Math.PI * 2 * i) / sparkCount + Math.random() * 0.4;
       const distance = 40 + Math.random() * 60;
       spark.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
@@ -185,114 +187,125 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sessionData = [
     {
-      id: "lx01",
-      name: "Linh Đào",
-      tagline: "Ca sáng: canh nồi bánh chưng online",
-      bank: "Vietcombank",
-      account: "0123456789",
-      owner: "Linh Đào",
-      content: "Lì xì Linh Đào - [Tên của bạn]",
-      qr: "assets/qr/qr01.png",
-      avatar: "assets/user/user01.jpeg",
-    },
-    {
       id: "lx02",
-      name: "Phong Lá",
-      tagline: "Chuyên viên gói lá dong full option",
-      bank: "Techcombank",
-      account: "2233445566",
-      owner: "Phong Lá",
-      content: "Lì xì Phong Lá - [Tên của bạn]",
-      qr: "assets/qr/qr02.jpg",
-      avatar: "assets/user/user02.jpg",
-    },
-    {
-      id: "lx03",
       name: "Hương Nếp",
       tagline: "Trực mứt gừng, thích số tròn",
       bank: "ACB",
       account: "9988776655",
       owner: "Hương Nếp",
       content: "Lì xì Hương Nếp - [Tên của bạn]",
-      qr: "assets/qr/qr03.jpg",
-      avatar: "assets/user/user03.jpeg",
+      qr: "assets/qr/huong.jpg",
+      avatar: "assets/user/huong.jpg",
     },
     {
-      id: "lx04",
+      id: "lx03",
       name: "Minh Hiếu",
       tagline: "Ca tối: lau nhà, lau luôn sao kê",
       bank: "MB Bank",
       account: "888999000",
       owner: "Minh Hiếu",
       content: "Lì xì Minh Hiếu - [Tên của bạn]",
-      qr: "assets/qr/qr04.jpg",
-      avatar: "assets/user/user04.jpeg",
+      qr: "assets/qr/hieu2.jpg",
+      avatar: "assets/user/hieu.jpg",
     },
     {
-      id: "lx05",
+      id: "lx04",
       name: "Hải Yến",
       tagline: "Check bill trước khi mở bao",
       bank: "VPBank",
       account: "5566778899",
       owner: "Hải Yến",
       content: "Lì xì Hải Yến - [Tên của bạn]",
-      qr: "assets/qr/qr05.jpg",
-      avatar: "assets/user/user05.jpg",
+      qr: "assets/qr/yen.jpg",
+      avatar: "assets/user/yen.jpg",
     },
     {
-      id: "lx06",
+      id: "lx05",
       name: "Anh Phú",
       tagline: "Lì xì đổi lại lời chúc thơm",
       bank: "Sacombank",
       account: "3344556677",
       owner: "Anh Phú",
       content: "Lì xì Anh Phú - [Tên của bạn]",
-      qr: "assets/qr/qr06.jpg",
-      avatar: "assets/user/user06.jpg",
+      qr: "assets/qr/phu.jpg",
+      avatar: "assets/user/phu.jpg",
     },
     {
-      id: "lx07",
-      name: "Tứn Mai",
+      id: "lx06",
+      name: "A Tứn",
       tagline: "Tư vấn phong thủy số tài khoản",
       bank: "BIDV",
       account: "6677889900",
       owner: "Tứn Mai",
       content: "Lì xì Tứn Mai - [Tên của bạn]",
-      qr: "assets/qr/qr07.jpg",
-      avatar: "assets/user/user07.jpeg",
+      qr: "assets/qr/khay.jpg",
+      avatar: "assets/user/khay.jpg",
     },
     {
-      id: "lx08",
+      id: "lx07",
       name: "Hiếu Bến Tàu",
       tagline: "Ca đêm: đếm tiền lì xì thay bạn",
       bank: "TPBank",
       account: "111222333",
       owner: "Hiếu Bến Tàu",
       content: "Lì xì Hiếu Bến Tàu - [Tên của bạn]",
-      qr: "assets/qr/qr02.jpg",
-      avatar: "assets/user/user04.jpg",
+      qr: "assets/qr/hieu.jpg",
+      avatar: "assets/user/hieuava.jpg",
     },
     {
-      id: "lx09",
+      id: "lx08",
       name: "Đôn Chủng",
       tagline: "Chủ nhiệm câu lạc bộ hành phi",
       bank: "VietinBank",
       account: "909090123",
       owner: "Đôn Chủng",
       content: "Lì xì Đôn Chủng - [Tên của bạn]",
-      qr: "assets/qr/qr03.jpg",
-      avatar: "assets/user/user05 (2).jpg",
+      qr: "assets/qr/chung.jpg",
+      avatar: "assets/user/chung.jpg",
+    },
+    {
+      id: "lx09",
+      name: "wem.hai",
+      tagline: "Chủ nhiệm câu lạc bộ hành hạ",
+      bank: "VietinBank",
+      account: "909090123",
+      owner: "Hái Chỉ",
+      content: "Lì xì Đôn Chủng - [Tên của bạn]",
+      qr: "assets/qr/hai.jpg",
+      avatar: "assets/user/hai.jpg",
     },
     {
       id: "lx10",
-      name: "Mai Cây Đào",
-      tagline: "Livestream gieo quẻ lì xì",
-      bank: "Agribank",
-      account: "777888999",
-      owner: "Mai Cây Đào",
-      content: "Lì xì Mai Cây Đào - [Tên của bạn]",
-      qr: "assets/qr/qr01.png",
-      avatar: "assets/user/user02.jpg",
+      name: "A Pha",
+      tagline: "Cầm đầu mấy thằng em quận 12",
+      bank: "VietinBank",
+      account: "909090123",
+      owner: "Hái Chỉ",
+      content: "Lì xì Cho T - [Tên của bạn]",
+      qr: "assets/qr/hieu.jpg",
+      avatar: "assets/user/apha.jpg",
+    },
+    {
+      id: "lx11",
+      name: "A kHanG",
+      tagline: "Chủ nhiệm câu lạc bộ hành hạ",
+      bank: "VietinBank",
+      account: "909090123",
+      owner: "Hái Chỉ",
+      content: "Lì xì Đôn Chủng - [Tên của bạn]",
+      qr: "assets/qr/hai.jpg",
+      avatar: "assets/user/user04.jpg",
+    },
+    {
+      id: "lx01",
+      name: "Phong Lá",
+      tagline: "Chuyên viên gói lá dong full option",
+      bank: "Techcombank",
+      account: "2233445566",
+      owner: "Phong Lá",
+      content: "Lì xì Phong Lá - [Tên của bạn]",
+      qr: "assets/qr/hieu.jpg",
+      avatar: "assets/user/phong.jpg",
     },
   ];
 
@@ -422,11 +435,14 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       if (navigator.clipboard?.writeText) {
-        navigator.clipboard.writeText(text).then(showDone).catch(() => {
-          contentInput.select();
-          document.execCommand("copy");
-          showDone();
-        });
+        navigator.clipboard
+          .writeText(text)
+          .then(showDone)
+          .catch(() => {
+            contentInput.select();
+            document.execCommand("copy");
+            showDone();
+          });
       } else {
         contentInput.select();
         document.execCommand("copy");
