@@ -173,7 +173,8 @@ button {
   border-radius: 12px;
   font-weight: 700;
   border: 1px solid transparent;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease;
   text-decoration: none;
 }
 
@@ -769,24 +770,57 @@ button {
   background: linear-gradient(90deg, #94a3b8, #64748b);
 }
 
-/* Quote */
+/*Quote"/
+/* SECTION full width */
+.quote-section {
+  width: 100%;
+  /* background: linear-gradient(135deg, #f9fafb, #f3f4f6); */
+  padding: 56px 0;
+}
+
+/* container cùng width section trên */
+.quote-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* quote box */
 .quote-box {
-  background: var(--surface);
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: var(--shadow);
-  text-align: center;
+  background: #ffffff;
+  border-left: 6px solid #facc15;
+  padding: 32px 36px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  text-align: center; /* 👈 center text */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
 }
 
 .quote-text {
-  font-size: 1.25rem;
-  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #111827;
+  margin-bottom: 16px;
 }
 
-.quote-box cite {
-  display: block;
-  margin-top: 12px;
-  color: var(--muted);
+cite {
+  font-size: 14px;
+  color: #6b7280;
+  display: flex;
+  justify-content: center; /* 👈 center cite */
+  align-items: center;
+  gap: 6px;
+}
+
+/* icon nhẹ nhàng */
+.icon {
+  display: inline-block;
+  margin-right: 4px;
 }
 
 /* Note */

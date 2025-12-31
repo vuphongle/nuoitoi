@@ -1,424 +1,595 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuôi Chúng Tôi - Sao kê minh bạch, vui vẻ</title>
-  <meta name="description" content="Trang nuôi chúng tôi với phong cách minh bạch hài hước: donate, xem sao kê, và tận hưởng bảng parody vui nhộn.">
-  <meta property="og:title" content="Nuôi Chúng Tôi - Minh bạch nhưng vui">
-  <meta property="og:description" content="Donate để nuôi chúng tôi, xem sao kê rõ ràng, cam kết mỗi ngày, tất cả trong một trang parody vui nhộn.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/nuoitoinhieuniemvui">
-  <meta property="og:image" content="https://example.com/og-placeholder.jpg">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="topbar" aria-label="Thanh điều hướng">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-icon" aria-hidden="true">🍚</div>
-        <div class="brand-name">NUÔI CHÚNG TÔI</div>
-      </div>
-      <nav class="nav-links" aria-label="Liên kết nội trang">
-        <a href="#hero">Trang chủ</a>
-        <a href="#dashboard">Bảng số</a>
-        <a href="#spending">Chi tiêu</a>
-        <a href="#features">Vì sao?</a>
-        <a href="#commit">Cam kết</a>
-        <a href="#compare">So sánh</a>
-        <a href="#donate">Donate</a>
-      </nav>
-      <div class="top-actions">
-        <div class="lang-switch" aria-label="Chọn ngôn ngữ">Tiếng Việt | English | ...</div>
-        <a class="btn primary small" href="#donate">Donate ngay</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="hero" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Chiến dịch nuôi chúng tôi phiên bản minh bạch</p>
-          <h1>Hãy nuôi chúng tôi. Chúng tôi hứa sao kê từng gói mì và từng viên kẹo cao su.</h1>
-          <p class="lead">Trang này để giải trí, nhưng mọi khoản thu chi đều được ghi lại như một bảng điều khiển kiểu công ty công nghệ, đậm chất meme và không né tránh câu hỏi.</p>
-          <div class="cta-row">
-            <a class="btn primary" href="#donate">Donate ngay</a>
-            <a class="btn ghost" href="#commit">Xem cam kết</a>
-          </div>
-          <div class="trust-row" aria-label="Dòng cam kết">
-            <span class="trust-badge">🧾 Sao kê mỗi ngày</span>
-            <span class="trust-badge">📸 Hóa đơn rõ ràng</span>
-            <span class="trust-badge">⚡ Phản hồi thần tốc</span>
-          </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuôi Chúng Tôi - Sao kê minh bạch, vui vẻ</title>
+    <meta
+      name="description"
+      content="Trang nuôi chúng tôi với phong cách minh bạch hài hước: donate, xem sao kê, và tận hưởng bảng parody vui nhộn."
+    />
+    <meta property="og:title" content="Nuôi Chúng Tôi - Minh bạch nhưng vui" />
+    <meta
+      property="og:description"
+      content="Donate để nuôi chúng tôi, xem sao kê rõ ràng, cam kết mỗi ngày, tất cả trong một trang parody vui nhộn."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/nuoitoinhieuniemvui" />
+    <meta
+      property="og:image"
+      content="https://example.com/og-placeholder.jpg"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Thanh điều hướng">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true">🍚</div>
+          <div class="brand-name">NUÔI CHÚNG TÔI</div>
         </div>
-        <div class="hero-panel glass-card">
-          <div class="hero-panel-head">
-            <p class="pill success">Minh bạch realtime</p>
-            <p class="pill soft">Chế độ vui vẻ</p>
+        <nav class="nav-links" aria-label="Liên kết nội trang">
+          <a href="#hero">Trang chủ</a>
+          <a href="#dashboard">Bảng số</a>
+          <a href="#spending">Chi tiêu</a>
+          <a href="#features">Vì sao?</a>
+          <a href="#commit">Cam kết</a>
+          <a href="#compare">So sánh</a>
+          <a href="#donate">Donate</a>
+        </nav>
+        <div class="top-actions">
+          <div class="lang-switch" aria-label="Chọn ngôn ngữ">
+            Tiếng Việt | English | ...
           </div>
-          <div class="hero-panel-body">
-            <div class="panel-row">
-              <span>Trạng thái hôm nay</span>
-              <strong>Đang chuẩn bị bữa tối (mì x2 trứng)</strong>
+          <a class="btn primary small" href="#donate">Donate ngay</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Chiến dịch nuôi chúng tôi phiên bản minh bạch</p>
+            <h1>
+              Hãy nuôi chúng tôi. Chúng tôi hứa sao kê từng gói mì và từng viên
+              kẹo cao su.
+            </h1>
+            <p class="lead">
+              Trang này để giải trí, nhưng mọi khoản thu chi đều được ghi lại
+              như một bảng điều khiển kiểu công ty công nghệ, đậm chất meme và
+              không né tránh câu hỏi.
+            </p>
+            <div class="cta-row">
+              <a class="btn primary" href="#donate">Donate ngay</a>
+              <a class="btn ghost" href="#commit">Xem cam kết</a>
             </div>
-            <div class="panel-row">
-              <span>Khung giờ sao kê</span>
-              <strong>06:30 & 21:00 hằng ngày</strong>
-            </div>
-            <div class="panel-row">
-              <span>Fan kiểm toán</span>
-              <strong>128 người đang hóng</strong>
-            </div>
-          </div>
-          <div class="progress-shell">
-            <div class="progress-label">
-              <span>Mục tiêu tháng này</span>
-              <span>3.500.000 đ / 10.000.000 đ</span>
-            </div>
-            <div class="progress-track" aria-label="Tiến độ mục tiêu">
-              <span class="progress-fill" style="width:35%"></span>
+            <div class="trust-row" aria-label="Dòng cam kết">
+              <span class="trust-badge">🧾 Sao kê mỗi ngày</span>
+              <span class="trust-badge">📸 Hóa đơn rõ ràng</span>
+              <span class="trust-badge">⚡ Phản hồi thần tốc</span>
             </div>
           </div>
+          <div class="hero-panel glass-card">
+            <div class="hero-panel-head">
+              <p class="pill success">Minh bạch realtime</p>
+              <p class="pill soft">Chế độ vui vẻ</p>
+            </div>
+            <div class="hero-panel-body">
+              <div class="panel-row">
+                <span>Trạng thái hôm nay</span>
+                <strong>Đang chuẩn bị bữa tối (mì x2 trứng)</strong>
+              </div>
+              <div class="panel-row">
+                <span>Khung giờ sao kê</span>
+                <strong>06:30 & 21:00 hằng ngày</strong>
+              </div>
+              <div class="panel-row">
+                <span>Fan kiểm toán</span>
+                <strong>128 người đang hóng</strong>
+              </div>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-label">
+                <span>Mục tiêu tháng này</span>
+                <span>3.500.000 đ / 10.000.000 đ</span>
+              </div>
+              <div class="progress-track" aria-label="Tiến độ mục tiêu">
+                <span class="progress-fill" style="width: 35%"></span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="dashboard" class="section dashboard">
-      <div class="container">
-        <div class="section-header">
-          <h2>Bảng tóm tắt nhanh</h2>
-          <p>Những con số giả định để bạn yên tâm (và bật cười).</p>
+      <section id="dashboard" class="section dashboard">
+        <div class="container">
+          <div class="section-header">
+            <h2>Bảng tóm tắt nhanh</h2>
+            <p>Những con số giả định để bạn yên tâm (và bật cười).</p>
+          </div>
+          <div class="kpi-grid">
+            <article class="kpi-card">
+              <p class="kpi-label">Tổng đã nhận được</p>
+              <p
+                class="kpi-value"
+                data-counter
+                data-target="12500000"
+                data-format="currency"
+              >
+                0 đ
+              </p>
+              <p class="kpi-note">Đủ mua mì tôm siêu to khổng lồ</p>
+            </article>
+            <article class="kpi-card">
+              <p class="kpi-label">Số lượt donate</p>
+              <p
+                class="kpi-value"
+                data-counter
+                data-target="87"
+                data-suffix=" lượt"
+              >
+                0
+              </p>
+              <p class="kpi-note">Mỗi lượt đều được cảm ơn chân thành</p>
+            </article>
+            <article class="kpi-card success">
+              <p class="kpi-label">Thu hôm nay</p>
+              <p
+                class="kpi-value"
+                data-counter
+                data-target="420000"
+                data-format="currency"
+              >
+                0 đ
+              </p>
+              <p class="kpi-note">Nhận nhanh như tốc độ chụp hóa đơn</p>
+            </article>
+            <article class="kpi-card danger">
+              <p class="kpi-label">Chi hôm nay</p>
+              <p
+                class="kpi-value"
+                data-counter
+                data-target="260000"
+                data-format="currency"
+              >
+                0 đ
+              </p>
+              <p class="kpi-note">Chi từng đồng cho bữa tối và wifi</p>
+            </article>
+            <article class="kpi-card">
+              <p class="kpi-label">Còn lại</p>
+              <p
+                class="kpi-value"
+                data-counter
+                data-target="9380000"
+                data-format="currency"
+              >
+                0 đ
+              </p>
+              <p class="kpi-note">Luôn hiển thị, không che mờ</p>
+            </article>
+            <article class="kpi-card progress-card">
+              <p class="kpi-label">Mục tiêu tháng này</p>
+              <p class="kpi-value">10.000.000 đ</p>
+              <div
+                class="progress-track small"
+                aria-label="35% mục tiêu đã đạt"
+              >
+                <span class="progress-fill" style="width: 35%"></span>
+              </div>
+              <p class="kpi-note">Đã đạt 35% nhờ anh chị em cô bác</p>
+            </article>
+          </div>
         </div>
-        <div class="kpi-grid">
-          <article class="kpi-card">
-            <p class="kpi-label">Tổng đã nhận được</p>
-            <p class="kpi-value" data-counter data-target="12500000" data-format="currency">0 đ</p>
-            <p class="kpi-note">Đủ mua mì tôm siêu to khổng lồ</p>
-          </article>
-          <article class="kpi-card">
-            <p class="kpi-label">Số lượt donate</p>
-            <p class="kpi-value" data-counter data-target="87" data-suffix=" lượt">0</p>
-            <p class="kpi-note">Mỗi lượt đều được cảm ơn chân thành</p>
-          </article>
-          <article class="kpi-card success">
-            <p class="kpi-label">Thu hôm nay</p>
-            <p class="kpi-value" data-counter data-target="420000" data-format="currency">0 đ</p>
-            <p class="kpi-note">Nhận nhanh như tốc độ chụp hóa đơn</p>
-          </article>
-          <article class="kpi-card danger">
-            <p class="kpi-label">Chi hôm nay</p>
-            <p class="kpi-value" data-counter data-target="260000" data-format="currency">0 đ</p>
-            <p class="kpi-note">Chi từng đồng cho bữa tối và wifi</p>
-          </article>
-          <article class="kpi-card">
-            <p class="kpi-label">Còn lại</p>
-            <p class="kpi-value" data-counter data-target="9380000" data-format="currency">0 đ</p>
-            <p class="kpi-note">Luôn hiển thị, không che mờ</p>
-          </article>
-          <article class="kpi-card progress-card">
-            <p class="kpi-label">Mục tiêu tháng này</p>
-            <p class="kpi-value">10.000.000 đ</p>
-            <div class="progress-track small" aria-label="35% mục tiêu đã đạt">
-              <span class="progress-fill" style="width:35%"></span>
-            </div>
-            <p class="kpi-note">Đã đạt 35% nhờ anh chị em cô bác</p>
-          </article>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="spending" class="section spending">
-      <div class="container">
-        <div class="section-header">
-          <h2>Chi tiêu (có sao kê đàng hoàng)</h2>
-          <p>Chọn mục bất kỳ để xem chi tiết. Không có khoản nào biến mất vào hư không.</p>
-        </div>
-        <div class="spending-grid">
-          <article class="expense-card">
-            <div class="expense-top">
-              <p class="expense-title">Món ăn cho tâm hồn</p>
-              <span class="expense-amount">-75.000 đ</span>
-            </div>
-            <p class="expense-date">Ngày 02/05/2024</p>
-            <p class="expense-note">Tô mì trộn thêm trứng, xúc xích để đủ năng lượng trả lời inbox.</p>
-            <button class="btn subtle open-modal" type="button">Xem chi tiết</button>
-            <div class="expense-details" hidden>
-              <p>Mô tả: bữa tối tiết kiệm nhưng đầy đủ tinh thần minh bạch.</p>
-              <ul>
-                <li>Mì gói: 12.000 đ</li>
-                <li>Hai quả trứng: 10.000 đ</li>
-                <li>Xúc xích: 25.000 đ</li>
-                <li>Rau thêm: 8.000 đ</li>
-                <li>Gia vị, gas: 20.000 đ</li>
-              </ul>
-            </div>
-          </article>
+      <section id="spending" class="section spending">
+        <div class="container">
+          <div class="section-header">
+            <h2>Chi tiêu (có sao kê đàng hoàng)</h2>
+            <p>
+              Chọn mục bất kỳ để xem chi tiết. Không có khoản nào biến mất vào
+              hư không.
+            </p>
+          </div>
+          <div class="spending-grid">
+            <article class="expense-card">
+              <div class="expense-top">
+                <p class="expense-title">Món ăn cho tâm hồn</p>
+                <span class="expense-amount">-75.000 đ</span>
+              </div>
+              <p class="expense-date">Ngày 02/05/2024</p>
+              <p class="expense-note">
+                Tô mì trộn thêm trứng, xúc xích để đủ năng lượng trả lời inbox.
+              </p>
+              <button class="btn subtle open-modal" type="button">
+                Xem chi tiết
+              </button>
+              <div class="expense-details" hidden>
+                <p>
+                  Mô tả: bữa tối tiết kiệm nhưng đầy đủ tinh thần minh bạch.
+                </p>
+                <ul>
+                  <li>Mì gói: 12.000 đ</li>
+                  <li>Hai quả trứng: 10.000 đ</li>
+                  <li>Xúc xích: 25.000 đ</li>
+                  <li>Rau thêm: 8.000 đ</li>
+                  <li>Gia vị, gas: 20.000 đ</li>
+                </ul>
+              </div>
+            </article>
 
-          <article class="expense-card">
-            <div class="expense-top">
-              <p class="expense-title">Tiền mạng để sao kê</p>
-              <span class="expense-amount">-150.000 đ</span>
-            </div>
-            <p class="expense-date">Ngày 01/05/2024</p>
-            <p class="expense-note">Gia hạn cáp quang để upload sao kê HD, không mờ.</p>
-            <button class="btn subtle open-modal" type="button">Xem chi tiết</button>
-            <div class="expense-details" hidden>
-              <p>Mô tả: gói internet gọn nhẹ nhưng đủ mạnh để phát trực tiếp bảng tính sao kê.</p>
-              <ul>
-                <li>Phí tháng: 140.000 đ</li>
-                <li>Phí modem: 10.000 đ</li>
-                <li>Thuế và phí lặt vặt: 0 đ (đã được giảm)</li>
-              </ul>
-            </div>
-          </article>
+            <article class="expense-card">
+              <div class="expense-top">
+                <p class="expense-title">Tiền mạng để sao kê</p>
+                <span class="expense-amount">-150.000 đ</span>
+              </div>
+              <p class="expense-date">Ngày 01/05/2024</p>
+              <p class="expense-note">
+                Gia hạn cáp quang để upload sao kê HD, không mờ.
+              </p>
+              <button class="btn subtle open-modal" type="button">
+                Xem chi tiết
+              </button>
+              <div class="expense-details" hidden>
+                <p>
+                  Mô tả: gói internet gọn nhẹ nhưng đủ mạnh để phát trực tiếp
+                  bảng tính sao kê.
+                </p>
+                <ul>
+                  <li>Phí tháng: 140.000 đ</li>
+                  <li>Phí modem: 10.000 đ</li>
+                  <li>Thuế và phí lặt vặt: 0 đ (đã được giảm)</li>
+                </ul>
+              </div>
+            </article>
 
-          <article class="expense-card">
-            <div class="expense-top">
-              <p class="expense-title">Vitamin C chống drama</p>
-              <span class="expense-amount">-45.000 đ</span>
-            </div>
-            <p class="expense-date">Ngày 30/04/2024</p>
-            <p class="expense-note">Giữ sức khỏe để nghe góp ý mà không hắt hơi.</p>
-            <button class="btn subtle open-modal" type="button">Xem chi tiết</button>
-            <div class="expense-details" hidden>
-              <p>Mô tả: bộ vitamin + cam vắt làm lá chắn mềm mại.</p>
-              <ul>
-                <li>Vitamin C: 30.000 đ</li>
-                <li>Cam sành: 15.000 đ</li>
-              </ul>
-            </div>
-          </article>
+            <article class="expense-card">
+              <div class="expense-top">
+                <p class="expense-title">Vitamin C chống drama</p>
+                <span class="expense-amount">-45.000 đ</span>
+              </div>
+              <p class="expense-date">Ngày 30/04/2024</p>
+              <p class="expense-note">
+                Giữ sức khỏe để nghe góp ý mà không hắt hơi.
+              </p>
+              <button class="btn subtle open-modal" type="button">
+                Xem chi tiết
+              </button>
+              <div class="expense-details" hidden>
+                <p>Mô tả: bộ vitamin + cam vắt làm lá chắn mềm mại.</p>
+                <ul>
+                  <li>Vitamin C: 30.000 đ</li>
+                  <li>Cam sành: 15.000 đ</li>
+                </ul>
+              </div>
+            </article>
 
-          <article class="expense-card">
-            <div class="expense-top">
-              <p class="expense-title">Cà phê để thức sao kê</p>
-              <span class="expense-amount">-32.000 đ</span>
-            </div>
-            <p class="expense-date">Ngày 29/04/2024</p>
-            <p class="expense-note">Ly cà phê đen đá, không đường để giữ tỉnh táo.</p>
-            <button class="btn subtle open-modal" type="button">Xem chi tiết</button>
-            <div class="expense-details" hidden>
-              <p>Mô tả: mua ở quán quen, có hóa đơn điện tử.</p>
-              <ul>
-                <li>Cà phê pha phin: 25.000 đ</li>
-                <li>Tiền gửi xe: 7.000 đ</li>
-              </ul>
-            </div>
-          </article>
+            <article class="expense-card">
+              <div class="expense-top">
+                <p class="expense-title">Cà phê để thức sao kê</p>
+                <span class="expense-amount">-32.000 đ</span>
+              </div>
+              <p class="expense-date">Ngày 29/04/2024</p>
+              <p class="expense-note">
+                Ly cà phê đen đá, không đường để giữ tỉnh táo.
+              </p>
+              <button class="btn subtle open-modal" type="button">
+                Xem chi tiết
+              </button>
+              <div class="expense-details" hidden>
+                <p>Mô tả: mua ở quán quen, có hóa đơn điện tử.</p>
+                <ul>
+                  <li>Cà phê pha phin: 25.000 đ</li>
+                  <li>Tiền gửi xe: 7.000 đ</li>
+                </ul>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="features" class="section features">
-      <div class="container">
-        <div class="section-header">
-          <h2>Tại sao nên nuôi chúng tôi?</h2>
-          <p>Những lợi ích hài hước nhưng vẫn chăm chút.</p>
+      <section id="features" class="section features">
+        <div class="container">
+          <div class="section-header">
+            <h2>Tại sao nên nuôi chúng tôi?</h2>
+            <p>Những lợi ích hài hước nhưng vẫn chăm chút.</p>
+          </div>
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3>Sao kê realtime</h3>
+              <p>Cập nhật liên tục, nhanh hơn tốc độ bạn nhấn chuyển khoản.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🔍</div>
+              <h3>Minh bạch 200-300%</h3>
+              <p>
+                Từ gói mì 5k đến phí gửi xe 3k, không gì thoát khỏi ánh sáng.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">💸</div>
+              <h3>Chi tiêu hợp lý</h3>
+              <p>Ưu tiên sinh tồn: ăn, ở, wifi. Không đột ngột mua siêu xe.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">📱</div>
+              <h3>Theo dõi 24/7 (cho vui thôi)</h3>
+              <p>
+                Bảng theo dõi hiển thị mọi chi tiết; bạn là "cổ đông vui vẻ".
+              </p>
+            </article>
+          </div>
         </div>
-        <div class="features-grid">
-          <article class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3>Sao kê realtime</h3>
-            <p>Cập nhật liên tục, nhanh hơn tốc độ bạn nhấn chuyển khoản.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">🔍</div>
-            <h3>Minh bạch 200-300%</h3>
-            <p>Từ gói mì 5k đến phí gửi xe 3k, không gì thoát khỏi ánh sáng.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">💸</div>
-            <h3>Chi tiêu hợp lý</h3>
-            <p>Ưu tiên sinh tồn: ăn, ở, wifi. Không đột ngột mua siêu xe.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">📱</div>
-            <h3>Theo dõi 24/7 (cho vui thôi)</h3>
-            <p>Bảng theo dõi hiển thị mọi chi tiết; bạn là "cổ đông vui vẻ".</p>
-          </article>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="commit" class="section commitments">
-      <div class="container">
-        <div class="commit-box">
-          <h2>Cam kết vàng</h2>
-          <p>Phiên bản sát nghĩa nhưng được viết lại để đậm chất vui vẻ, không đụng chạm ai.</p>
-          <ul>
-            <li><strong>Sao kê đúng giờ:</strong> Drop vào 06:30 và 21:00, đều như cơm bữa.</li>
-            <li><strong>Không bỏ qua khoản nhỏ:</strong> Ly trà đá 3k hay phí gửi xe 5k đều được ghi.</li>
-            <li><strong>Có chứng từ minh họa:</strong> Ảnh bill, QR, ghi chú đầy đủ.</li>
-            <li><strong>"Unboxing" vui:</strong> Mua gì quay lại, thêm meme cho đỡ khô khan.</li>
-            <li><strong>Hotline 24/7 (hơi đùa):</strong> Nhắn tin là trả lời sớm nhất có thể.</li>
-            <li><strong>Không block người hỏi:</strong> Chỉ block bot spam, còn lại cứ hỏi thoải mái.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="compare" class="section compare">
-      <div class="container">
-        <div class="section-header">
-          <h2>So sánh vui</h2>
-          <p>Không nói ai, chỉ so sánh khái niệm.</p>
-        </div>
-        <div class="compare-grid">
-          <article class="compare-card bad">
-            <div class="compare-head">❌ Người khác</div>
+      <section id="commit" class="section commitments">
+        <div class="container">
+          <div class="commit-box">
+            <h2>Cam kết vàng</h2>
+            <p>
+              Phiên bản sát nghĩa nhưng được viết lại để đậm chất vui vẻ, không
+              đụng chạm ai.
+            </p>
             <ul>
-              <li>Sao kê khi có mood, có thể là năm sau.</li>
-              <li>Ảnh chụp bill mờ như sương sớm.</li>
-              <li>Giải thích kiểu "đang tổng hợp", kéo dài vô tận.</li>
-              <li>Hỏi nhiều thì im lặng hoặc biến mất.</li>
+              <li>
+                <strong>Sao kê đúng giờ:</strong> Drop vào 06:30 và 21:00, đều
+                như cơm bữa.
+              </li>
+              <li>
+                <strong>Không bỏ qua khoản nhỏ:</strong> Ly trà đá 3k hay phí
+                gửi xe 5k đều được ghi.
+              </li>
+              <li>
+                <strong>Có chứng từ minh họa:</strong> Ảnh bill, QR, ghi chú đầy
+                đủ.
+              </li>
+              <li>
+                <strong>"Unboxing" vui:</strong> Mua gì quay lại, thêm meme cho
+                đỡ khô khan.
+              </li>
+              <li>
+                <strong>Hotline 24/7 (hơi đùa):</strong> Nhắn tin là trả lời sớm
+                nhất có thể.
+              </li>
+              <li>
+                <strong>Không block người hỏi:</strong> Chỉ block bot spam, còn
+                lại cứ hỏi thoải mái.
+              </li>
             </ul>
-          </article>
-          <article class="compare-card good">
-            <div class="compare-head">✅ Nuôi chúng tôi</div>
-            <ul>
-              <li>Đăng trước khi tiêu, để anh chị duyệt.</li>
-              <li>Ảnh chụp rõ nét, phóng to thấy từng hạt gạo.</li>
-              <li>Số lẻ không làm tròn, 1 đồng cũng ghi.</li>
-              <li>Hỏi gì trả lời nấy, chỉ trễ khi đang rửa chén.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="donate" class="section donate">
-      <div class="container">
-        <div class="donate-box">
-          <div class="donate-header">
-            <h2>Donate ngay đi, nếu bạn đang cười!</h2>
-            <p>Quét mã hoặc chuyển khoản, chúng tôi sẽ gửi sao kê và lời cảm ơn ngay lập tức.</p>
           </div>
-          
-          <div class="donate-content">
-            <div class="user-card">
-              <div class="user-avatar">
-                <img src="assets/user/user01.jpeg" alt="Người nhận" />
+        </div>
+      </section>
+
+      <section id="compare" class="section compare">
+        <div class="container">
+          <div class="section-header">
+            <h2>So sánh vui</h2>
+            <p>Không nói ai, chỉ so sánh khái niệm.</p>
+          </div>
+          <div class="compare-grid">
+            <article class="compare-card bad">
+              <div class="compare-head">❌ Người khác</div>
+              <ul>
+                <li>Sao kê khi có mood, có thể là năm sau.</li>
+                <li>Ảnh chụp bill mờ như sương sớm.</li>
+                <li>Giải thích kiểu "đang tổng hợp", kéo dài vô tận.</li>
+                <li>Hỏi nhiều thì im lặng hoặc biến mất.</li>
+              </ul>
+            </article>
+            <article class="compare-card good">
+              <div class="compare-head">✅ Nuôi chúng tôi</div>
+              <ul>
+                <li>Đăng trước khi tiêu, để anh chị duyệt.</li>
+                <li>Ảnh chụp rõ nét, phóng to thấy từng hạt gạo.</li>
+                <li>Số lẻ không làm tròn, 1 đồng cũng ghi.</li>
+                <li>Hỏi gì trả lời nấy, chỉ trễ khi đang rửa chén.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="donate" class="section donate">
+        <div class="container">
+          <div class="donate-box">
+            <div class="donate-header">
+              <h2>Donate ngay đi, nếu bạn đang cười!</h2>
+              <p>
+                Quét mã hoặc chuyển khoản, chúng tôi sẽ gửi sao kê và lời cảm ơn
+                ngay lập tức.
+              </p>
+            </div>
+
+            <div class="donate-content">
+              <div class="user-card">
+                <div class="user-avatar">
+                  <img src="assets/user/user01.jpeg" alt="Người nhận" />
+                </div>
+                <div class="user-info">
+                  <h3>Thông tin người nhận</h3>
+                  <div class="info-row">
+                    <span class="info-label">Ngân hàng:</span>
+                    <span class="info-value">Vietcombank</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Số tài khoản:</span>
+                    <span class="info-value">1234567890</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Chủ tài khoản:</span>
+                    <span class="info-value">LE DON CHUNG</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Nội dung:</span>
+                    <span class="info-value">Nuoi chung toi [Ten cua ban]</span>
+                  </div>
+                </div>
               </div>
-              <div class="user-info">
-                <h3>Thông tin người nhận</h3>
-                <div class="info-row">
-                  <span class="info-label">Ngân hàng:</span>
-                  <span class="info-value">Vietcombank</span>
+
+              <div class="qr-card">
+                <h3>Quét mã QR</h3>
+                <div class="qr-image">
+                  <img src="assets/qr/qr01.png" alt="QR Code chuyển khoản" />
                 </div>
-                <div class="info-row">
-                  <span class="info-label">Số tài khoản:</span>
-                  <span class="info-value">1234567890</span>
+                <p class="qr-note">Mở app ngân hàng và quét mã này</p>
+              </div>
+            </div>
+
+            <div class="donate-footer">
+              <p class="note">
+                ✨ Chuyển xong là có email tự động kèm hình gif cúi chào!
+              </p>
+              <p class="note">
+                📊 Sao kê được cập nhật mỗi ngày lúc 6:30 sáng và 9:00 tối
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="allocation" class="section allocation">
+        <div class="container">
+          <div class="section-header">
+            <h2>Tôi sẽ dùng tiền vào đâu?</h2>
+            <p>Biểu đồ cập nhật hàng tuần (minh họa).</p>
+          </div>
+          <div class="allocation-grid">
+            <div class="allocation-list">
+              <div class="allocation-item">
+                <div class="allocation-top">
+                  <span>40% Ăn uống</span><span>40%</span>
                 </div>
-                <div class="info-row">
-                  <span class="info-label">Chủ tài khoản:</span>
-                  <span class="info-value">LE DON CHUNG</span>
+                <div class="allocation-bar">
+                  <span style="width: 40%"></span>
                 </div>
-                <div class="info-row">
-                  <span class="info-label">Nội dung:</span>
-                  <span class="info-value">Nuoi chung toi [Ten cua ban]</span>
+              </div>
+              <div class="allocation-item">
+                <div class="allocation-top">
+                  <span>20% Điện nước / Internet</span><span>20%</span>
+                </div>
+                <div class="allocation-bar secondary">
+                  <span style="width: 20%"></span>
+                </div>
+              </div>
+              <div class="allocation-item">
+                <div class="allocation-top">
+                  <span>15% Thuê nhà</span><span>15%</span>
+                </div>
+                <div class="allocation-bar accent">
+                  <span style="width: 15%"></span>
+                </div>
+              </div>
+              <div class="allocation-item">
+                <div class="allocation-top">
+                  <span>10% Y tế</span><span>10%</span>
+                </div>
+                <div class="allocation-bar danger">
+                  <span style="width: 10%"></span>
+                </div>
+              </div>
+              <div class="allocation-item">
+                <div class="allocation-top">
+                  <span>10% Học tập</span><span>10%</span>
+                </div>
+                <div class="allocation-bar soft">
+                  <span style="width: 10%"></span>
+                </div>
+              </div>
+              <div class="allocation-item">
+                <div class="allocation-top">
+                  <span>5% Giải trí</span><span>5%</span>
+                </div>
+                <div class="allocation-bar muted">
+                  <span style="width: 5%"></span>
                 </div>
               </div>
             </div>
-            
-            <div class="qr-card">
-              <h3>Quét mã QR</h3>
-              <div class="qr-image">
-                <img src="assets/qr/qr01.png" alt="QR Code chuyển khoản" />
-              </div>
-              <p class="qr-note">Mở app ngân hàng và quét mã này</p>
-            </div>
-          </div>
-          
-          <div class="donate-footer">
-            <p class="note">✨ Chuyển xong là có email tự động kèm hình gif cúi chào!</p>
-            <p class="note">📊 Sao kê được cập nhật mỗi ngày lúc 6:30 sáng và 9:00 tối</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="allocation" class="section allocation">
-      <div class="container">
-        <div class="section-header">
-          <h2>Tôi sẽ dùng tiền vào đâu?</h2>
-          <p>Biểu đồ cập nhật hàng tuần (minh họa).</p>
-        </div>
-        <div class="allocation-grid">
-          <div class="allocation-list">
-            <div class="allocation-item">
-              <div class="allocation-top"><span>40% Ăn uống</span><span>40%</span></div>
-              <div class="allocation-bar"><span style="width:40%"></span></div>
-            </div>
-            <div class="allocation-item">
-              <div class="allocation-top"><span>20% Điện nước / Internet</span><span>20%</span></div>
-              <div class="allocation-bar secondary"><span style="width:20%"></span></div>
-            </div>
-            <div class="allocation-item">
-              <div class="allocation-top"><span>15% Thuê nhà</span><span>15%</span></div>
-              <div class="allocation-bar accent"><span style="width:15%"></span></div>
-            </div>
-            <div class="allocation-item">
-              <div class="allocation-top"><span>10% Y tế</span><span>10%</span></div>
-              <div class="allocation-bar danger"><span style="width:10%"></span></div>
-            </div>
-            <div class="allocation-item">
-              <div class="allocation-top"><span>10% Học tập</span><span>10%</span></div>
-              <div class="allocation-bar soft"><span style="width:10%"></span></div>
-            </div>
-            <div class="allocation-item">
-              <div class="allocation-top"><span>5% Giải trí</span><span>5%</span></div>
-              <div class="allocation-bar muted"><span style="width:5%"></span></div>
-            </div>
+      <section class="quote-section">
+        <div class="quote-container">
+          <div class="quote-box">
+            <p class="quote-text">
+              <span class="icon">💰</span>
+              “Sự góp mặt của bạn, chính là nguồn thu nhập chính cho chúng tôi.
+              Trân trọng!”
+            </p>
+            <cite>
+              <span class="icon">🕵️</span>
+              — Một người anh hùng bàn phím giấu tên
+            </cite>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="quote" class="section quote">
-      <div class="container">
-        <div class="quote-box">
-          <p class="quote-text">“Ai nuôi ai không quan trọng, quan trọng là bảng sao kê nhìn đã mắt. Xin trân trọng gửi lời cảm ơn kèm câu cửa miệng: ‘Tôi nuôi cô!’ phiên bản meme.”</p>
-          <cite>— Một người anh hùng bàn phím giấu tên</cite>
+      <section id="note" class="section note">
+        <div class="container">
+          <div class="note-box">
+            <h2>Lời nhắn từ trái tim</h2>
+            <p>
+              Chúng ta đang ở kỷ nguyên nhạy cảm với hai chữ “minh bạch”, nên
+              tôi làm trang này để vừa vui vừa rõ ràng. Đây là sản phẩm giải
+              trí, không nhằm châm chọc cá nhân hay tổ chức nào. Mỗi khoản thu
+              chi đều ghi lại để mọi người xem cho vui và an tâm.
+            </p>
+            <p>
+              P/S: Tôi không mua xe hơi, không săn đồ hiệu. Mục tiêu chỉ là bữa
+              ăn đủ chất và wifi đủ mạnh để gửi cảm ơn.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section id="note" class="section note">
-      <div class="container">
-        <div class="note-box">
-          <h2>Lời nhắn từ trái tim</h2>
-          <p>Chúng ta đang ở kỷ nguyên nhạy cảm với hai chữ “minh bạch”, nên tôi làm trang này để vừa vui vừa rõ ràng. Đây là sản phẩm giải trí, không nhằm châm chọc cá nhân hay tổ chức nào. Mỗi khoản thu chi đều ghi lại để mọi người xem cho vui và an tâm.</p>
-          <p>P/S: Tôi không mua xe hơi, không săn đồ hiệu. Mục tiêu chỉ là bữa ăn đủ chất và wifi đủ mạnh để gửi cảm ơn.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="disclaimer-bar">⚠️ Trang mang tính chất hài hước/giải trí, không phải lời kêu gọi tài chính nghiêm túc.</div>
-
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-links">
-        <a href="#dashboard">Sao kê (đang cập nhật)</a>
-        <a href="#note">Liên hệ</a>
-        <a href="#donate">Donate</a>
-      </div>
-      <p class="footer-note">Sản phẩm parody, đừng quá nghiêm túc nhưng hãy vui vẻ góp ý.</p>
-      <p class="footer-copy">© 2024 Nuôi Chúng Tôi. Mọi quyền vui vẻ được bảo lưu.</p>
+    <div class="disclaimer-bar">
+      ⚠️ Nội dung chỉ để giải trí. Mọi liên hệ tới tiền bạc đều mang tính chất
+      thực tiễn .Vui lòng kèm theo chuyển khoản!
     </div>
-  </footer>
 
-  <div class="modal" id="expense-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-content">
-      <button class="close-btn" type="button" aria-label="Đóng" data-close>×</button>
-      <h3 id="modal-title">Chi tiết chi tiêu</h3>
-      <div id="modal-body"></div>
-      <button class="btn primary" type="button" data-close>Đóng</button>
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a href="#dashboard">Sao kê (đang cập nhật)</a>
+          <a href="#note">Liên hệ</a>
+          <a href="#donate">Donate</a>
+        </div>
+        <p class="footer-note">
+          Sản phẩm parody, đừng quá nghiêm túc nhưng hãy vui vẻ góp ý.
+        </p>
+        <p class="footer-copy">
+          © 2024 Nuôi Chúng Tôi. Mọi quyền vui vẻ được bảo lưu.
+        </p>
+      </div>
+    </footer>
+
+    <div
+      class="modal"
+      id="expense-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-content">
+        <button class="close-btn" type="button" aria-label="Đóng" data-close>
+          ×
+        </button>
+        <h3 id="modal-title">Chi tiết chi tiêu</h3>
+        <div id="modal-body"></div>
+        <button class="btn primary" type="button" data-close>Đóng</button>
+      </div>
     </div>
-  </div>
 
-  <script src="script.js" defer></script>
-</body>
+    <script src="script.js" defer></script>
+  </body>
 </html>
