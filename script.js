@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${rounded.toLocaleString("vi-VN")}${suffix}`;
   };
 
+  // Counter animation
   const counters = document.querySelectorAll("[data-counter]");
   counters.forEach((counter) => {
     const target = Number(counter.dataset.target || 0);
@@ -35,13 +36,61 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   });
 
+  // Petal rain + fireworks
+  const petalLayer = document.querySelector(".petal-layer");
+  const fireworksLayer = document.querySelector(".fireworks-layer");
+
+  const createPetals = (count = 26) => {
+    if (!petalLayer) return;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i += 1) {
+      const petal = document.createElement("span");
+      petal.className = "petal";
+      const duration = 10 + Math.random() * 8;
+      const delay = Math.random() * -duration;
+      const size = 12 + Math.random() * 10;
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.animationDuration = `${duration}s`;
+      petal.style.animationDelay = `${delay}s`;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size * 0.65}px`;
+      frag.appendChild(petal);
+    }
+    petalLayer.appendChild(frag);
+  };
+
+  const spawnFirework = () => {
+    if (!fireworksLayer) return;
+    const burst = document.createElement("div");
+    burst.className = "firework-burst";
+    burst.style.left = `${10 + Math.random() * 80}%`;
+    burst.style.top = `${12 + Math.random() * 40}vh`;
+
+    const sparkCount = 10;
+    const colors = ["", "gold", "red"];
+    for (let i = 0; i < sparkCount; i += 1) {
+      const spark = document.createElement("span");
+      spark.className = `spark ${colors[Math.floor(Math.random() * colors.length)]}`;
+      const angle = (Math.PI * 2 * i) / sparkCount + Math.random() * 0.4;
+      const distance = 40 + Math.random() * 60;
+      spark.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
+      spark.style.setProperty("--dy", `${Math.sin(angle) * distance}px`);
+      burst.appendChild(spark);
+    }
+
+    fireworksLayer.appendChild(burst);
+    setTimeout(() => burst.remove(), 950);
+  };
+
+  if (!prefersReducedMotion) {
+    createPetals();
+    setInterval(() => spawnFirework(), 1400 + Math.random() * 900);
+  }
+
+  // Expense modal
   const modal = document.getElementById("expense-modal");
   const modalBody = document.getElementById("modal-body");
   const modalTitle = document.getElementById("modal-title");
-  const imageModal = document.getElementById("image-modal");
-  const imageView = document.getElementById("image-view");
-  const imageTitle = document.getElementById("image-title");
-  const imageCaption = document.getElementById("image-caption");
 
   if (modal && modalBody && modalTitle) {
     const closeModal = () => {
@@ -82,6 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Image modal for avatars
+  const imageModal = document.getElementById("image-modal");
+  const imageView = document.getElementById("image-view");
+  const imageTitle = document.getElementById("image-title");
+  const imageCaption = document.getElementById("image-caption");
 
   const attachImageModal = () => {
     if (!(imageModal && imageView && imageTitle && imageCaption)) return;
@@ -130,92 +185,114 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sessionData = [
     {
-      id: "user01",
-      name: "Lê Đôn Chủng",
-      tagline: "Giờ hành chính – thu nhập ngoài giờ",
+      id: "lx01",
+      name: "Linh Đào",
+      tagline: "Ca sáng: canh nồi bánh chưng online",
       bank: "Vietcombank",
       account: "0123456789",
-      owner: "CEO",
-      content: "Nuoi Chủng Lê [Ten cua ban]",
+      owner: "Linh Đào",
+      content: "Lì xì Linh Đào - [Tên của bạn]",
       qr: "assets/qr/qr01.png",
       avatar: "assets/user/user01.jpeg",
     },
     {
-      id: "user02",
-      name: "Lê Vũ Phong",
-      tagline: "Làm ít nhưng báo nhiều",
+      id: "lx02",
+      name: "Phong Lá",
+      tagline: "Chuyên viên gói lá dong full option",
       bank: "Techcombank",
       account: "2233445566",
-      owner: "CEO 2",
-      content: "Nuoi Phong Le[Ten cua ban]",
+      owner: "Phong Lá",
+      content: "Lì xì Phong Lá - [Tên của bạn]",
       qr: "assets/qr/qr02.jpg",
       avatar: "assets/user/user02.jpg",
     },
     {
-      id: "user03",
-      name: "Đỗ Nguyễn Quỳnh Hương",
-      tagline: "Full-time công sở, part-time hy vọng",
+      id: "lx03",
+      name: "Hương Nếp",
+      tagline: "Trực mứt gừng, thích số tròn",
       bank: "ACB",
       account: "9988776655",
-      owner: "Ăn Xin Online",
-      content: "Nuoi Hương nè [Ten cua ban]",
+      owner: "Hương Nếp",
+      content: "Lì xì Hương Nếp - [Tên của bạn]",
       qr: "assets/qr/qr03.jpg",
       avatar: "assets/user/user03.jpeg",
     },
     {
-      id: "user04",
-      name: "Nguyễn Thị Minh Hiếu",
-      tagline: "Ca tối – livestream bảng tính minh bạch",
+      id: "lx04",
+      name: "Minh Hiếu",
+      tagline: "Ca tối: lau nhà, lau luôn sao kê",
       bank: "MB Bank",
       account: "888999000",
-      owner: "hiếu minh",
-      content: "Nuoi toi di:)) [Ten cua ban]",
+      owner: "Minh Hiếu",
+      content: "Lì xì Minh Hiếu - [Tên của bạn]",
       qr: "assets/qr/qr04.jpg",
-      avatar: "assets/user/user05 (2).jpg",
+      avatar: "assets/user/user04.jpeg",
     },
     {
-      id: "user05",
-      name: "Trần Thị Hải Yến",
-      tagline: "Deadline nuôi tôi, tôi nuôi deadline",
+      id: "lx05",
+      name: "Hải Yến",
+      tagline: "Check bill trước khi mở bao",
       bank: "VPBank",
       account: "5566778899",
-      owner: "Yen Tran",
-      content: "Nuoi Yen di [Ten cua ban]",
+      owner: "Hải Yến",
+      content: "Lì xì Hải Yến - [Tên của bạn]",
       qr: "assets/qr/qr05.jpg",
       avatar: "assets/user/user05.jpg",
     },
     {
-      id: "user06",
-      name: "Lê Văn Phú",
-      tagline: "Làm vì đam mê, sống nhờ mạnh thường quân",
+      id: "lx06",
+      name: "Anh Phú",
+      tagline: "Lì xì đổi lại lời chúc thơm",
       bank: "Sacombank",
       account: "3344556677",
-      owner: "Phú lê",
-      content: "Nuoi phú đi, phú cho người khác:)) [Ten cua ban]",
+      owner: "Anh Phú",
+      content: "Lì xì Anh Phú - [Tên của bạn]",
       qr: "assets/qr/qr06.jpg",
       avatar: "assets/user/user06.jpg",
     },
     {
-      id: "user07",
-      name: "Sẩm Việt Tuấn",
-      tagline: "Chuyên gia động viên tài chính từ xa",
+      id: "lx07",
+      name: "Tứn Mai",
+      tagline: "Tư vấn phong thủy số tài khoản",
       bank: "BIDV",
       account: "6677889900",
-      owner: "A Tứn",
-      content: "Nuoi A đi mấy e ơi [Ten cua ban]",
+      owner: "Tứn Mai",
+      content: "Lì xì Tứn Mai - [Tên của bạn]",
       qr: "assets/qr/qr07.jpg",
       avatar: "assets/user/user07.jpeg",
     },
     {
-      id: "user08",
-      name: "Nguyễn Trung Hiếu",
-      tagline: "Làm việc bằng niềm tin và cà phê",
+      id: "lx08",
+      name: "Hiếu Bến Tàu",
+      tagline: "Ca đêm: đếm tiền lì xì thay bạn",
       bank: "TPBank",
       account: "111222333",
-      owner: "Hiếu bến tàu",
-      content: "Nuoi hiếu đi, hiếu nghèo lắm! [Ten cua ban]",
-      qr: "assets/qr/qr08.png",
-      avatar: "assets/user/user08.jpeg",
+      owner: "Hiếu Bến Tàu",
+      content: "Lì xì Hiếu Bến Tàu - [Tên của bạn]",
+      qr: "assets/qr/qr02.jpg",
+      avatar: "assets/user/user04.jpg",
+    },
+    {
+      id: "lx09",
+      name: "Đôn Chủng",
+      tagline: "Chủ nhiệm câu lạc bộ hành phi",
+      bank: "VietinBank",
+      account: "909090123",
+      owner: "Đôn Chủng",
+      content: "Lì xì Đôn Chủng - [Tên của bạn]",
+      qr: "assets/qr/qr03.jpg",
+      avatar: "assets/user/user05 (2).jpg",
+    },
+    {
+      id: "lx10",
+      name: "Mai Cây Đào",
+      tagline: "Livestream gieo quẻ lì xì",
+      bank: "Agribank",
+      account: "777888999",
+      owner: "Mai Cây Đào",
+      content: "Lì xì Mai Cây Đào - [Tên của bạn]",
+      qr: "assets/qr/qr01.png",
+      avatar: "assets/user/user02.jpg",
     },
   ];
 
@@ -223,6 +300,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const sessionDots = document.getElementById("session-dots");
   const prevBtn = document.querySelector("[data-session-prev]");
   const nextBtn = document.querySelector("[data-session-next]");
+  const contentInput = document.getElementById("transfer-content");
+  const copyBtn = document.querySelector("[data-copy]");
 
   if (sessionTrack && sessionDots && sessionData.length) {
     if (prefersReducedMotion) {
@@ -289,13 +368,16 @@ document.addEventListener("DOMContentLoaded", () => {
       sessionDots.querySelectorAll("button").forEach((dot, idx) => {
         dot.classList.toggle("active", idx === sessionIndex);
       });
+      if (contentInput) {
+        contentInput.value = sessionData[sessionIndex].content;
+      }
     };
 
     const startAuto = () => {
       if (prefersReducedMotion) return;
       sessionTimer = setInterval(() => {
         setSession(sessionIndex + 1);
-      }, 5000);
+      }, 6200);
     };
 
     const resetAuto = () => {
@@ -325,5 +407,31 @@ document.addEventListener("DOMContentLoaded", () => {
     setSession(0);
     startAuto();
     attachImageModal();
+  }
+
+  if (copyBtn && contentInput) {
+    copyBtn.addEventListener("click", () => {
+      const text = contentInput.value || "";
+      if (!text) return;
+      const original = copyBtn.textContent || "Sao chép";
+      const showDone = () => {
+        copyBtn.textContent = "Đã copy";
+        setTimeout(() => {
+          copyBtn.textContent = original;
+        }, 1200);
+      };
+
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(text).then(showDone).catch(() => {
+          contentInput.select();
+          document.execCommand("copy");
+          showDone();
+        });
+      } else {
+        contentInput.select();
+        document.execCommand("copy");
+        showDone();
+      }
+    });
   }
 });
