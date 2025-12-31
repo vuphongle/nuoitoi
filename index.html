@@ -292,44 +292,25 @@
         <div class="donate-box">
           <div class="donate-header">
             <h2>Donate ngay đi, nếu bạn đang cười!</h2>
-            <p>Quét mã hoặc chuyển khoản, chúng tôi sẽ gửi sao kê và lời cảm ơn ngay lập tức.</p>
+            <p>Chọn phiên ca trực của người nhận, quét đúng QR tương ứng để việc sao kê thêm vui.</p>
           </div>
-          
-          <div class="donate-content">
-            <div class="user-card">
-              <div class="user-avatar">
-                <img src="assets/user/user01.jpeg" alt="Người nhận" />
-              </div>
-              <div class="user-info">
-                <h3>Thông tin người nhận</h3>
-                <div class="info-row">
-                  <span class="info-label">Ngân hàng:</span>
-                  <span class="info-value">Vietcombank</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-label">Số tài khoản:</span>
-                  <span class="info-value">1234567890</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-label">Chủ tài khoản:</span>
-                  <span class="info-value">LE DON CHUNG</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-label">Nội dung:</span>
-                  <span class="info-value">Nuoi chung toi [Ten cua ban]</span>
-                </div>
-              </div>
+
+          <div class="session-wrapper">
+            <div class="session-header">
+              <p class="eyebrow">Ca trực donate trong ngày</p>
+              <h3>4 phiên khác nhau, mỗi người một QR riêng</h3>
+              <p class="session-sub">Đổi phiên để quét đúng người cần nuôi; tên và nội dung chuyển khoản sẽ hiện theo phiên.</p>
             </div>
-            
-            <div class="qr-card">
-              <h3>Quét mã QR</h3>
-              <div class="qr-image">
-                <img src="assets/qr/qr01.png" alt="QR Code chuyển khoản" />
-              </div>
-              <p class="qr-note">Mở app ngân hàng và quét mã này</p>
+            <div class="session-banner" aria-live="polite">
+              <div class="session-track" id="session-track" role="list"></div>
+            </div>
+            <div class="session-controls">
+              <button class="btn subtle" type="button" data-session-prev aria-label="Phiên trước">← Trước</button>
+              <div class="session-dots" id="session-dots" aria-label="Chọn phiên"></div>
+              <button class="btn subtle" type="button" data-session-next aria-label="Phiên tiếp theo">Sau →</button>
             </div>
           </div>
-          
+
           <div class="donate-footer">
             <p class="note">✨ Chuyển xong là có email tự động kèm hình gif cúi chào!</p>
             <p class="note">📊 Sao kê được cập nhật mỗi ngày lúc 6:30 sáng và 9:00 tối</p>
@@ -416,6 +397,16 @@
       <h3 id="modal-title">Chi tiết chi tiêu</h3>
       <div id="modal-body"></div>
       <button class="btn primary" type="button" data-close>Đóng</button>
+    </div>
+  </div>
+
+  <div class="modal image-modal" id="image-modal" role="dialog" aria-modal="true" aria-labelledby="image-title" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <button class="close-btn" type="button" aria-label="Đóng" data-close>×</button>
+      <h3 id="image-title">Xem ảnh người nhận</h3>
+      <img id="image-view" src="" alt="Ảnh người nhận" />
+      <p id="image-caption" class="image-caption"></p>
     </div>
   </div>
 
