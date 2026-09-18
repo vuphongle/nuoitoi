@@ -1,0 +1,52 @@
+Kế hoạch triển khai theo từng Phase
+🎯 Phase 0 — Chuẩn bị (trước khi code)
+Xác định số lượng nhân viên dự kiến dùng
+Chốt danh sách trường thông tin cơ bản: Tên, ảnh đại diện, chức vụ, phòng ban, sở thích, ngày vào công ty
+Soạn 1 bộ quy định ngắn cho phần đăng bài (không chính trị, không nói xấu, không nhạy cảm...)
+Chọn công nghệ: Next.js + Supabase (gợi ý — nhanh, có sẵn login + database + lưu ảnh)
+🚀 Phase 1 — MVP: Hồ sơ cá nhân
+
+Mục tiêu: Ai cũng có thể tạo & xem hồ sơ của nhau
+
+Đăng nhập bằng email công ty (hoặc Google login)
+Form tạo/sửa hồ sơ: tên, ảnh đại diện, phòng ban, sở thích, mô tả ngắn
+Trang danh sách nhân viên (dạng lưới ảnh + tên)
+Trang xem hồ sơ chi tiết từng người
+Tìm kiếm theo tên/phòng ban
+
+📌 Sau phase này: có thể cho công ty dùng thử ngay, đã có giá trị (như 1 "sổ tay nhân viên" sống)
+
+💬 Phase 2 — Feed đăng bài vui nhộn
+
+Mục tiêu: Biến thành nơi mọi người quay lại mỗi ngày
+
+Đăng bài (text + ảnh) trên feed chung
+Like/react bằng emoji
+Comment ngắn dưới bài
+Feed hiển thị theo thời gian (mới nhất lên đầu)
+Xoá bài (chỉ người đăng hoặc admin)
+
+📌 Đây là phase tạo "sức sống" cho web
+
+🌟 Phase 3 — Tăng tương tác & gắn kết
+
+Mục tiêu: Khuyến khích mọi người dùng thường xuyên hơn
+
+Mention đồng nghiệp (@tên) trong bài/comment
+Thông báo khi có like/comment/mention
+Chủ đề gợi ý hàng tuần (VD: "Món ăn văn phòng yêu thích")
+Bảng "Bài viết nổi bật của tuần"
+Nhắc sinh nhật / ngày vào công ty
+🛡️ Phase 4 — Quản trị & vận hành ổn định
+
+Mục tiêu: Đảm bảo web chạy lâu dài, an toàn
+
+Trang admin: quản lý user, ẩn/xoá bài vi phạm
+Nút "Report" bài viết không phù hợp
+Phân quyền (admin / user thường)
+Backup dữ liệu định kỳ
+📈 Phase 5 (tuỳ chọn, sau này) — Mở rộng
+Tìm đồng nghiệp cùng sở thích ("match sở thích")
+Realtime feed (không cần load lại trang)
+Mobile app hoặc PWA
+Thống kê/analytics (ai active nhất, bài nào hot nhất)
