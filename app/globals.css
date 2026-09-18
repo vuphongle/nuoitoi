@@ -1,0 +1,270 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant admin (&:where(.admin-shell, .admin-shell *, body:has(.admin-shell) [data-admin-portal], body:has(.admin-shell) [data-admin-portal] *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-surface: hsl(var(--surface));
+  --color-surface-foreground: hsl(var(--surface-foreground));
+  --color-glow: hsl(var(--glow));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-sidebar-background: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-active: hsl(var(--primary));
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
+  --font-sans: var(--font-plus-jakarta);
+  --font-display: var(--font-space-grotesk);
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 28s linear infinite;
+}
+
+:root {
+  --background: 44 73% 96%;
+  --foreground: 240 10% 4%;
+  --card: 45 60% 99%;
+  --card-foreground: 240 10% 4%;
+  --popover: 45 60% 99%;
+  --popover-foreground: 240 10% 4%;
+  --primary: 48 96% 53%;
+  --primary-foreground: 240 10% 4%;
+  --secondary: 226 71% 60%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 6 77% 48%;
+  --accent-foreground: 0 0% 98%;
+  --surface: 42 56% 92%;
+  --surface-foreground: 240 10% 4%;
+  --muted: 43 38% 88%;
+  --muted-foreground: 240 4% 34%;
+  --border: 240 6% 78%;
+  --input: 240 6% 78%;
+  --ring: 48 96% 53%;
+  --glow: 226 71% 60%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --sidebar-background: 44 73% 96%;
+  --sidebar-foreground: 240 10% 4%;
+  --sidebar-accent: 43 38% 88%;
+  --sidebar-accent-foreground: 240 10% 4%;
+  --sidebar-border: 240 6% 78%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --card: 240 8% 8%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 8% 8%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 48 96% 53%;
+  --primary-foreground: 240 10% 4%;
+  --secondary: 226 71% 60%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 6 77% 48%;
+  --accent-foreground: 0 0% 98%;
+  --surface: 240 5% 11%;
+  --surface-foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --border: 240 4% 20%;
+  --input: 240 4% 20%;
+  --ring: 48 96% 53%;
+  --glow: 226 71% 60%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --sidebar-background: 240 10% 4%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4% 16%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 4% 20%;
+}
+
+.admin-shell,
+body:has(.admin-shell) [data-admin-portal] {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 4%;
+  --primary: 48 96% 53%; /* #FACC14 */
+  --primary-foreground: 240 10% 4%;
+  --secondary: 240 5% 96%;
+  --secondary-foreground: 240 6% 10%;
+  --accent: 240 5% 96%;
+  --accent-foreground: 240 6% 10%;
+  --surface: 240 5% 98%;
+  --surface-foreground: 240 10% 4%;
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 4% 46%;
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 48 96% 53%;
+  --glow: 48 96% 53%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --sidebar-background: 240 5% 98%;
+  --sidebar-foreground: 240 10% 4%;
+  --sidebar-accent: 240 5% 96%;
+  --sidebar-accent-foreground: 240 6% 10%;
+  --sidebar-border: 240 6% 90%;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.4) transparent;
+  scrollbar-width: thin;
+}
+
+.dark .admin-shell,
+.dark body:has(.admin-shell) [data-admin-portal] {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --card: 240 6% 10%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 6% 10%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 48 96% 53%; /* #FACC14 */
+  --primary-foreground: 240 10% 4%;
+  --secondary: 240 4% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 4% 16%;
+  --accent-foreground: 0 0% 98%;
+  --surface: 240 6% 10%;
+  --surface-foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --border: 240 4% 20%;
+  --input: 240 4% 20%;
+  --ring: 48 96% 53%;
+  --glow: 48 96% 53%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --sidebar-background: 240 10% 4%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4% 16%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 4% 20%;
+}
+
+.admin-shell :focus-visible,
+body:has(.admin-shell) [data-admin-portal]:focus-visible,
+body:has(.admin-shell) [data-admin-portal] :focus-visible {
+  outline-color: hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.admin-shell ::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.admin-shell ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-shell ::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.35);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+.admin-shell ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.55);
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-plus-jakarta), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border: 2px solid hsl(var(--background));
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
