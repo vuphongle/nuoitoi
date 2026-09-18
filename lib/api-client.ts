@@ -8,11 +8,10 @@ class ApiClient {
     this.instance = axios.create({
       baseURL: API_BASE_URL,
       timeout: API_TIMEOUT,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      // Không set Content-Type mặc định: xem giải thích trong admin-api-client.ts
+      // (set cứng application/json sẽ làm axios convert FormData thành JSON,
+      // mất file đính kèm khi upload).
     });
-
   }
 
   async get<T>(url: string, params?: Record<string, unknown>): Promise<T> {

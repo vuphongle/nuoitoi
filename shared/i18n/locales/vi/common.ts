@@ -97,6 +97,8 @@ const common = {
     brands: 'Thương hiệu',
     campaigns: 'Chiến dịch',
     users: 'Người dùng',
+    lixiSessions: 'Phiên lì xì',
+    feedbacks: 'Phản hồi',
     analytics: 'Phân tích',
     documents: 'Tài liệu',
     settings: 'Cài đặt',

@@ -26,7 +26,10 @@ class AdminApiClient {
     this.instance = axios.create({
       baseURL: API_BASE_URL,
       timeout: API_TIMEOUT,
-      headers: { 'Content-Type': 'application/json' },
+      // Không set Content-Type mặc định ở đây: axios tự thêm
+      // "application/json" cho payload là plain object, nhưng nếu set cứng
+      // header này thì khi gửi FormData (upload file), axios sẽ tưởng cần
+      // JSON và tự convert FormData -> JSON (làm mất file đính kèm).
     });
 
     this.instance.interceptors.response.use(

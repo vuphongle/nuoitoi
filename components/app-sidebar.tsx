@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Users, Settings, Shield, ChevronDown } from 'lucide-react';
+import { Users, Settings, Shield, ChevronDown, Gift, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Sidebar,
@@ -20,6 +20,16 @@ const adminNavConfig = [
     key: 'users',
     href: '/admin/users',
     icon: Users,
+  },
+  {
+    key: 'lixiSessions',
+    href: '/admin/lixi-sessions',
+    icon: Gift,
+  },
+  {
+    key: 'feedbacks',
+    href: '/admin/feedbacks',
+    icon: MessageSquare,
   },
 ];
 

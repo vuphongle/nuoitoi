@@ -1,3 +1,4 @@
+import { useI18n } from '@/hooks/useI18n';
 import { allocationData } from './data';
 
 const toneGradient: Record<(typeof allocationData)[number]['tone'], string> = {
@@ -10,23 +11,25 @@ const toneGradient: Record<(typeof allocationData)[number]['tone'], string> = {
 };
 
 export function Allocation() {
+  const { t } = useI18n('lixi');
+
   return (
     <section id="allocation" className="bg-[#fff7ed] py-20 scroll-mt-27.5">
       <div className="mx-auto w-[min(1180px,94vw)]">
         <div className="mb-8 text-center">
-          <h2 className="mb-2.5 text-3xl font-bold sm:text-4xl">Tôi sẽ dùng tiền vào đâu?</h2>
-          <p className="text-[#6a5c55]">Biểu đồ minh họa, cập nhật mỗi tuần lễ Tết.</p>
+          <h2 className="mb-2.5 text-3xl font-bold sm:text-4xl">{t('allocation.title')}</h2>
+          <p className="text-[#6a5c55]">{t('allocation.description')}</p>
         </div>
 
         <div className="grid items-start gap-5 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
           <div className="grid gap-3">
             {allocationData.map((item) => (
               <div
-                key={item.label}
+                key={item.id}
                 className="rounded-[18px] border border-black/6 bg-white px-3.5 py-3 shadow-[0_24px_60px_rgba(215,38,61,0.12)]"
               >
                 <div className="flex justify-between font-extrabold">
-                  <span>{item.label}</span>
+                  <span>{t(`allocation.labels.${item.id}`)}</span>
                   <span>{item.percent}%</span>
                 </div>
                 <div className="mt-2 h-3 overflow-hidden rounded-full bg-black/5">
@@ -39,10 +42,8 @@ export function Allocation() {
             ))}
           </div>
           <div className="rounded-[18px] border border-black/6 bg-white/86 p-4.5 shadow-[0_24px_60px_rgba(215,38,61,0.12)] backdrop-blur-md">
-            <p className="mb-2 text-lg font-bold">
-              &ldquo;Ưu tiên năng lượng tích cực: đủ ăn, đủ mặc, đủ meme để trả lời inbox.&rdquo;
-            </p>
-            <p className="m-0 text-[#6a5c55]">Nếu bạn muốn chỉnh tỷ lệ, hãy nhắn — bảng sẽ cập nhật.</p>
+            <p className="mb-2 text-lg font-bold">{t('allocation.quote')}</p>
+            <p className="m-0 text-[#6a5c55]">{t('allocation.note')}</p>
           </div>
         </div>
       </div>

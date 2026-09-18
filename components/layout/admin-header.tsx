@@ -203,9 +203,7 @@ export function AdminHeader({
         </Tooltip>
 
         <div className="min-w-0 flex-1">
-          <React.Suspense
-            fallback={<span className="text-sm font-semibold">{resolvedTitle}</span>}
-          >
+          <React.Suspense fallback={<span className="text-sm font-semibold">{resolvedTitle}</span>}>
             <AdminBreadcrumbs fallbackTitle={resolvedTitle} />
           </React.Suspense>
         </div>
@@ -223,9 +221,7 @@ export function AdminHeader({
                   size="icon"
                   className="md:hidden"
                   aria-label={
-                    mobileSearchOpen
-                      ? t('admin.header.closeSearch')
-                      : t('admin.header.openSearch')
+                    mobileSearchOpen ? t('admin.header.closeSearch') : t('admin.header.openSearch')
                   }
                   aria-expanded={mobileSearchOpen}
                   onClick={() =>

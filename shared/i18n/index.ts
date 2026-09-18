@@ -38,6 +38,12 @@ import vi_notifications from './locales/vi/notifications';
 import en_notifications from './locales/en/notifications';
 import vi_settings from './locales/vi/settings';
 import en_settings from './locales/en/settings';
+import vi_lixiSessions from './locales/vi/lixiSessions';
+import en_lixiSessions from './locales/en/lixiSessions';
+import vi_feedbacks from './locales/vi/feedbacks';
+import en_feedbacks from './locales/en/feedbacks';
+import vi_lixi from './locales/vi/lixi';
+import en_lixi from './locales/en/lixi';
 
 const resources = {
   vi: {
@@ -59,6 +65,9 @@ const resources = {
     documents: vi_documents,
     notifications: vi_notifications,
     settings: vi_settings,
+    lixiSessions: vi_lixiSessions,
+    feedbacks: vi_feedbacks,
+    lixi: vi_lixi,
   },
   en: {
     common: en_common,
@@ -79,6 +88,9 @@ const resources = {
     documents: en_documents,
     notifications: en_notifications,
     settings: en_settings,
+    lixiSessions: en_lixiSessions,
+    feedbacks: en_feedbacks,
+    lixi: en_lixi,
   },
 };
 
@@ -116,6 +128,9 @@ if (!i18n.isInitialized) {
         'documents',
         'notifications',
         'settings',
+        'lixiSessions',
+        'feedbacks',
+        'lixi',
       ],
       defaultNS: 'common',
       detection: isClient

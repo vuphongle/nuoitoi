@@ -19,7 +19,15 @@ export const useI18n = (namespace?: string | string[]) => {
   const activeLocale =
     localeSegment && isSupportedLanguage(localeSegment)
       ? (localeSegment as AppLanguage)
-      : normalizeLanguage(i18n.language);
+      : // Routes with no /vi or /en prefix (e.g. /auth/login, /admin/*) have no
+        // locale info the server can read, so SSR always falls back to
+        // DEFAULT_LANGUAGE. The real language is only known client-side, via
+        // the cookie/localStorage detector - using it before hydration finishes
+        // would render text that differs from the server HTML and break
+        // hydration. Stick to DEFAULT_LANGUAGE until then.
+        isHydrated
+        ? normalizeLanguage(i18n.language)
+        : DEFAULT_LANGUAGE;
 
 
   useEffect(() => {

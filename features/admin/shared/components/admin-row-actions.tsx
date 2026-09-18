@@ -21,6 +21,10 @@ export interface AdminRowActionsProps {
   editLabel?: string;
   deleteLabel?: string;
   triggerLabel?: string;
+  editDisabled?: boolean;
+  deleteDisabled?: boolean;
+  editDisabledReason?: string;
+  deleteDisabledReason?: string;
   className?: string;
 }
 
@@ -32,6 +36,10 @@ export function AdminRowActions({
   editLabel = 'Edit',
   deleteLabel = 'Delete',
   triggerLabel = 'Open row actions',
+  editDisabled = false,
+  deleteDisabled = false,
+  editDisabledReason,
+  deleteDisabledReason,
   className,
 }: AdminRowActionsProps) {
   return (
@@ -61,7 +69,12 @@ export function AdminRowActions({
             </DropdownMenuItem>
           ) : null}
           {onEdit ? (
-            <DropdownMenuItem className="cursor-pointer" onSelect={onEdit}>
+            <DropdownMenuItem
+              className="cursor-pointer"
+              onSelect={onEdit}
+              disabled={editDisabled}
+              title={editDisabled ? editDisabledReason : undefined}
+            >
               <Pencil aria-hidden="true" />
               {editLabel}
             </DropdownMenuItem>
@@ -72,6 +85,8 @@ export function AdminRowActions({
               className="cursor-pointer"
               variant="destructive"
               onSelect={onDelete}
+              disabled={deleteDisabled}
+              title={deleteDisabled ? deleteDisabledReason : undefined}
             >
               <Trash2 aria-hidden="true" />
               {deleteLabel}

@@ -98,6 +98,8 @@ const common = {
     brands: 'Brands',
     campaigns: 'Campaigns',
     users: 'Users',
+    lixiSessions: 'Lixi Sessions',
+    feedbacks: 'Feedbacks',
     analytics: 'Analytics',
     documents: 'Documents',
     settings: 'Settings',

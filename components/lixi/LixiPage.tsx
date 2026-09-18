@@ -13,6 +13,7 @@ import { Allocation } from './Allocation';
 import { Heart } from './Heart';
 import { DisclaimerBar, Footer } from './Footer';
 import { PetalFireworks } from './PetalFireworks';
+import { BackToTop } from './BackToTop';
 
 interface LixiPageProps {
   className?: string;
@@ -37,6 +38,7 @@ export function LixiPage({ className, style }: LixiPageProps) {
       </main>
       <DisclaimerBar />
       <Footer />
+      <BackToTop />
     </div>
   );
 }

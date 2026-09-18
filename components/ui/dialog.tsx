@@ -44,7 +44,7 @@ const DialogContent = React.forwardRef<
       data-admin-portal=""
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground admin:right-3 admin:top-3 admin:flex admin:h-11 admin:w-11 admin:cursor-pointer admin:items-center admin:justify-center admin:rounded-xl admin:hover:bg-accent admin:focus-visible:outline-none admin:focus-visible:ring-2 admin:focus-visible:ring-ring admin:focus-visible:ring-offset-2 admin:disabled:pointer-events-auto admin:disabled:cursor-not-allowed admin:disabled:opacity-50 admin:md:h-10 admin:md:w-10">
+      <DialogPrimitive.Close className="cursor-pointer absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground admin:right-3 admin:top-3 admin:flex admin:h-11 admin:w-11 admin:cursor-pointer admin:items-center admin:justify-center admin:rounded-xl admin:hover:bg-accent admin:focus-visible:outline-none admin:focus-visible:ring-2 admin:focus-visible:ring-ring admin:focus-visible:ring-offset-2 admin:disabled:pointer-events-auto admin:disabled:cursor-not-allowed admin:disabled:opacity-50 admin:md:h-10 admin:md:w-10">
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>

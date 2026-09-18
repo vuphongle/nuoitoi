@@ -33,6 +33,9 @@ const users = {
   searchAriaLabel: 'Tìm kiếm người dùng',
   rowActionsTrigger: 'Mở thao tác cho {{name}}',
   deleteLabel: 'Xóa người dùng',
+  cannotEditSameRole: 'Không thể chỉnh sửa tài khoản cùng vai trò',
+  cannotDeleteSameRole: 'Không thể xóa tài khoản cùng vai trò',
+  cannotDeleteSelf: 'Không thể tự xóa chính mình',
   unnamed: 'Chưa đặt tên',
   genders: {
     male: 'Nam',

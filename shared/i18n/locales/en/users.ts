@@ -33,6 +33,9 @@ const users = {
   searchAriaLabel: 'Search users',
   rowActionsTrigger: 'Open actions for {{name}}',
   deleteLabel: 'Delete user',
+  cannotEditSameRole: 'You cannot edit an account with the same role',
+  cannotDeleteSameRole: 'You cannot delete an account with the same role',
+  cannotDeleteSelf: 'You cannot delete your own account',
   unnamed: 'Unnamed',
   genders: {
     male: 'Male',

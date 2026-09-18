@@ -34,27 +34,40 @@ function adminAuthFailureResponse(
   return response;
 }
 
+async function resolveAdminSession(request: NextRequest) {
+  const token = request.cookies.get(AUTH_COOKIE_NAME)?.value;
+  const secret = getSessionSecret();
+
+  if (!token || !secret) {
+    return {
+      session: null,
+      failure: adminAuthFailureResponse(
+        401,
+        null,
+        'Bạn chưa đăng nhập hoặc phiên làm việc đã hết hạn'
+      ),
+    };
+  }
+
+  const session = await verifySignedSessionToken(token, secret);
+  if (!session || session.role !== 'admin' || isJwtExpired(session)) {
+    return {
+      session: null,
+      failure: adminAuthFailureResponse(401, null, 'Phiên làm việc không hợp lệ hoặc đã hết hạn'),
+    };
+  }
+
+  return { session, failure: null };
+}
+
 export async function proxyAdminRequest(
   request: NextRequest,
   endpointPath: string,
   extraParams?: Record<string, string>
 ) {
   try {
-    const token = request.cookies.get(AUTH_COOKIE_NAME)?.value;
-    const secret = getSessionSecret();
-
-    if (!token || !secret) {
-      return adminAuthFailureResponse(
-        401,
-        null,
-        'Bạn chưa đăng nhập hoặc phiên làm việc đã hết hạn'
-      );
-    }
-
-    const session = await verifySignedSessionToken(token, secret);
-    if (!session || session.role !== 'admin' || isJwtExpired(session)) {
-      return adminAuthFailureResponse(401, null, 'Phiên làm việc không hợp lệ hoặc đã hết hạn');
-    }
+    const { session, failure } = await resolveAdminSession(request);
+    if (!session) return failure!;
 
     const beBaseUrl = process.env.BE_API_URL || 'http://localhost:3069/api';
     const { searchParams } = new URL(request.url);
@@ -119,6 +132,65 @@ export async function proxyAdminRequest(
     return NextResponse.json(data, { status: beResponse.status });
   } catch (error) {
     console.error('Unhandled error in proxyAdminRequest:', error);
+    return NextResponse.json(
+      { success: false, message: 'Đã xảy ra lỗi máy chủ nội bộ' },
+      { status: 500 }
+    );
+  }
+}
+
+// Dành cho các request multipart/form-data (vd: tạo/sửa lixi-session kèm file ảnh qr, avatar).
+// Không thể JSON.stringify body như proxyAdminRequest vì sẽ làm mất dữ liệu file.
+export async function proxyAdminMultipartRequest(request: NextRequest, endpointPath: string) {
+  try {
+    const { session, failure } = await resolveAdminSession(request);
+    if (!session) return failure!;
+
+    const beBaseUrl = process.env.BE_API_URL || 'http://localhost:3069/api';
+    const cleanEndpoint = endpointPath.replace(/^\/+/, '');
+    const targetUrl = `${beBaseUrl.replace(/\/+$/, '')}/${cleanEndpoint}`;
+
+    let formData: FormData;
+    try {
+      formData = await request.formData();
+    } catch {
+      return NextResponse.json(
+        { success: false, message: 'Dữ liệu gửi lên không hợp lệ (yêu cầu multipart/form-data)' },
+        { status: 400 }
+      );
+    }
+
+    let beResponse: Response;
+    try {
+      beResponse = await fetch(targetUrl, {
+        method: request.method,
+        headers: { Authorization: `Bearer ${session.accessToken}` },
+        body: formData,
+      });
+    } catch (networkError) {
+      console.error('Failed to proxy admin multipart request to:', targetUrl, networkError);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Không thể kết nối đến máy chủ backend tại ' + beBaseUrl,
+        },
+        { status: 502 }
+      );
+    }
+
+    const data = await beResponse.json().catch(() => null);
+    const authorizationStatus = getAdminAuthorizationStatus(beResponse.status, data);
+    if (authorizationStatus !== null) {
+      return adminAuthFailureResponse(
+        authorizationStatus,
+        data,
+        'Phiên làm việc không hợp lệ hoặc đã hết hạn'
+      );
+    }
+
+    return NextResponse.json(data, { status: beResponse.status });
+  } catch (error) {
+    console.error('Unhandled error in proxyAdminMultipartRequest:', error);
     return NextResponse.json(
       { success: false, message: 'Đã xảy ra lỗi máy chủ nội bộ' },
       { status: 500 }

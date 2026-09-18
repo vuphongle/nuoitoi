@@ -1,0 +1,40 @@
+const lixiSessions = {
+  pageEyebrow: 'Quản lý lì xì',
+  pageTitle: 'Phiên lì xì',
+  pageDescription: 'Quản lý các phiên nhận lì xì hiển thị trên trang chủ (mã QR, tài khoản, thứ tự).',
+  addSession: 'Thêm phiên lì xì',
+  commandSearchPlaceholder: 'Tìm phiên lì xì theo tên hoặc mã code',
+  toolbarSearchPlaceholder: 'Tìm theo tên, code, chủ tài khoản...',
+  searchAriaLabel: 'Tìm kiếm phiên lì xì',
+  rowActionsTrigger: 'Mở thao tác cho {{name}}',
+  deleteLabel: 'Xóa phiên lì xì',
+  table: {
+    session: 'Phiên lì xì',
+    bankAccount: 'Ngân hàng / Số tài khoản',
+    sortOrder: 'Thứ tự',
+    createdAt: 'Ngày tạo',
+    actions: 'Thao tác',
+  },
+  metrics: {
+    total: 'Tổng số phiên',
+    totalTrend: 'Theo dữ liệu hệ thống',
+    onThisPage: 'Trên trang này',
+    pageTrend: 'Trên trang này',
+    defaultOrder: 'Thứ tự mặc định (0)',
+  },
+  listTitle: 'Danh sách phiên lì xì',
+  listDescription: '{{count}} phiên hiện có',
+  loadError: 'Không thể tải danh sách phiên lì xì.',
+  emptyFilteredTitle: 'Không tìm thấy phiên lì xì',
+  emptyTitle: 'Chưa có phiên lì xì',
+  emptyFilteredDescription: 'Hãy thử từ khóa khác hoặc xóa tìm kiếm.',
+  emptyDescription: 'Thêm phiên lì xì đầu tiên để hiển thị trên trang chủ.',
+  deleteConfirmTitle: 'Xóa phiên lì xì',
+  deleteConfirmDescription:
+    'Bạn có chắc chắn muốn xóa phiên lì xì "{{name}}"? Hành động này không thể hoàn tác.',
+  deleteConfirmButton: 'Xóa phiên lì xì',
+  deleteSuccess: 'Đã xóa phiên lì xì thành công!',
+  deleteError: 'Có lỗi xảy ra khi xóa phiên lì xì',
+} as const;
+
+export default lixiSessions;

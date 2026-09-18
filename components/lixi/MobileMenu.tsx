@@ -5,16 +5,26 @@ import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/hooks/useI18n';
+import { SUPPORTED_LANGUAGES, type AppLanguage } from '@/constants/lang';
 import { navLinks } from './data';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  lang: 'VI' | 'EN';
-  onChangeLang: (lang: 'VI' | 'EN') => void;
+  currentLanguage: AppLanguage;
+  onChangeLanguage: (language: AppLanguage) => void;
+  onOpenFeedback: () => void;
 }
 
-export function MobileMenu({ isOpen, onClose, lang, onChangeLang }: MobileMenuProps) {
+export function MobileMenu({
+  isOpen,
+  onClose,
+  currentLanguage,
+  onChangeLanguage,
+  onOpenFeedback,
+}: MobileMenuProps) {
+  const { t } = useI18n('lixi');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -46,18 +56,20 @@ export function MobileMenu({ isOpen, onClose, lang, onChangeLang }: MobileMenuPr
         <div className="flex items-center gap-3">
           <div
             className="grid h-11 w-11 place-items-center rounded-2xl shadow-[0_24px_60px_rgba(215,38,61,0.12)]"
-            style={{ background: 'radial-gradient(circle at 30% 30%, #fff1e6, #ffd2c2 60%, #ffb9a5)' }}
+            style={{
+              background: 'radial-gradient(circle at 30% 30%, #fff1e6, #ffd2c2 60%, #ffb9a5)',
+            }}
             aria-hidden="true"
           >
             🧧
           </div>
-          <div className="font-extrabold tracking-wide">LÌ XÌ THẬT THÀ</div>
+          <div className="font-extrabold tracking-wide">{t('common.brandName')}</div>
         </div>
         <button
           type="button"
           onClick={onClose}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/6 bg-black/4 text-[#1f1a17] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7263d]"
-          aria-label="Đóng menu"
+          aria-label={t('mobileMenu.closeMenuAria')}
         >
           <X className="h-5 w-5" aria-hidden="true" />
         </button>
@@ -65,10 +77,13 @@ export function MobileMenu({ isOpen, onClose, lang, onChangeLang }: MobileMenuPr
 
       <motion.nav
         className="mt-10"
-        aria-label="Liên kết nội trang"
+        aria-label={t('header.internalLinksAria')}
         initial="hidden"
         animate="visible"
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } } }}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
+        }}
       >
         <ul className="space-y-1">
           {navLinks.map((link) => (
@@ -77,31 +92,49 @@ export function MobileMenu({ isOpen, onClose, lang, onChangeLang }: MobileMenuPr
               variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
               transition={{ duration: 0.25 }}
             >
-              <a
-                href={link.href}
-                onClick={onClose}
-                className="block border-b border-black/6 py-4 text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
-              >
-                {link.label}
-              </a>
+              {link.action === 'feedback' ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onOpenFeedback();
+                  }}
+                  className="block w-full border-b border-black/6 py-4 text-left text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
+                >
+                  {t(link.labelKey)}
+                </button>
+              ) : (
+                <a
+                  href={link.href}
+                  onClick={onClose}
+                  className="block border-b border-black/6 py-4 text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
+                >
+                  {t(link.labelKey)}
+                </a>
+              )}
             </motion.li>
           ))}
         </ul>
       </motion.nav>
 
       <div className="mt-8 flex items-center gap-3">
-        <div className="inline-flex rounded-full border border-black/6 bg-black/4 p-1" role="group" aria-label="Chọn ngôn ngữ">
-          {(['VI', 'EN'] as const).map((code) => (
+        <div
+          className="inline-flex rounded-full border border-black/6 bg-black/4 p-1"
+          role="group"
+          aria-label={t('header.languageSelectorAria')}
+        >
+          {SUPPORTED_LANGUAGES.map((code) => (
             <button
               key={code}
               type="button"
-              onClick={() => onChangeLang(code)}
+              onClick={() => onChangeLanguage(code)}
               className={cn(
                 'rounded-full px-3 py-1.5 font-bold text-[#6a5c55]',
-                lang === code && 'bg-white text-[#1f1a17] shadow-[0_8px_16px_rgba(0,0,0,0.06)]'
+                currentLanguage === code &&
+                  'bg-white text-[#1f1a17] shadow-[0_8px_16px_rgba(0,0,0,0.06)]'
               )}
             >
-              {code}
+              {code.toUpperCase()}
             </button>
           ))}
         </div>
@@ -111,7 +144,7 @@ export function MobileMenu({ isOpen, onClose, lang, onChangeLang }: MobileMenuPr
           className="flex-1 rounded-2xl px-4 py-3 text-center font-extrabold text-white shadow-[0_16px_34px_rgba(215,38,61,0.25)]"
           style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
         >
-          Lì xì ngay
+          {t('common.donateNow')}
         </a>
       </div>
     </motion.div>,

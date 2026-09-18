@@ -73,7 +73,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <AppSidebar />
         <div className="flex min-h-screen min-w-0 flex-1 flex-col">
           <AdminHeader
-            showSearch={true}
+            showSearch={false}
             showUser={true}
             showLangSwitcher={true}
             showThemeToggle={true}

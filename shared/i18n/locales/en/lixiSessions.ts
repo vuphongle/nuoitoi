@@ -1,0 +1,40 @@
+const lixiSessions = {
+  pageEyebrow: 'Lixi management',
+  pageTitle: 'Lixi sessions',
+  pageDescription: 'Manage the lucky-money sessions shown on the homepage (QR code, bank account, order).',
+  addSession: 'Add lixi session',
+  commandSearchPlaceholder: 'Search lixi sessions by name or code',
+  toolbarSearchPlaceholder: 'Search by name, code, owner...',
+  searchAriaLabel: 'Search lixi sessions',
+  rowActionsTrigger: 'Open actions for {{name}}',
+  deleteLabel: 'Delete lixi session',
+  table: {
+    session: 'Session',
+    bankAccount: 'Bank / Account number',
+    sortOrder: 'Order',
+    createdAt: 'Created at',
+    actions: 'Actions',
+  },
+  metrics: {
+    total: 'Total sessions',
+    totalTrend: 'Based on system data',
+    onThisPage: 'On this page',
+    pageTrend: 'On this page',
+    defaultOrder: 'Default order (0)',
+  },
+  listTitle: 'Lixi session list',
+  listDescription: '{{count}} sessions available',
+  loadError: 'Unable to load the lixi session list.',
+  emptyFilteredTitle: 'No sessions found',
+  emptyTitle: 'No lixi sessions yet',
+  emptyFilteredDescription: 'Try another keyword or clear the search.',
+  emptyDescription: 'Add the first lixi session to show on the homepage.',
+  deleteConfirmTitle: 'Delete lixi session',
+  deleteConfirmDescription:
+    'Are you sure you want to delete the session "{{name}}"? This action cannot be undone.',
+  deleteConfirmButton: 'Delete session',
+  deleteSuccess: 'Lixi session deleted successfully!',
+  deleteError: 'An error occurred while deleting the lixi session',
+} as const;
+
+export default lixiSessions;

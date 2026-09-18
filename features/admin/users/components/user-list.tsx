@@ -34,9 +34,27 @@ import {
 import { useDeleteUser, useUsers } from '@/hooks/use-users';
 import { useI18n } from '@/hooks/useI18n';
 import { getApiErrorMessage } from '@/lib/api-error';
-import type { UserItem } from '@/types';
+import { useAuthStore } from '@/stores/auth.store';
+import type { UserItem, UserProfile } from '@/types';
 import { UserDetailDialog } from './user-detail-dialog';
 import { UserFormDialog } from './user-form-dialog';
+
+type CurrentUser = Partial<UserProfile> | null;
+
+function getUserRowPermissions(user: UserItem, currentUser: CurrentUser) {
+  const isSelf =
+    currentUser?.id !== undefined && String(currentUser.id) === String(user.id);
+  const isSameRole =
+    Boolean(currentUser?.role) &&
+    user.role?.toLowerCase() === currentUser?.role?.toLowerCase();
+
+  return {
+    isSelf,
+    isSameRole,
+    disableEdit: isSameRole,
+    disableDelete: isSameRole || isSelf,
+  };
+}
 
 function initials(name: string, email: string) {
   const value = name.trim() || email;
@@ -58,16 +76,29 @@ function UserAvatar({ user }: { user: UserItem }) {
 
 function UserActions({
   user,
+  currentUser,
   onView,
   onEdit,
   onDelete,
 }: {
   user: UserItem;
+  currentUser: CurrentUser;
   onView: (user: UserItem) => void;
   onEdit: (user: UserItem) => void;
   onDelete: (user: UserItem) => void;
 }) {
   const { t } = useI18n(['users', 'common']);
+  const { isSelf, isSameRole, disableEdit, disableDelete } = getUserRowPermissions(
+    user,
+    currentUser
+  );
+
+  const deleteDisabledReason = isSelf
+    ? t('cannotDeleteSelf', { ns: 'users' })
+    : isSameRole
+      ? t('cannotDeleteSameRole', { ns: 'users' })
+      : undefined;
+
   return (
     <AdminRowActions
       triggerLabel={t('rowActionsTrigger', { ns: 'users', name: user.name || user.email })}
@@ -77,18 +108,23 @@ function UserActions({
       onView={() => onView(user)}
       onEdit={() => onEdit(user)}
       onDelete={() => onDelete(user)}
+      editDisabled={disableEdit}
+      editDisabledReason={isSameRole ? t('cannotEditSameRole', { ns: 'users' }) : undefined}
+      deleteDisabled={disableDelete}
+      deleteDisabledReason={deleteDisabledReason}
     />
   );
 }
 
 interface UserViewProps {
   users: UserItem[];
+  currentUser: CurrentUser;
   onView: (user: UserItem) => void;
   onEdit: (user: UserItem) => void;
   onDelete: (user: UserItem) => void;
 }
 
-function UserTable({ users, onView, onEdit, onDelete }: UserViewProps) {
+function UserTable({ users, currentUser, onView, onEdit, onDelete }: UserViewProps) {
   const { t } = useI18n('users');
   return (
     <Table>
@@ -148,7 +184,13 @@ function UserTable({ users, onView, onEdit, onDelete }: UserViewProps) {
               {user.created_at ? new Date(user.created_at).toLocaleDateString('vi-VN') : '—'}
             </TableCell>
             <TableCell className="text-center">
-              <UserActions user={user} onView={onView} onEdit={onEdit} onDelete={onDelete} />
+              <UserActions
+                user={user}
+                currentUser={currentUser}
+                onView={onView}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
             </TableCell>
           </TableRow>
         ))}
@@ -157,7 +199,7 @@ function UserTable({ users, onView, onEdit, onDelete }: UserViewProps) {
   );
 }
 
-function UserMobileCards({ users, onView, onEdit, onDelete }: UserViewProps) {
+function UserMobileCards({ users, currentUser, onView, onEdit, onDelete }: UserViewProps) {
   const { t } = useI18n('users');
   return (
     <div className="space-y-3">
@@ -174,7 +216,13 @@ function UserMobileCards({ users, onView, onEdit, onDelete }: UserViewProps) {
                   <h2 className="truncate text-sm font-semibold">{user.name || t('unnamed')}</h2>
                   <p className="mt-1 truncate text-xs text-muted-foreground">{user.email}</p>
                 </div>
-                <UserActions user={user} onView={onView} onEdit={onEdit} onDelete={onDelete} />
+                <UserActions
+                  user={user}
+                  currentUser={currentUser}
+                  onView={onView}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                />
               </div>
               <div className="mt-3">
                 <AdminStatusBadge
@@ -227,6 +275,7 @@ function UserMobileCards({ users, onView, onEdit, onDelete }: UserViewProps) {
 export function UserList() {
   const { t } = useI18n(['users', 'common']);
   const { success, error } = useNotification();
+  const currentUser = useAuthStore((state) => state.user);
   const searchRef = React.useRef<HTMLInputElement>(null);
   const [page, setPage] = React.useState(1);
   const [pageSize] = React.useState(10);
@@ -425,6 +474,7 @@ export function UserList() {
             desktop={
               <UserTable
                 users={users}
+                currentUser={currentUser}
                 onView={handleView}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
@@ -433,6 +483,7 @@ export function UserList() {
             mobile={
               <UserMobileCards
                 users={users}
+                currentUser={currentUser}
                 onView={handleView}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
