@@ -1,15 +1,23 @@
 {
-  "name": "zalo_mini_apps",
+  "name": "nuoitoi",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:backend": "npm --prefix backend run start:dev",
     "build": "next build",
+    "build:backend": "npm --prefix backend run build",
+    "build:all": "pnpm build && pnpm build:backend",
     "start": "next start",
+    "start:backend": "npm --prefix backend run start:prod",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:backend": "npm --prefix backend run lint",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:backend": "npm --prefix backend run format",
+    "format:check": "prettier --check .",
+    "test:backend": "npm --prefix backend run test",
+    "test:e2e:backend": "npm --prefix backend run test:e2e"
   },
   "dependencies": {
     "@ant-design/icons": "^6.2.3",
