@@ -1,0 +1,40 @@
+const feedbacks = {
+  pageEyebrow: 'Chăm sóc khách hàng',
+  pageTitle: 'Phản hồi',
+  pageDescription: 'Xem và quản lý các góp ý, báo lỗi, lời khen từ người dùng gửi về.',
+  addFeedback: 'Thêm phản hồi',
+  commandSearchPlaceholder: 'Tìm phản hồi theo tên hoặc tiêu đề',
+  toolbarSearchPlaceholder: 'Tìm theo tên, tiêu đề...',
+  searchAriaLabel: 'Tìm kiếm phản hồi',
+  rowActionsTrigger: 'Mở thao tác cho {{title}}',
+  deleteLabel: 'Xóa phản hồi',
+  table: {
+    sender: 'Người gửi',
+    type: 'Loại',
+    title: 'Tiêu đề',
+    createdAt: 'Ngày gửi',
+    actions: 'Thao tác',
+  },
+  metrics: {
+    total: 'Tổng số phản hồi',
+    totalTrend: 'Theo dữ liệu hệ thống',
+    bugs: 'Báo lỗi',
+    featureRequests: 'Đề xuất tính năng',
+    pageTrend: 'Trên trang này',
+  },
+  listTitle: 'Danh sách phản hồi',
+  listDescription: '{{count}} phản hồi hiện có',
+  loadError: 'Không thể tải danh sách phản hồi.',
+  emptyFilteredTitle: 'Không tìm thấy phản hồi',
+  emptyTitle: 'Chưa có phản hồi nào',
+  emptyFilteredDescription: 'Hãy thử từ khóa khác hoặc xóa tìm kiếm.',
+  emptyDescription: 'Phản hồi từ người dùng sẽ hiển thị tại đây.',
+  deleteConfirmTitle: 'Xóa phản hồi',
+  deleteConfirmDescription:
+    'Bạn có chắc chắn muốn xóa phản hồi "{{title}}"? Hành động này không thể hoàn tác.',
+  deleteConfirmButton: 'Xóa phản hồi',
+  deleteSuccess: 'Đã xóa phản hồi thành công!',
+  deleteError: 'Có lỗi xảy ra khi xóa phản hồi',
+} as const;
+
+export default feedbacks;

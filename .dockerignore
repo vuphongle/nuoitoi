@@ -1,0 +1,34 @@
+# Dependencies & build outputs
+node_modules
+.next
+out
+build
+dist
+
+# Environment & local configurations
+.env*.local
+.env
+.env.production
+
+# Version control & IDE
+.git
+.gitignore
+.agents
+.claude
+.cursor
+.vscode
+.idea
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Documentation & temporary files
+README.md
+CLAUDE.md
+AGENTS.md
+Dockerfile
+docker-compose*.yml
