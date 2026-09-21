@@ -25,11 +25,11 @@ export function Expenses() {
           description={t('expenses.description')}
         />
 
-        <div className="lixi-expenses-grid">
-          {expenseData.map((expense, index) => (
-            <AnimatedView key={expense.id} delay={index * 0.05}>
-              <LixiSurface as="article" className="lixi-expense-card">
-                <div className="lixi-expense-card-heading">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {expenseData?.map((expense, index) => (
+            <AnimatedView className="w-full" key={expense.id} delay={index * 0.05}>
+              <LixiSurface as="article" className="flex h-full min-h-71.75 flex-col p-5">
+                <div className="flex items-start gap-[0.8rem]">
                   <span className="lixi-expense-icon" aria-hidden="true">
                     <Receipt size={23} weight="duotone" />
                   </span>

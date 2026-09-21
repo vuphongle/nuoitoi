@@ -4,7 +4,7 @@ const blogs = {
     titlePrefix: 'Góc nhìn &',
     titleHighlight: 'Công nghệ số',
     description:
-      'Cập nhật những xu hướng công nghệ mới nhất, hướng dẫn kỹ thuật chuyên sâu và thông tin ra mắt tính năng từ đội ngũ HQ Software.',
+      'Cập nhật những xu hướng công nghệ mới nhất, hướng dẫn kỹ thuật chuyên sâu và thông tin ra mắt tính năng từ đội ngũ NuoiToi.',
   },
   searchPlaceholder: 'Tìm kiếm bài viết, hướng dẫn, kiến trúc...',
   categories: {

@@ -11,7 +11,12 @@ interface AnimatedViewProps {
   stagger?: boolean;
 }
 
-export function AnimatedView({ children, className, delay = 0, stagger = false }: AnimatedViewProps) {
+export function AnimatedView({
+  children,
+  className,
+  delay = 0,
+  stagger = false,
+}: AnimatedViewProps) {
   const shouldReduceMotion = useReducedMotion();
 
   if (shouldReduceMotion) {

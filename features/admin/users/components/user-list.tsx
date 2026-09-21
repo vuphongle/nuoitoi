@@ -42,11 +42,9 @@ import { UserFormDialog } from './user-form-dialog';
 type CurrentUser = Partial<UserProfile> | null;
 
 function getUserRowPermissions(user: UserItem, currentUser: CurrentUser) {
-  const isSelf =
-    currentUser?.id !== undefined && String(currentUser.id) === String(user.id);
+  const isSelf = currentUser?.id !== undefined && String(currentUser.id) === String(user.id);
   const isSameRole =
-    Boolean(currentUser?.role) &&
-    user.role?.toLowerCase() === currentUser?.role?.toLowerCase();
+    Boolean(currentUser?.role) && user.role?.toLowerCase() === currentUser?.role?.toLowerCase();
 
   return {
     isSelf,

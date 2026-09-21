@@ -1,11 +1,11 @@
-import "server-only";
+import 'server-only';
 
-import { cache } from "react";
-import { redirect } from "next/navigation";
+import { cache } from 'react';
+import { redirect } from 'next/navigation';
 
-import { demoDepartments, demoEmployees } from "@/lib/demo-data";
-import { createSupabaseServerClient, hasSupabaseEnv } from "@/lib/supabase/server";
-import type { Department, Employee, UserRole } from "@/lib/types";
+import { demoDepartments, demoEmployees } from '@/lib/demo-data';
+import { createSupabaseServerClient, hasSupabaseEnv } from '@/lib/supabase/server';
+import type { Department, Employee, UserRole } from '@/lib/types';
 
 type ProfileRow = {
   id: string;
@@ -19,12 +19,12 @@ type ProfileRow = {
   bio: string | null;
   interests: string[] | null;
   joined_date: string | null;
-  status: "active" | "inactive";
+  status: 'active' | 'inactive';
   departments: { name: string } | { name: string }[] | null;
   user_roles: { role: UserRole } | { role: UserRole }[] | null;
 };
 
-const accents: Employee["accent"][] = ["coral", "mint", "amber", "blue", "violet", "rose"];
+const accents: Employee['accent'][] = ['coral', 'mint', 'amber', 'blue', 'violet', 'rose'];
 
 function initialsFromName(name: string) {
   return name
@@ -32,11 +32,11 @@ function initialsFromName(name: string) {
     .split(/\s+/)
     .slice(-2)
     .map((part) => part[0]?.toUpperCase())
-    .join("");
+    .join('');
 }
 
 function firstRelation<T>(value: T | T[] | null) {
-  return Array.isArray(value) ? value[0] ?? null : value;
+  return Array.isArray(value) ? (value[0] ?? null) : value;
 }
 
 function mapProfile(row: ProfileRow, index = 0): Employee {
@@ -50,15 +50,15 @@ function mapProfile(row: ProfileRow, index = 0): Employee {
     initials: initialsFromName(row.full_name),
     avatarUrl: row.avatar_path,
     email: row.email,
-    jobTitle: row.job_title || "Thành viên",
+    jobTitle: row.job_title || 'Thành viên',
     departmentId: row.department_id,
-    department: department?.name || "Chưa cập nhật",
-    location: row.location || "Việt Nam",
-    bio: row.bio || "Chưa có lời giới thiệu. Hãy ghé lại sau nhé!",
+    department: department?.name || 'Chưa cập nhật',
+    location: row.location || 'Việt Nam',
+    bio: row.bio || 'Chưa có lời giới thiệu. Hãy ghé lại sau nhé!',
     interests: row.interests || [],
     joinedDate: row.joined_date || new Date().toISOString().slice(0, 10),
     status: row.status,
-    role: userRole?.role || "user",
+    role: userRole?.role || 'user',
     accent: accents[index % accents.length],
   };
 }
@@ -66,14 +66,14 @@ function mapProfile(row: ProfileRow, index = 0): Employee {
 type SupabaseServerClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 
 async function signAvatarPaths(client: SupabaseServerClient, rows: ProfileRow[]) {
-  const paths = [...new Set(rows.map((row) => row.avatar_path).filter((path): path is string => Boolean(path)))];
+  const paths = [
+    ...new Set(rows.map((row) => row.avatar_path).filter((path): path is string => Boolean(path))),
+  ];
   if (paths.length === 0) return rows;
 
-  const { data } = await client.storage.from("avatars").createSignedUrls(paths, 60 * 60);
+  const { data } = await client.storage.from('avatars').createSignedUrls(paths, 60 * 60);
   const signedByPath = new Map(
-    (data || [])
-      .filter((item) => item.signedUrl)
-      .map((item) => [item.path, item.signedUrl]),
+    (data || []).filter((item) => item.signedUrl).map((item) => [item.path, item.signedUrl])
   );
 
   return rows.map((row) => ({
@@ -93,14 +93,14 @@ export const getCurrentViewer = cache(async (): Promise<Employee | null> => {
   if (!authData.user) return null;
 
   const { data } = await supabase
-    .from("profiles")
-    .select("*, departments(name), user_roles(role)")
-    .eq("id", authData.user.id)
+    .from('profiles')
+    .select('*, departments(name), user_roles(role)')
+    .eq('id', authData.user.id)
     .maybeSingle();
 
   if (!data) {
-    const email = authData.user.email || "thanhvien@example.com";
-    const fullName = authData.user.user_metadata.full_name || email.split("@")[0];
+    const email = authData.user.email || 'thanhvien@example.com';
+    const fullName = authData.user.user_metadata.full_name || email.split('@')[0];
     return {
       ...demoEmployees[0],
       id: authData.user.id,
@@ -117,7 +117,7 @@ export const getCurrentViewer = cache(async (): Promise<Employee | null> => {
 
 export async function requireViewer() {
   const viewer = await getCurrentViewer();
-  if (!viewer) redirect("/login");
+  if (!viewer) redirect('/login');
   return viewer;
 }
 
@@ -126,10 +126,10 @@ export const getEmployees = cache(async (): Promise<Employee[]> => {
 
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase
-    .from("profiles")
-    .select("*, departments(name), user_roles(role)")
-    .eq("status", "active")
-    .order("full_name");
+    .from('profiles')
+    .select('*, departments(name), user_roles(role)')
+    .eq('status', 'active')
+    .order('full_name');
 
   if (error) throw new Error(`Không thể tải danh sách nhân viên: ${error.message}`);
   const profiles = await signAvatarPaths(supabase, data as ProfileRow[]);
@@ -141,9 +141,9 @@ export const getDepartments = cache(async (): Promise<Department[]> => {
 
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase
-    .from("departments")
-    .select("id, name, description")
-    .order("name");
+    .from('departments')
+    .select('id, name, description')
+    .order('name');
 
   if (error) throw new Error(`Không thể tải phòng ban: ${error.message}`);
   return data as Department[];
@@ -155,10 +155,10 @@ export const getEmployee = cache(async (identifier: string): Promise<Employee | 
   }
 
   const supabase = await createSupabaseServerClient();
-  const column = /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(identifier) ? "id" : "slug";
+  const column = /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(identifier) ? 'id' : 'slug';
   const { data, error } = await supabase
-    .from("profiles")
-    .select("*, departments(name), user_roles(role)")
+    .from('profiles')
+    .select('*, departments(name), user_roles(role)')
     .eq(column, identifier)
     .maybeSingle();
 

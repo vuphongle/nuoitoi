@@ -70,7 +70,8 @@ const home = {
       },
       serverBoundaries: {
         title: 'Tối ưu Server & Client',
-        description: 'Phân tách ranh giới rõ ràng trong App Router giúp trang tải nhanh và mượt mà.',
+        description:
+          'Phân tách ranh giới rõ ràng trong App Router giúp trang tải nhanh và mượt mà.',
       },
     },
   },

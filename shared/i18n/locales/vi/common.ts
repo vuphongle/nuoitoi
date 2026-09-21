@@ -71,7 +71,7 @@ const common = {
   notFound: {
     title: 'Không tìm thấy trang',
     description:
-      'Trang bạn tìm không tồn tại hoặc đã được di chuyển. Hãy quay lại trang chủ hoặc khám phá HQ Software.',
+      'Trang bạn tìm không tồn tại hoặc đã được di chuyển. Hãy quay lại trang chủ hoặc khám phá NuoiToi.',
     backToHome: 'Về trang chủ',
     goToSupport: 'Đến trang hỗ trợ',
   },
@@ -85,7 +85,7 @@ const common = {
     back: 'Quay lại khu vực quản trị',
   },
   sidebar: {
-    appName: 'HQ Software',
+    appName: 'NuoiToi',
     appSub: 'Hệ thống quản trị',
     main: 'Chính',
     system: 'Hệ thống',
@@ -114,10 +114,10 @@ const common = {
     forgotPassword: 'Quên mật khẩu?',
     submitButton: 'Đăng nhập',
     backToHome: 'Quay lại trang chủ',
-    bannerTitleLine1: 'HQ Software',
-    bannerTitleLine2: 'Quản trị thẻ số & chiến dịch',
+    bannerTitleLine1: 'NuoiToi',
+    bannerTitleLine2: 'Nền tảng Lì Xì Tết',
     bannerDescription:
-      'Hệ thống quản trị tập trung cho thẻ chiến dịch, phân tích tương tác và quản lý sản phẩm số dành cho doanh nghiệp.',
+      'Hệ thống quản trị tập trung cho các phiên lì xì, theo dõi lượt donate và quản lý nội dung chiến dịch Tết.',
     invalidCredentials: 'Thông tin đăng nhập không chính xác',
     profileLoadFailed: 'Đăng nhập thành công nhưng không thể tải hồ sơ quản trị.',
   },

@@ -12,8 +12,9 @@ import {
   SidebarRail,
   useSidebar,
 } from '@/components/ui/sidebar';
-
+import { icons } from '@/shared/assets';
 import { useI18n } from '@/hooks/useI18n';
+import Image from 'next/image';
 
 const adminNavConfig = [
   {
@@ -99,8 +100,8 @@ function AppHeader() {
 
   return (
     <Link href="/" aria-label={t('sidebar.appName')} className="flex items-center gap-3 group">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sidebar-active text-white shadow-sm transition-transform group-hover:scale-105 shrink-0">
-        <Shield className="h-4 w-4" aria-hidden="true" />
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg  text-white shadow-sm transition-transform group-hover:scale-105 shrink-0">
+        <Image src={icons.iconLogoHQ} alt="logo" width={32} height={32} />
       </div>
       {!isCollapsed && (
         <div className="flex flex-col gap-0.5 overflow-hidden transition-all duration-200 ease-in-out">

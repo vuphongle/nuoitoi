@@ -79,7 +79,10 @@ export function AdminPagination({
             onClick={() => onPageChange(model.currentPage - 1)}
           />
         </PaginationItem>
-        <PaginationItem className="flex items-center text-sm text-muted-foreground" aria-live="polite">
+        <PaginationItem
+          className="flex items-center text-sm text-muted-foreground"
+          aria-live="polite"
+        >
           {model.currentPage} / {model.totalPages}
         </PaginationItem>
         <PaginationItem>

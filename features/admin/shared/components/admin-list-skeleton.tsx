@@ -26,7 +26,9 @@ export function AdminListSkeleton({ rows = 5, className }: AdminListSkeletonProp
       </div>
       <div className="hidden overflow-hidden rounded-2xl border md:block">
         <div className="grid grid-cols-4 gap-4 border-b bg-muted/40 p-4">
-          {Array.from({ length: 4 }, (_, index) => <Skeleton key={index} className="h-4" />)}
+          {Array.from({ length: 4 }, (_, index) => (
+            <Skeleton key={index} className="h-4" />
+          ))}
         </div>
         {items.map((item) => (
           <div key={item} className="grid grid-cols-4 gap-4 border-b p-4 last:border-b-0">

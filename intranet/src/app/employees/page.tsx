@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import { AppShell } from "@/components/app-shell";
-import { EmployeeDirectory } from "@/components/employee-directory";
-import { getDepartments, getEmployees, requireViewer } from "@/lib/data";
+import { AppShell } from '@/components/app-shell';
+import { EmployeeDirectory } from '@/components/employee-directory';
+import { getDepartments, getEmployees, requireViewer } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: "Đồng nghiệp",
-  description: "Khám phá những người đang cùng bạn tạo nên Nhà Mình.",
+  title: 'Đồng nghiệp',
+  description: 'Khám phá những người đang cùng bạn tạo nên Nhà Mình.',
 };
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function EmployeesPage() {
   const [viewer, employees, departments] = await Promise.all([
@@ -37,7 +37,9 @@ export default async function EmployeesPage() {
           </div>
           <div className="w-px bg-slate-200" />
           <div>
-            <strong className="block text-2xl font-black text-slate-950">{departments.length}</strong>
+            <strong className="block text-2xl font-black text-slate-950">
+              {departments.length}
+            </strong>
             <span className="text-xs font-semibold text-slate-500">phòng ban</span>
           </div>
         </div>

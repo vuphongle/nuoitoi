@@ -38,9 +38,7 @@ test('layout mounts the responsive admin shell and preserves authorization behav
 });
 
 test('shell skeleton resembles navigation, header, metrics, and content', async () => {
-  const skeleton = await source(
-    'features/admin/shared/components/admin-shell-skeleton.tsx'
-  );
+  const skeleton = await source('features/admin/shared/components/admin-shell-skeleton.tsx');
 
   assert.match(skeleton, /export function AdminShellSkeleton/);
   assert.match(skeleton, /aria-label=/);
@@ -52,9 +50,7 @@ test('shell skeleton resembles navigation, header, metrics, and content', async 
 });
 
 test('search registration exposes ref, focus, reveal, and placeholder without query state', async () => {
-  const search = await source(
-    'features/admin/shared/components/admin-search-context.tsx'
-  );
+  const search = await source('features/admin/shared/components/admin-search-context.tsx');
   const barrel = await source('features/admin/shared/components/index.ts');
 
   assert.match(search, /export function AdminSearchProvider/);
@@ -98,9 +94,7 @@ test('sticky header provides breadcrumbs, contextual search, notifications, and 
   assert.match(header, /useAdminSearch/);
   assert.match(header, /registration\s*\?/);
   assert.match(header, /md:hidden/);
-  const breadcrumbClass = header.match(
-    /<nav aria-label="Breadcrumb" className="([^"]+)"/
-  )?.[1];
+  const breadcrumbClass = header.match(/<nav aria-label="Breadcrumb" className="([^"]+)"/)?.[1];
   assert.ok(breadcrumbClass, 'desktop breadcrumb must have a className');
   const breadcrumbTokens = new Set(breadcrumbClass.split(/\s+/));
   assert.ok(breadcrumbTokens.has('hidden'));

@@ -72,7 +72,8 @@ const home = {
       },
       serverBoundaries: {
         title: 'Server Boundaries',
-        description: 'App Router foundations designed to keep interactive effects isolated and reusable.',
+        description:
+          'App Router foundations designed to keep interactive effects isolated and reusable.',
       },
     },
   },

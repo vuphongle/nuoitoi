@@ -1,4 +1,4 @@
-export type UserRole = "user" | "moderator" | "admin";
+export type UserRole = 'user' | 'moderator' | 'admin';
 
 export type Employee = {
   id: string;
@@ -14,9 +14,9 @@ export type Employee = {
   bio: string;
   interests: string[];
   joinedDate: string;
-  status: "active" | "inactive";
+  status: 'active' | 'inactive';
   role: UserRole;
-  accent: "coral" | "mint" | "amber" | "blue" | "violet" | "rose";
+  accent: 'coral' | 'mint' | 'amber' | 'blue' | 'violet' | 'rose';
 };
 
 export type Department = {

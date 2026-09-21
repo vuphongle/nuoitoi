@@ -11,8 +11,7 @@ export const loginApi = {
     });
 
     const data = (await response.json().catch(() => null)) as
-      | ({ message?: string } & Partial<LoginResponse>)
-      | null;
+      ({ message?: string } & Partial<LoginResponse>) | null;
 
     if (!response.ok || !data?.user) {
       throw new Error(data?.message || 'Login failed');

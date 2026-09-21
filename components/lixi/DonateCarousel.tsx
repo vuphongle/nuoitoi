@@ -27,7 +27,10 @@ export function DonateCarousel() {
   const [autoplay] = useState(() => Autoplay({ delay: 6200, stopOnInteraction: false }));
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [autoplay]);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [activeImage, setActiveImage] = useState<LixiSessionItem | null>(null);
+  const [activeMedia, setActiveMedia] = useState<{
+    session: LixiSessionItem;
+    type: 'avatar' | 'qr';
+  } | null>(null);
   const [copied, setCopied] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -148,7 +151,7 @@ export function DonateCarousel() {
                           <button
                             type="button"
                             className="lixi-donate-avatar"
-                            onClick={() => setActiveImage(session)}
+                            onClick={() => setActiveMedia({ session, type: 'avatar' })}
                             aria-label={t('donateCarousel.viewImageAria', { name: session.name })}
                           >
                             <Image
@@ -191,7 +194,12 @@ export function DonateCarousel() {
 
                       <div className="lixi-donate-qr-card">
                         <p>{t('donateCarousel.sessionQr')}</p>
-                        <div className="lixi-donate-qr">
+                        <button
+                          type="button"
+                          className="lixi-donate-qr"
+                          onClick={() => setActiveMedia({ session, type: 'qr' })}
+                          aria-label={t('donateCarousel.viewQrAria', { name: session.name })}
+                        >
                           <Image
                             src={session.qr}
                             alt={t('donateCarousel.qrAlt', { name: session.name })}
@@ -199,7 +207,10 @@ export function DonateCarousel() {
                             height={240}
                             className="h-full w-full object-contain"
                           />
-                        </div>
+                          <span aria-hidden="true">
+                            <MagnifyingGlass size={18} weight="bold" />
+                          </span>
+                        </button>
                         <span>{t('donateCarousel.scanHint')}</span>
                       </div>
                     </div>
@@ -267,22 +278,37 @@ export function DonateCarousel() {
         </LixiSurface>
       </LixiShell>
 
-      <Dialog open={!!activeImage} onOpenChange={(open) => !open && setActiveImage(null)}>
-        <DialogContent className="lixi-dialog-content lixi-image-dialog max-w-160">
-          {activeImage ? (
+      <Dialog open={!!activeMedia} onOpenChange={(open) => !open && setActiveMedia(null)}>
+        <DialogContent className="lixi-dialog-content lixi-image-dialog max-w-120 rounded-md!">
+          {activeMedia ? (
             <>
-              <DialogTitle>{t('donateCarousel.imageDialogTitle')}</DialogTitle>
+              <DialogTitle>
+                {t(
+                  activeMedia.type === 'avatar'
+                    ? 'donateCarousel.imageDialogTitle'
+                    : 'donateCarousel.qrDialogTitle'
+                )}
+              </DialogTitle>
               <div className="lixi-image-dialog-frame">
                 <Image
-                  src={activeImage.avatar}
-                  alt={t('donateCarousel.imageAlt', { name: activeImage.name })}
+                  src={
+                    activeMedia.type === 'avatar'
+                      ? activeMedia.session.avatar
+                      : activeMedia.session.qr
+                  }
+                  alt={t(
+                    activeMedia.type === 'avatar'
+                      ? 'donateCarousel.imageAlt'
+                      : 'donateCarousel.qrAlt',
+                    { name: activeMedia.session.name }
+                  )}
                   width={640}
                   height={640}
                   className="h-full w-full object-contain"
                 />
               </div>
               <p>
-                @{activeImage.name} - {activeImage.tagline}
+                @{activeMedia.session.name} - {activeMedia.session.tagline}
               </p>
             </>
           ) : null}

@@ -4,7 +4,7 @@ const blogs = {
     titlePrefix: 'Stories &',
     titleHighlight: 'Tech Architecture',
     description:
-      'Explore the latest technology trends, in-depth engineering breakdowns, and product updates from the HQ Software team.',
+      'Explore the latest technology trends, in-depth engineering breakdowns, and product updates from the NuoiToi team.',
   },
   searchPlaceholder: 'Search articles, guides, engineering...',
   categories: {

@@ -1216,6 +1216,7 @@ html:has(.lixi-app) {
 }
 
 .lixi-donate-qr {
+  position: relative;
   width: min(100%, 16rem);
   aspect-ratio: 1;
   overflow: hidden;
@@ -1223,6 +1224,27 @@ html:has(.lixi-app) {
   border: 2px dashed rgba(16, 25, 54, 0.2);
   border-radius: var(--lixi-radius-md);
   background: #fff;
+  cursor: pointer;
+}
+
+.lixi-donate-qr > span {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lixi-color-accent);
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--lixi-motion-fast) ease;
+}
+
+.lixi-donate-qr:hover > span,
+.lixi-donate-qr:focus-visible > span {
+  opacity: 1;
 }
 
 .lixi-donate-state {
@@ -1399,7 +1421,6 @@ html:has(.lixi-app) {
 .lixi-section-heading {
   display: grid;
   gap: var(--lixi-space-3);
-  max-width: 46rem;
   margin-bottom: var(--lixi-space-6);
 }
 

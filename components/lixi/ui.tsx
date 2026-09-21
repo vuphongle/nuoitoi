@@ -32,7 +32,7 @@ export function LixiSectionHeading({
 }: LixiSectionHeadingProps) {
   return (
     <div
-      className={cn('lixi-section-heading', `lixi-section-heading-${align}`, className)}
+      className={cn('lixi-section-heading w-full', `lixi-section-heading-${align}`, className)}
       {...props}
     >
       {eyebrow ? <p className="lixi-eyebrow">{eyebrow}</p> : null}

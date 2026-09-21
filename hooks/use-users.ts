@@ -19,19 +19,14 @@ import type {
 export const USER_QUERY_KEYS = {
   all: ['admin-users'] as const,
   lists: () => [...USER_QUERY_KEYS.all, 'list'] as const,
-  list: (params?: AdminUserQueryParams) =>
-    [...USER_QUERY_KEYS.lists(), params] as const,
+  list: (params?: AdminUserQueryParams) => [...USER_QUERY_KEYS.lists(), params] as const,
   details: () => [...USER_QUERY_KEYS.all, 'detail'] as const,
-  detail: (id: number | string) =>
-    [...USER_QUERY_KEYS.details(), String(id)] as const,
+  detail: (id: number | string) => [...USER_QUERY_KEYS.details(), String(id)] as const,
 };
 
 export function useUsers(
   params?: AdminUserQueryParams,
-  options?: Omit<
-    UseQueryOptions<AdminUserListResponse, Error>,
-    'queryKey' | 'queryFn'
-  >
+  options?: Omit<UseQueryOptions<AdminUserListResponse, Error>, 'queryKey' | 'queryFn'>
 ) {
   return useQuery({
     queryKey: USER_QUERY_KEYS.list(params),
@@ -42,10 +37,7 @@ export function useUsers(
 
 export function useUser(
   id: number | string,
-  options?: Omit<
-    UseQueryOptions<AdminUserDetailResponse, Error>,
-    'queryKey' | 'queryFn'
-  >
+  options?: Omit<UseQueryOptions<AdminUserDetailResponse, Error>, 'queryKey' | 'queryFn'>
 ) {
   return useQuery({
     queryKey: USER_QUERY_KEYS.detail(id),
@@ -57,11 +49,7 @@ export function useUser(
 
 export function useCreateUser(
   options?: Omit<
-    UseMutationOptions<
-      AdminUserDetailResponse,
-      Error,
-      CreateAdminUserPayload
-    >,
+    UseMutationOptions<AdminUserDetailResponse, Error, CreateAdminUserPayload>,
     'mutationFn'
   >
 ) {
@@ -106,11 +94,7 @@ export function useUpdateUser(
 
 export function useDeleteUser(
   options?: Omit<
-    UseMutationOptions<
-      { success: boolean; message?: string },
-      Error,
-      number | string
-    >,
+    UseMutationOptions<{ success: boolean; message?: string }, Error, number | string>,
     'mutationFn'
   >
 ) {

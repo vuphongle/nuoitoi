@@ -42,8 +42,8 @@ export function Hero() {
           </div>
 
           <ul className="lixi-hero-highlights" aria-label={t('hero.highlightsAria')}>
-            {highlights.map(({ key, Icon }) => (
-              <li key={key}>
+            {highlights?.map(({ key, Icon }) => (
+              <li key={key} className="w-56.25">
                 <Icon size={20} weight="bold" aria-hidden="true" />
                 <span>{t(`hero.highlights.${key}`)}</span>
               </li>

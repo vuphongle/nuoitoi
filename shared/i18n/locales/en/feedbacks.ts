@@ -1,7 +1,8 @@
 const feedbacks = {
   pageEyebrow: 'Customer care',
   pageTitle: 'Feedbacks',
-  pageDescription: 'Review and manage suggestions, bug reports, and compliments submitted by users.',
+  pageDescription:
+    'Review and manage suggestions, bug reports, and compliments submitted by users.',
   addFeedback: 'Add feedback',
   commandSearchPlaceholder: 'Search feedback by name or title',
   toolbarSearchPlaceholder: 'Search by name, title...',

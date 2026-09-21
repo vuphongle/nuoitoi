@@ -3,7 +3,12 @@
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { AppLanguage, DEFAULT_LANGUAGE, isSupportedLanguage, normalizeLanguage } from '@/constants/lang';
+import {
+  AppLanguage,
+  DEFAULT_LANGUAGE,
+  isSupportedLanguage,
+  normalizeLanguage,
+} from '@/constants/lang';
 import { getLocalizedPath } from './useCurrentLocale';
 import '../shared/i18n';
 
@@ -28,7 +33,6 @@ export const useI18n = (namespace?: string | string[]) => {
         isHydrated
         ? normalizeLanguage(i18n.language)
         : DEFAULT_LANGUAGE;
-
 
   useEffect(() => {
     setIsHydrated(true);
@@ -81,4 +85,3 @@ export const useI18n = (namespace?: string | string[]) => {
     switchLanguage,
   };
 };
-

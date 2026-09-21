@@ -24,7 +24,6 @@ const contact = {
     error: 'An error occurred while sending your message. Please try again later.',
   },
 
-
   offices: {
     globalHq: 'Global HQ',
     globalAddress: 'District Binh Thanh, Ho Chi Minh City, Vietnam',

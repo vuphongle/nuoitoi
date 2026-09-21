@@ -1,7 +1,8 @@
 const lixiSessions = {
   pageEyebrow: 'Quản lý lì xì',
   pageTitle: 'Phiên lì xì',
-  pageDescription: 'Quản lý các phiên nhận lì xì hiển thị trên trang chủ (mã QR, tài khoản, thứ tự).',
+  pageDescription:
+    'Quản lý các phiên nhận lì xì hiển thị trên trang chủ (mã QR, tài khoản, thứ tự).',
   addSession: 'Thêm phiên lì xì',
   commandSearchPlaceholder: 'Tìm phiên lì xì theo tên hoặc mã code',
   toolbarSearchPlaceholder: 'Tìm theo tên, code, chủ tài khoản...',
@@ -35,6 +36,20 @@ const lixiSessions = {
   deleteConfirmButton: 'Xóa phiên lì xì',
   deleteSuccess: 'Đã xóa phiên lì xì thành công!',
   deleteError: 'Có lỗi xảy ra khi xóa phiên lì xì',
+  form: {
+    codeLabel: 'Mã code',
+    nameLabel: 'Tên hiển thị',
+    taglineLabel: 'Tagline',
+    bankLabel: 'Ngân hàng',
+    accountLabel: 'Số tài khoản',
+    ownerLabel: 'Chủ tài khoản',
+    contentLabel: 'Nội dung chuyển khoản',
+    sortOrderLabel: 'Thứ tự hiển thị',
+    qrCreateLabel: 'Ảnh mã QR *',
+    qrEditLabel: 'Ảnh mã QR (bỏ trống nếu giữ nguyên)',
+    avatarCreateLabel: 'Ảnh đại diện *',
+    avatarEditLabel: 'Ảnh đại diện (bỏ trống nếu giữ nguyên)',
+  },
 } as const;
 
 export default lixiSessions;

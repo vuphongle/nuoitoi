@@ -50,17 +50,17 @@ ecosystem reference.
 
 ### Keep, refactor, redesign
 
-| Area | Decision | Reason |
-| --- | --- | --- |
-| API hooks, data arrays, counters, i18n | Keep | Existing behavior and contracts are in scope to preserve. |
-| Section components | Refactor | Keep ownership boundaries, replace repeated layout and card markup with shared primitives. |
-| Header/mobile menu/footer | Redesign | Current information density and visual structure do not match Company Hub. |
-| Hero | Rebuild | Current composition is the largest visual mismatch. |
-| Dashboard/expenses/features | Redesign composition | Use varied editorial/grid patterns rather than identical card walls. |
-| Commitments/compare/heart | Merge visual patterns | Preserve all content but reduce repetitive sections and establish hierarchy. |
-| Donate carousel | Refactor presentation | Preserve Embla, copy, QR, API states, and dialogs; add accessible autoplay controls. |
-| Feedback/detail dialogs | Restyle and restructure | Preserve state and submit behavior while aligning surfaces and actions. |
-| Petals/fireworks | Remove from persistent page chrome | Decorative motion conflicts with the shared ecosystem and accessibility guidance. |
+| Area                                   | Decision                           | Reason                                                                                     |
+| -------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| API hooks, data arrays, counters, i18n | Keep                               | Existing behavior and contracts are in scope to preserve.                                  |
+| Section components                     | Refactor                           | Keep ownership boundaries, replace repeated layout and card markup with shared primitives. |
+| Header/mobile menu/footer              | Redesign                           | Current information density and visual structure do not match Company Hub.                 |
+| Hero                                   | Rebuild                            | Current composition is the largest visual mismatch.                                        |
+| Dashboard/expenses/features            | Redesign composition               | Use varied editorial/grid patterns rather than identical card walls.                       |
+| Commitments/compare/heart              | Merge visual patterns              | Preserve all content but reduce repetitive sections and establish hierarchy.               |
+| Donate carousel                        | Refactor presentation              | Preserve Embla, copy, QR, API states, and dialogs; add accessible autoplay controls.       |
+| Feedback/detail dialogs                | Restyle and restructure            | Preserve state and submit behavior while aligning surfaces and actions.                    |
+| Petals/fireworks                       | Remove from persistent page chrome | Decorative motion conflicts with the shared ecosystem and accessibility guidance.          |
 
 ## Phase 1 - Foundation / Design System
 

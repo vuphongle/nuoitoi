@@ -19,11 +19,7 @@ interface UserDetailDialogProps {
   user: UserItem | null;
 }
 
-export function UserDetailDialog({
-  open,
-  onOpenChange,
-  user,
-}: UserDetailDialogProps) {
+export function UserDetailDialog({ open, onOpenChange, user }: UserDetailDialogProps) {
   if (!user) return null;
 
   const getGenderLabel = (g?: string) => {
@@ -47,11 +43,7 @@ export function UserDetailDialog({
             <div className="relative h-16 w-16 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center text-primary text-xl font-bold shrink-0 border border-border">
               {user.avatar ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className="h-full w-full object-cover"
-                />
+                <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
               ) : (
                 <UserIcon className="h-8 w-8 text-primary" />
               )}
@@ -59,9 +51,7 @@ export function UserDetailDialog({
 
             <div className="space-y-1 overflow-hidden">
               <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg text-foreground truncate">
-                  {user.name}
-                </h3>
+                <h3 className="font-bold text-lg text-foreground truncate">{user.name}</h3>
                 <Badge
                   variant={user.role === 'admin' ? 'destructive' : 'secondary'}
                   className="capitalize text-xs font-semibold"
@@ -100,9 +90,7 @@ export function UserDetailDialog({
 
             <div className="space-y-1">
               <span className="text-xs text-muted-foreground block">Giới tính:</span>
-              <span className="font-medium text-foreground">
-                {getGenderLabel(user.gender)}
-              </span>
+              <span className="font-medium text-foreground">{getGenderLabel(user.gender)}</span>
             </div>
 
             <div className="space-y-1">
@@ -116,9 +104,7 @@ export function UserDetailDialog({
             <div className="space-y-1 col-span-2">
               <span className="text-xs text-muted-foreground block">Ngày tham gia hệ thống:</span>
               <span className="text-foreground text-xs">
-                {user.created_at
-                  ? new Date(user.created_at).toLocaleString('vi-VN')
-                  : '—'}
+                {user.created_at ? new Date(user.created_at).toLocaleString('vi-VN') : '—'}
               </span>
             </div>
           </div>
