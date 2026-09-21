@@ -109,6 +109,30 @@ html:has(.lixi-app) {
   transform: translateY(0);
 }
 
+.lixi-back-to-top {
+  position: fixed;
+  z-index: 900;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 50%;
+  background: var(--lixi-color-accent);
+  box-shadow: 4px 4px 0 var(--lixi-color-ink);
+  color: #fff;
+  transition:
+    transform var(--lixi-motion-fast) ease,
+    background-color var(--lixi-motion-fast) ease;
+}
+
+.lixi-back-to-top:hover {
+  transform: translateY(-3px);
+  background: var(--lixi-color-accent-strong);
+}
+
 .lixi-site-header {
   position: sticky;
   z-index: 1000;
@@ -1594,6 +1618,12 @@ html:has(.lixi-app) {
     grid-column: span 2;
   }
 
+  .lixi-allocation-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  }
+}
+
+@media (min-width: 75rem) {
   .lixi-expenses-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
@@ -1611,13 +1641,9 @@ html:has(.lixi-app) {
   .lixi-expenses-grid > *:nth-child(5) {
     grid-column: span 2;
   }
-
-  .lixi-allocation-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
-  }
 }
 
-@media (min-width: 70rem) {
+@media (min-width: 60rem) {
   .lixi-desktop-nav {
     display: flex;
   }
