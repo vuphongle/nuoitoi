@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Gift, X } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import { SUPPORTED_LANGUAGES, type AppLanguage } from '@/constants/lang';
+import { useI18n } from '@/hooks/useI18n';
 import { navLinks } from './data';
 
 interface MobileMenuProps {
@@ -14,7 +15,6 @@ interface MobileMenuProps {
   currentLanguage: AppLanguage;
   onChangeLanguage: (language: AppLanguage) => void;
   onOpenFeedback: () => void;
-  translate: (key: string) => string;
 }
 
 export function MobileMenu({
@@ -23,8 +23,8 @@ export function MobileMenu({
   currentLanguage,
   onChangeLanguage,
   onOpenFeedback,
-  translate,
 }: MobileMenuProps) {
+  const { t } = useI18n('lixi');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -58,15 +58,15 @@ export function MobileMenu({
             <Gift size={26} weight="duotone" />
           </span>
           <span className="lixi-brand-copy">
-            <strong>{translate('common.brandName')}</strong>
-            <small>{translate('header.subtitle')}</small>
+            <strong>{t('common.brandName')}</strong>
+            <small>{t('header.subtitle')}</small>
           </span>
         </div>
         <button
           type="button"
           onClick={onClose}
           className="lixi-mobile-menu-trigger"
-          aria-label={translate('mobileMenu.closeMenuAria')}
+          aria-label={t('mobileMenu.closeMenuAria')}
         >
           <X size={22} weight="bold" aria-hidden="true" />
         </button>
@@ -74,7 +74,7 @@ export function MobileMenu({
 
       <motion.nav
         className="lixi-mobile-nav"
-        aria-label={translate('header.internalLinksAria')}
+        aria-label={t('header.internalLinksAria')}
         initial="hidden"
         animate="visible"
         variants={{
@@ -97,12 +97,12 @@ export function MobileMenu({
                 }}
               >
                 <span aria-hidden="true">0{index + 1}</span>
-                {translate(link.labelKey)}
+                {t(link.labelKey)}
               </button>
             ) : (
               <a href={link.href} onClick={onClose}>
                 <span aria-hidden="true">0{index + 1}</span>
-                {translate(link.labelKey)}
+                {t(link.labelKey)}
               </a>
             )}
           </motion.div>
@@ -113,7 +113,7 @@ export function MobileMenu({
         <div
           className="lixi-language-switcher"
           role="group"
-          aria-label={translate('header.languageSelectorAria')}
+          aria-label={t('header.languageSelectorAria')}
         >
           {SUPPORTED_LANGUAGES.map((code) => (
             <button
@@ -128,7 +128,7 @@ export function MobileMenu({
           ))}
         </div>
         <a className="lixi-action lixi-action-primary" href="#donate" onClick={onClose}>
-          {translate('common.donateNow')}
+          {t('common.donateNow')}
           <ArrowDown size={18} weight="bold" aria-hidden="true" />
         </a>
       </div>

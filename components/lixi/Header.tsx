@@ -85,7 +85,6 @@ export function Header() {
             currentLanguage={currentLanguage}
             onChangeLanguage={switchLanguage}
             onOpenFeedback={() => setIsFeedbackOpen(true)}
-            translate={t}
           />
         ) : null}
       </AnimatePresence>

@@ -31,9 +31,9 @@ const lixi = {
     viewCommitments: 'View commitments',
     highlightsAria: 'Highlights',
     highlights: {
-      dailyStatement: 'Daily statements 🧾',
-      clearReceipts: 'Crystal-clear receipts ⚡',
-      funTransparency: 'Playful but transparent 🧧',
+      dailyStatement: 'Daily statements',
+      clearReceipts: 'Crystal-clear receipts',
+      funTransparency: 'Playful but transparent',
     },
     todayStatus: 'Today’s status: watching the bánh chưng pot (and the bank notifications)',
     priority: 'Tet priorities: new clothes + bus tickets + candied fruit',

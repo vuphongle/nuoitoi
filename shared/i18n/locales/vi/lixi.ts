@@ -31,9 +31,9 @@ const lixi = {
     viewCommitments: 'Xem cam kết',
     highlightsAria: 'Các điểm nổi bật',
     highlights: {
-      dailyStatement: 'Sao kê mỗi ngày 🧾',
-      clearReceipts: 'Hóa đơn rõ ràng ⚡',
-      funTransparency: 'Vui nhộn nhưng minh bạch 🧧',
+      dailyStatement: 'Sao kê mỗi ngày',
+      clearReceipts: 'Hóa đơn rõ ràng',
+      funTransparency: 'Vui nhộn nhưng minh bạch',
     },
     todayStatus:
       'Trạng thái hôm nay: đang canh nồi bánh chưng (và canh luôn thông báo chuyển khoản)',
