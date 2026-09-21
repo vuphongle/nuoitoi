@@ -24,6 +24,7 @@
     "@fontsource-variable/fredoka": "5.3.0",
     "@fontsource-variable/nunito-sans": "5.3.0",
     "@hookform/resolvers": "^5.2.2",
+    "@phosphor-icons/react": "2.1.10",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-select": "^2.1.4",

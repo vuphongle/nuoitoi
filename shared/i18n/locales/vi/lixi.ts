@@ -4,6 +4,7 @@ const lixi = {
     donateNow: 'Lì xì ngay',
     currencySuffix: ' đ',
     backToTop: 'Về đầu trang',
+    skipToContent: 'Đi đến nội dung chính',
   },
   header: {
     subtitle: 'Dashboard Tết vui vẻ',

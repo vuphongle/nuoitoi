@@ -14,6 +14,7 @@ import { Heart } from './Heart';
 import { DisclaimerBar, Footer } from './Footer';
 import { PetalFireworks } from './PetalFireworks';
 import { BackToTop } from './BackToTop';
+import { SkipLink } from './SkipLink';
 
 interface LixiPageProps {
   className?: string;
@@ -22,9 +23,10 @@ interface LixiPageProps {
 export function LixiPage({ className }: LixiPageProps) {
   return (
     <div className={cn('lixi-app lixi-hub relative', className)}>
+      <SkipLink />
       <Header />
       <PetalFireworks />
-      <main>
+      <main id="lixi-main">
         <Hero />
         <Dashboard />
         <Expenses />

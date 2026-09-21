@@ -4,6 +4,7 @@ const lixi = {
     donateNow: 'Send money',
     currencySuffix: ' VND',
     backToTop: 'Back to top',
+    skipToContent: 'Skip to main content',
   },
   header: {
     subtitle: 'A cheerful Tet dashboard',
