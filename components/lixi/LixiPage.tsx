@@ -22,7 +22,7 @@ interface LixiPageProps {
 
 export function LixiPage({ className, style }: LixiPageProps) {
   return (
-    <div className={cn('relative bg-[#fff7ed] text-[#1f1a17]', className)} style={style}>
+    <div className={cn('lixi-hub relative text-[#101936]', className)} style={style}>
       <Header />
       <PetalFireworks />
       <main>

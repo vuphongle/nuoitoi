@@ -31,8 +31,7 @@ export function BackToTop() {
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.2 }}
           aria-label={t('common.backToTop')}
-          className="cursor-pointer fixed right-5 bottom-5 z-900 inline-flex h-12 w-12 items-center justify-center rounded-full text-white shadow-[0_16px_34px_rgba(215,38,61,0.35)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7263d] focus-visible:ring-offset-2"
-          style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
+          className="lixi-button lixi-button-primary fixed right-5 bottom-5 z-900 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-white transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         >
           <ArrowUp className="h-5 w-5" aria-hidden="true" />
         </motion.button>

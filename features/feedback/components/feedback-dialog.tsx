@@ -165,8 +165,7 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
               type="submit"
               disabled={submitMutation.isPending}
               isLoading={submitMutation.isPending}
-              className="cursor-pointer"
-              style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
+              className="lixi-button lixi-button-primary cursor-pointer"
             >
               {t('feedbackDialog.submit')}
             </Button>

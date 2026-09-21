@@ -50,7 +50,7 @@ export function MobileMenu({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-1100 h-dvh w-screen overflow-y-auto bg-[#fff7ed] p-5 min-[901px]:hidden"
+      className="lixi-mobile-menu fixed inset-0 z-1100 h-dvh w-screen overflow-y-auto p-5 min-[901px]:hidden"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ export function MobileMenu({
         <button
           type="button"
           onClick={onClose}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/6 bg-black/4 text-[#1f1a17] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7263d]"
+          className="lixi-menu-button inline-flex h-11 w-11 items-center justify-center rounded-full border focus-visible:outline-none"
           aria-label={t('mobileMenu.closeMenuAria')}
         >
           <X className="h-5 w-5" aria-hidden="true" />
@@ -99,7 +99,7 @@ export function MobileMenu({
                     onClose();
                     onOpenFeedback();
                   }}
-                  className="block w-full border-b border-black/6 py-4 text-left text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
+                  className="lixi-mobile-link block w-full border-b py-4 text-left text-2xl font-extrabold transition-colors"
                 >
                   {t(link.labelKey)}
                 </button>
@@ -107,7 +107,7 @@ export function MobileMenu({
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className="block border-b border-black/6 py-4 text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
+                  className="lixi-mobile-link block border-b py-4 text-2xl font-extrabold transition-colors"
                 >
                   {t(link.labelKey)}
                 </a>
@@ -141,8 +141,7 @@ export function MobileMenu({
         <a
           href="#donate"
           onClick={onClose}
-          className="flex-1 rounded-2xl px-4 py-3 text-center font-extrabold text-white shadow-[0_16px_34px_rgba(215,38,61,0.25)]"
-          style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
+          className="lixi-button lixi-button-primary flex-1 rounded-2xl px-4 py-3 text-center font-extrabold text-white"
         >
           {t('common.donateNow')}
         </a>

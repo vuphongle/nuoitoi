@@ -19,11 +19,11 @@ export function Header() {
 
   return (
     <header
-      className="sticky top-0 z-[1000] border-b border-[#d7263d]/12 bg-white/90 shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-md"
+      className="lixi-header sticky top-0 z-[1000] border-b bg-white/90 shadow-[0_8px_30px_rgba(16,25,54,0.06)] backdrop-blur-md"
       aria-label={t('header.mainAria')}
     >
-      <div className="mx-auto flex w-[min(1180px,94vw)] items-center gap-4.5 py-3.5">
-        <div className="flex items-center gap-3">
+      <div className="lixi-header-inner mx-auto flex w-[min(1180px,94vw)] items-center gap-4.5 py-3.5">
+        <div className="lixi-brand flex items-center gap-3">
           <Image
             src={icons.iconLogoHQ}
             alt={t('common.brandName')}
@@ -32,15 +32,17 @@ export function Header() {
             className="h-11 w-11 rounded-2xl"
           />
           <div>
-            <div className="font-extrabold tracking-wide truncate max-w-36">
+            <div className="lixi-brand-name font-extrabold tracking-wide truncate max-w-36">
               {t('common.brandName')}
             </div>
-            <div className="text-sm text-[#6a5c55] truncate max-w-36">{t('header.subtitle')}</div>
+            <div className="lixi-brand-subtitle text-sm truncate max-w-36">
+              {t('header.subtitle')}
+            </div>
           </div>
         </div>
 
         <nav
-          className="hidden flex-1 flex-wrap items-center justify-center gap-2.5 min-[901px]:flex"
+          className="lixi-nav hidden flex-1 flex-wrap items-center justify-center gap-2.5 min-[901px]:flex"
           aria-label={t('header.internalLinksAria')}
         >
           {navLinks?.map((link) =>
@@ -49,7 +51,7 @@ export function Header() {
                 key={link.href}
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
-                className="cursor-pointer rounded-xl px-3 py-2 font-bold text-[#6a5c55] transition hover:-translate-y-px hover:bg-[#d7263d]/8 hover:text-[#1f1a17]"
+                className="lixi-nav-link cursor-pointer rounded-xl px-3 py-2 font-bold transition hover:-translate-y-px"
               >
                 {t(link.labelKey)}
               </button>
@@ -57,7 +59,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-xl px-3 py-2 font-bold text-[#6a5c55] transition hover:-translate-y-px hover:bg-[#d7263d]/8 hover:text-[#1f1a17]"
+                className="lixi-nav-link rounded-xl px-3 py-2 font-bold transition hover:-translate-y-px"
               >
                 {t(link.labelKey)}
               </a>
@@ -88,8 +90,7 @@ export function Header() {
           </div>
           <a
             href="#donate"
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-transparent px-3.5 py-2.5 text-sm font-extrabold text-white shadow-[0_16px_34px_rgba(215,38,61,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(215,38,61,0.32)]"
-            style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
+            className="lixi-button lixi-button-primary inline-flex items-center justify-center gap-2 rounded-2xl border border-transparent px-3.5 py-2.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5"
           >
             {t('common.donateNow')}
           </a>
@@ -98,7 +99,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setIsMobileOpen(true)}
-          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/6 bg-black/4 text-[#1f1a17] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7263d] min-[901px]:hidden"
+          className="lixi-menu-button ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border focus-visible:outline-none min-[901px]:hidden"
           aria-label={t('header.openMenuAria')}
         >
           <Menu className="h-5 w-5" aria-hidden="true" />

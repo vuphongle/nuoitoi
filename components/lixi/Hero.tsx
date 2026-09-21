@@ -6,14 +6,7 @@ export function Hero() {
   const highlightKeys = ['dailyStatement', 'clearReceipts', 'funTransparency'] as const;
 
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden pb-20 pt-27.5"
-      style={{
-        background:
-          'radial-gradient(ellipse at 20% 10%, rgba(255,207,166,0.6), transparent 45%), radial-gradient(ellipse at 90% 0%, rgba(255,235,180,0.7), transparent 35%), linear-gradient(180deg, #fff8ef 0%, #ffe7d3 70%, #fff8ef 100%)',
-      }}
-    >
+    <section id="hero" className="lixi-hero relative overflow-hidden pb-20 pt-27.5">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -23,9 +16,9 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-[1] mx-auto grid w-[min(1180px,94vw)] items-center gap-6.5 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
-        <div>
-          <p className="text-sm font-extrabold uppercase tracking-wide text-[#d7263d]">
+      <div className="lixi-hero-grid relative z-[1] mx-auto grid w-[min(1180px,94vw)] items-center gap-6.5 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
+        <div className="lixi-hero-copy">
+          <p className="lixi-eyebrow text-sm font-extrabold uppercase tracking-wide">
             {t('hero.eyebrow')}
           </p>
           <h1 className="my-2 text-4xl leading-tight font-bold sm:text-5xl">{t('hero.title')}</h1>
@@ -33,14 +26,13 @@ export function Hero() {
           <div className="mb-3.5 flex w-full flex-wrap gap-3">
             <a
               href="#donate"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl px-4.5 py-3 font-extrabold text-white shadow-[0_16px_34px_rgba(215,38,61,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(215,38,61,0.32)] min-[480px]:flex-none"
-              style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
+              className="lixi-button lixi-button-primary inline-flex flex-1 items-center justify-center gap-2 rounded-2xl px-4.5 py-3 font-extrabold text-white transition hover:-translate-y-0.5 min-[480px]:flex-none"
             >
               {t('common.donateNow')}
             </a>
             <a
               href="#commit"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-black/6 bg-white/80 px-4.5 py-3 font-extrabold text-[#1f1a17] transition hover:-translate-y-px min-[480px]:flex-none"
+              className="lixi-button lixi-button-secondary inline-flex flex-1 items-center justify-center gap-2 rounded-2xl px-4.5 py-3 font-extrabold transition hover:-translate-y-px min-[480px]:flex-none"
             >
               {t('hero.viewCommitments')}
             </a>
@@ -49,19 +41,19 @@ export function Hero() {
             {highlightKeys.map((key) => (
               <span
                 key={key}
-                className="rounded-2xl border border-dashed border-black/6 bg-white/80 px-3 py-2 font-bold shadow-[0_10px_28px_rgba(0,0,0,0.05)]"
+                className="lixi-highlight rounded-2xl border border-dashed px-3 py-2 font-bold"
               >
                 {t(`hero.highlights.${key}`)}
               </span>
             ))}
           </div>
           <p className="mt-3 mb-2 font-semibold">{t('hero.todayStatus')}</p>
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#fff3d9] px-3.5 py-2 font-extrabold text-[#8a5a00] shadow-[0_12px_26px_rgba(242,195,68,0.35)]">
+          <div className="lixi-status inline-flex items-center gap-2 rounded-full px-3.5 py-2 font-extrabold">
             {t('hero.priority')}
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[22px] border border-white/60 bg-white/86 p-5.5 shadow-[0_24px_60px_rgba(215,38,61,0.12)] backdrop-blur-md">
+        <div className="lixi-hero-board lixi-card relative overflow-hidden rounded-[22px] p-5.5 backdrop-blur-md">
           <div className="mb-3 flex gap-2">
             <span className="inline-flex items-center justify-center rounded-full border border-[#d7263d]/16 bg-[#d7263d]/12 px-3 py-1.75 text-sm font-extrabold text-[#d7263d]">
               {t('hero.realtimeBoard')}
