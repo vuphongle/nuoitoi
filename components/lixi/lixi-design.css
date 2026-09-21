@@ -1,0 +1,1782 @@
+.lixi-app {
+  --lixi-color-primary: #f3b022;
+  --lixi-color-primary-strong: #98530c;
+  --lixi-color-primary-soft: #fff1cf;
+  --lixi-color-accent: #1a2654;
+  --lixi-color-accent-strong: #101936;
+  --lixi-color-accent-soft: #e6eaf7;
+  --lixi-color-background: #fffaf0;
+  --lixi-color-surface: #ffffff;
+  --lixi-color-surface-soft: #fff4da;
+  --lixi-color-ink: #101936;
+  --lixi-color-muted: #5f667b;
+  --lixi-color-border: #ead8b8;
+  --lixi-color-border-strong: #d9bd87;
+  --lixi-color-success: #16794a;
+  --lixi-color-success-soft: #dcfce7;
+  --lixi-color-danger: #b42318;
+  --lixi-color-danger-soft: #fef3f2;
+  --lixi-color-ring: #172033;
+  --lixi-shadow-card: 0 10px 0 rgba(72, 55, 25, 0.07), 0 18px 40px rgba(36, 28, 14, 0.08);
+  --lixi-shadow-hover: 0 7px 0 rgba(72, 55, 25, 0.09), 0 22px 48px rgba(36, 28, 14, 0.12);
+  --lixi-shadow-ink: 5px 6px 0 var(--lixi-color-ink);
+  --lixi-radius-sm: 10px;
+  --lixi-radius-md: 16px;
+  --lixi-radius-lg: 24px;
+  --lixi-radius-xl: 32px;
+  --lixi-space-1: 0.25rem;
+  --lixi-space-2: 0.5rem;
+  --lixi-space-3: 0.75rem;
+  --lixi-space-4: 1rem;
+  --lixi-space-5: 1.5rem;
+  --lixi-space-6: 2rem;
+  --lixi-space-7: 3rem;
+  --lixi-space-8: 4rem;
+  --lixi-motion-fast: 160ms;
+  --lixi-motion-standard: 200ms;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(243, 176, 34, 0.14), transparent 24rem),
+    linear-gradient(180deg, #fffaf4 0%, var(--lixi-color-background) 100%);
+  color: var(--lixi-color-ink);
+  font-family: 'Nunito Sans Variable', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.lixi-app *,
+.lixi-app *::before,
+.lixi-app *::after {
+  box-sizing: border-box;
+}
+
+.lixi-app h1,
+.lixi-app h2,
+.lixi-app h3,
+.lixi-app h4 {
+  color: var(--lixi-color-ink);
+  font-family: 'Fredoka Variable', sans-serif;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.lixi-app :where(button, input, select, textarea) {
+  font: inherit;
+}
+
+.lixi-app :where(button, a, select) {
+  touch-action: manipulation;
+}
+
+.lixi-app :where(a[href], button:not(:disabled), select, label:has(input)) {
+  cursor: pointer;
+}
+
+.lixi-app :where(:focus-visible) {
+  outline: 3px solid var(--lixi-color-ring);
+  outline-offset: 3px;
+}
+
+.lixi-shell {
+  width: min(calc(100% - 2rem), 75rem);
+  margin-inline: auto;
+}
+
+html:has(.lixi-app) {
+  scroll-padding-top: 6rem;
+}
+
+.lixi-app main {
+  min-width: 0;
+}
+
+.lixi-skip-link {
+  position: fixed;
+  z-index: 2000;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-180%);
+  padding: 0.75rem 1rem;
+  border-radius: var(--lixi-radius-sm);
+  background: var(--lixi-color-ink);
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform var(--lixi-motion-fast) ease;
+}
+
+.lixi-skip-link:focus {
+  transform: translateY(0);
+}
+
+.lixi-back-to-top {
+  position: fixed;
+  z-index: 900;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 50%;
+  background: var(--lixi-color-accent);
+  box-shadow: 4px 4px 0 var(--lixi-color-ink);
+  color: #fff;
+  transition:
+    transform var(--lixi-motion-fast) ease,
+    background-color var(--lixi-motion-fast) ease;
+}
+
+.lixi-back-to-top:hover {
+  transform: translateY(-3px);
+  background: var(--lixi-color-accent-strong);
+}
+
+.lixi-site-header {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  border-bottom: 1px solid rgba(231, 185, 142, 0.65);
+  background: rgba(255, 250, 244, 0.94);
+  backdrop-filter: blur(16px);
+}
+
+.lixi-site-header-inner {
+  min-height: 5.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+.lixi-brand-lockup {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.lixi-brand-mark {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 14px;
+  background: var(--lixi-color-primary-soft);
+  box-shadow: 3px 3px 0 var(--lixi-color-ink);
+  color: var(--lixi-color-accent);
+}
+
+.lixi-brand-copy {
+  min-width: 0;
+  display: grid;
+  line-height: 1.1;
+}
+
+.lixi-brand-copy strong {
+  max-width: 14rem;
+  overflow: hidden;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.08rem;
+  letter-spacing: -0.025em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lixi-brand-copy small {
+  max-width: 14rem;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  color: var(--lixi-color-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lixi-desktop-nav,
+.lixi-header-actions {
+  display: none;
+}
+
+.lixi-desktop-nav {
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.lixi-desktop-nav :where(a, button) {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.7rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--lixi-color-muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background-color var(--lixi-motion-fast) ease,
+    color var(--lixi-motion-fast) ease;
+}
+
+.lixi-desktop-nav :where(a, button):hover {
+  background: var(--lixi-color-primary-soft);
+  color: var(--lixi-color-primary-strong);
+}
+
+.lixi-header-actions {
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.lixi-language-switcher {
+  display: inline-flex;
+  padding: 0.2rem;
+  border: 2px solid var(--lixi-color-border);
+  border-radius: 999px;
+  background: var(--lixi-color-surface);
+}
+
+.lixi-language-switcher button {
+  min-width: 2.75rem;
+  min-height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--lixi-color-muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  transition:
+    background-color var(--lixi-motion-fast) ease,
+    color var(--lixi-motion-fast) ease;
+}
+
+.lixi-language-switcher button.is-active {
+  background: var(--lixi-color-accent);
+  color: #fff;
+}
+
+.lixi-header-cta {
+  min-width: 7rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.lixi-mobile-menu-trigger {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-border-strong);
+  border-radius: 50%;
+  background: var(--lixi-color-primary-soft);
+  color: var(--lixi-color-accent);
+  transition:
+    transform var(--lixi-motion-fast) ease,
+    border-color var(--lixi-motion-fast) ease;
+}
+
+.lixi-mobile-menu-trigger:hover {
+  transform: translateY(-2px);
+  border-color: var(--lixi-color-accent);
+}
+
+.lixi-mobile-drawer {
+  --lixi-color-primary: #f3b022;
+  --lixi-color-primary-strong: #98530c;
+  --lixi-color-primary-soft: #fff1cf;
+  --lixi-color-accent: #1a2654;
+  --lixi-color-accent-strong: #101936;
+  --lixi-color-background: #fffaf0;
+  --lixi-color-surface: #ffffff;
+  --lixi-color-muted: #5f667b;
+  --lixi-color-border: #ead8b8;
+  --lixi-color-border-strong: #d9bd87;
+  --lixi-color-ink: #101936;
+  --lixi-motion-fast: 160ms;
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(243, 176, 34, 0.2), transparent 15rem),
+    linear-gradient(180deg, #fffaf4, var(--lixi-color-background));
+  color: var(--lixi-color-ink);
+  font-family: 'Nunito Sans Variable', sans-serif;
+}
+
+.lixi-mobile-drawer-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lixi-mobile-nav {
+  display: grid;
+  margin-block: clamp(2.5rem, 10vh, 5.5rem) 2rem;
+  border-top: 2px solid var(--lixi-color-border);
+}
+
+.lixi-mobile-nav :where(a, button) {
+  width: 100%;
+  min-height: 4.5rem;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border: 0;
+  border-bottom: 2px solid var(--lixi-color-border);
+  background: transparent;
+  color: var(--lixi-color-ink);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: clamp(1.55rem, 7vw, 2.2rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  text-align: left;
+  text-decoration: none;
+}
+
+.lixi-mobile-nav :where(a, button) span {
+  color: var(--lixi-color-primary-strong);
+  font-family: 'Nunito Sans Variable', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.lixi-mobile-drawer-footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.lixi-disclaimer {
+  padding: 0.9rem 1rem;
+  border-top: 2px solid var(--lixi-color-ink);
+  border-bottom: 2px solid var(--lixi-color-ink);
+  background: var(--lixi-color-primary-soft);
+  color: var(--lixi-color-ink);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.lixi-app .lixi-site-footer {
+  padding-block: 2.5rem;
+  background: var(--lixi-color-accent) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+.lixi-site-footer-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.lixi-footer-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.lixi-footer-brand .lixi-brand-mark {
+  border-color: #fff;
+  box-shadow: 3px 3px 0 #fff;
+}
+
+.lixi-footer-brand strong {
+  display: block;
+  color: #fff;
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.35rem;
+}
+
+.lixi-footer-brand p {
+  max-width: 34rem;
+  margin: 0.35rem 0 0;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.lixi-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+}
+
+.lixi-footer-nav a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  color: #fff !important;
+  font-weight: 900;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.lixi-footer-copyright {
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.62) !important;
+  font-size: 0.9rem;
+}
+
+.lixi-hero {
+  position: relative;
+  overflow: clip;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background:
+    radial-gradient(circle at 82% 16%, rgba(243, 176, 34, 0.28), transparent 19rem),
+    radial-gradient(circle at 14% 20%, rgba(230, 234, 247, 0.9), transparent 24rem),
+    linear-gradient(180deg, #fffaf0 0%, #fff4da 100%);
+}
+
+.lixi-hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  gap: clamp(3rem, 7vw, 5rem);
+}
+
+.lixi-hero-copy {
+  max-width: 46rem;
+  animation: lixi-reveal 480ms ease both;
+}
+
+.lixi-hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1rem;
+  color: var(--lixi-color-primary-strong);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lixi-hero-kicker span {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--lixi-color-primary);
+  box-shadow: 0 0 0 5px var(--lixi-color-primary-soft);
+}
+
+.lixi-hero-copy h1 {
+  max-width: 14ch;
+  margin: 0 0 1.5rem;
+  color: var(--lixi-color-accent);
+  font-size: clamp(3rem, 6vw, 4rem);
+  letter-spacing: -0.045em;
+}
+
+.lixi-hero-description {
+  max-width: 42rem;
+  margin: 0 0 2rem;
+  color: var(--lixi-color-muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.lixi-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.lixi-hero-highlights {
+  display: grid;
+  gap: 0.65rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lixi-hero-highlights li {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--lixi-color-accent);
+  font-size: 0.95rem;
+  font-weight: 850;
+}
+
+.lixi-hero-highlights svg {
+  flex: 0 0 auto;
+  color: var(--lixi-color-primary-strong);
+}
+
+.lixi-hero-visual {
+  position: relative;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 0.5rem 0.75rem 1rem 0;
+  animation: lixi-reveal 520ms 100ms ease both;
+}
+
+.lixi-hero-window {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 31rem);
+  overflow: hidden;
+  border-width: 3px;
+  border-color: var(--lixi-color-ink);
+  background: var(--lixi-color-surface);
+  box-shadow: 10px 12px 0 var(--lixi-color-ink);
+  transform: rotate(1.25deg);
+}
+
+.lixi-hero-window-bar {
+  min-height: 4.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 3px solid var(--lixi-color-ink);
+  background: var(--lixi-color-primary-soft);
+}
+
+.lixi-hero-window-bar > span {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: 0 0 auto;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 50%;
+}
+
+.lixi-hero-window-bar > span:nth-child(1) {
+  background: #fb7185;
+}
+
+.lixi-hero-window-bar > span:nth-child(2) {
+  background: #facc15;
+}
+
+.lixi-hero-window-bar > span:nth-child(3) {
+  background: #4ade80;
+}
+
+.lixi-hero-window-labels {
+  min-width: 0;
+  display: grid;
+  margin-left: auto;
+  text-align: right;
+}
+
+.lixi-hero-window-labels strong {
+  overflow: hidden;
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lixi-hero-window-labels span {
+  color: var(--lixi-color-primary-strong);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lixi-hero-window-content {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 4vw, 1.5rem);
+}
+
+.lixi-hero-status-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px dashed var(--lixi-color-border-strong);
+  border-radius: var(--lixi-radius-md);
+  background: #fffaf0;
+}
+
+.lixi-hero-status-card p,
+.lixi-hero-status-card strong {
+  display: block;
+  margin: 0;
+}
+
+.lixi-hero-status-card p {
+  color: var(--lixi-color-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.lixi-hero-status-card strong {
+  margin-top: 0.35rem;
+  color: var(--lixi-color-accent);
+  font-size: 0.9rem;
+}
+
+.lixi-hero-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.lixi-hero-stat {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 2px solid var(--lixi-color-border);
+  border-radius: var(--lixi-radius-md);
+  background: var(--lixi-color-surface);
+}
+
+.lixi-hero-stat-icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  background: var(--lixi-color-accent-soft);
+  color: var(--lixi-color-accent);
+}
+
+.lixi-hero-stat-income .lixi-hero-stat-icon {
+  background: var(--lixi-color-success-soft);
+  color: var(--lixi-color-success);
+}
+
+.lixi-hero-stat-expense .lixi-hero-stat-icon {
+  background: var(--lixi-color-danger-soft);
+  color: var(--lixi-color-danger);
+}
+
+.lixi-hero-stat p {
+  margin: 0;
+  color: var(--lixi-color-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.lixi-hero-stat strong {
+  display: block;
+  margin-top: 0.3rem;
+  overflow-wrap: anywhere;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.lixi-hero-goal {
+  padding-top: 0.25rem;
+}
+
+.lixi-hero-goal-copy {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+  color: var(--lixi-color-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.lixi-hero-goal-copy strong {
+  color: var(--lixi-color-accent);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.lixi-hero-progress {
+  height: 0.8rem;
+  overflow: hidden;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 999px;
+  background: var(--lixi-color-accent-soft);
+}
+
+.lixi-hero-progress span {
+  display: block;
+  height: 100%;
+  border-right: 2px solid var(--lixi-color-ink);
+  background: var(--lixi-color-primary);
+}
+
+.lixi-hero-goal > p {
+  margin: 0.65rem 0 0;
+  color: var(--lixi-color-muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+.lixi-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-kpi-card {
+  min-height: 100%;
+  padding: 1.25rem;
+}
+
+.lixi-kpi-label,
+.lixi-kpi-note {
+  margin: 0;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-kpi-label {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.lixi-kpi-value {
+  margin: 0.3rem 0 0.45rem;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.lixi-kpi-note {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.lixi-goal-card {
+  display: grid;
+  gap: 1rem;
+  background: linear-gradient(
+    140deg,
+    var(--lixi-color-primary-soft),
+    var(--lixi-color-accent-soft)
+  );
+}
+
+.lixi-goal-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--lixi-color-primary-strong);
+}
+
+.lixi-goal-card-heading .lixi-kpi-label {
+  margin-top: 0;
+}
+
+.lixi-goal-progress,
+.lixi-allocation-bar {
+  height: 0.7rem;
+  overflow: hidden;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 999px;
+  background: var(--lixi-color-surface);
+}
+
+.lixi-goal-progress span,
+.lixi-allocation-bar span {
+  display: block;
+  height: 100%;
+}
+
+.lixi-expenses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-expense-card {
+  min-height: 16rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+.lixi-expense-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.lixi-expense-icon,
+.lixi-feature-icon {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-md);
+  background: var(--lixi-color-primary-soft);
+  box-shadow: 3px 3px 0 var(--lixi-color-ink);
+  color: var(--lixi-color-accent);
+}
+
+.lixi-expense-title,
+.lixi-expense-date,
+.lixi-expense-note,
+.lixi-expense-amount {
+  margin: 0;
+}
+
+.lixi-expense-title {
+  color: var(--lixi-color-accent);
+  font-weight: 900;
+}
+
+.lixi-expense-date {
+  margin-top: 0.25rem;
+  color: var(--lixi-color-muted);
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.lixi-expense-amount {
+  margin-top: 1.25rem;
+  color: var(--lixi-color-danger);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.lixi-expense-note {
+  flex: 1;
+  margin-block: 0.6rem 1.1rem;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-expense-card .lixi-action {
+  align-self: flex-start;
+}
+
+.lixi-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-feature-card {
+  min-height: 100%;
+  padding: 1.25rem;
+}
+
+.lixi-feature-card h3 {
+  margin: 1.1rem 0 0.55rem;
+}
+
+.lixi-feature-card p {
+  margin: 0;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-commitment-panel {
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-xl);
+  background: linear-gradient(
+    135deg,
+    var(--lixi-color-primary-soft),
+    var(--lixi-color-accent-soft)
+  );
+  box-shadow: var(--lixi-shadow-ink);
+}
+
+.lixi-commitment-panel .lixi-section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.lixi-commitment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lixi-commitment-grid li {
+  padding: 1rem;
+  border: 2px dashed rgba(16, 25, 54, 0.2);
+  border-radius: var(--lixi-radius-md);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.lixi-commitment-grid strong {
+  color: var(--lixi-color-accent);
+}
+
+.lixi-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-compare-card {
+  padding: 1.5rem;
+}
+
+.lixi-compare-card-muted {
+  border-top: 6px solid var(--lixi-color-danger);
+}
+
+.lixi-compare-card-good {
+  border-top: 6px solid var(--lixi-color-success);
+}
+
+.lixi-compare-title {
+  margin-bottom: 1rem;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.35rem;
+}
+
+.lixi-compare-card ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-allocation-grid {
+  display: grid;
+  align-items: start;
+  gap: 1rem;
+}
+
+.lixi-allocation-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lixi-allocation-item {
+  padding: 1rem 1.1rem;
+}
+
+.lixi-allocation-item-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+  color: var(--lixi-color-accent);
+  font-weight: 900;
+}
+
+.lixi-allocation-note {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--lixi-color-accent-soft), var(--lixi-color-surface));
+}
+
+.lixi-allocation-note p:first-child {
+  margin: 0 0 0.75rem;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.35rem;
+}
+
+.lixi-allocation-note p:last-child {
+  margin: 0;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-heart-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.lixi-heart-message,
+.lixi-heart-disclaimer {
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.lixi-heart-message h2 {
+  margin: 0.6rem 0 1rem;
+}
+
+.lixi-heart-message p:not(.lixi-eyebrow),
+.lixi-heart-disclaimer p:not(.lixi-eyebrow) {
+  color: var(--lixi-color-muted);
+}
+
+.lixi-heart-disclaimer {
+  background: var(--lixi-color-primary-soft);
+}
+
+.lixi-dialog-content {
+  border: 2px solid var(--lixi-color-ink) !important;
+  border-radius: var(--lixi-radius-lg) !important;
+  box-shadow: var(--lixi-shadow-ink) !important;
+}
+
+.lixi-donate-section {
+  color: #fff;
+}
+
+.lixi-donate-section .lixi-section-heading {
+  color: #fff;
+}
+
+.lixi-donate-section .lixi-section-heading h2,
+.lixi-donate-section .lixi-section-description,
+.lixi-donate-section .lixi-eyebrow {
+  color: inherit;
+}
+
+.lixi-donate-panel {
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 16px 0 rgba(16, 25, 54, 0.12),
+    0 28px 64px rgba(16, 25, 54, 0.2);
+}
+
+.lixi-donate-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.lixi-donate-panel-heading h3 {
+  margin: 0.4rem 0 0.35rem;
+  color: #fff;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.lixi-donate-panel-heading p:last-child {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.lixi-carousel-toggle {
+  flex: 0 0 auto;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.lixi-donate-carousel {
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--lixi-radius-lg);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lixi-donate-slides {
+  display: flex;
+}
+
+.lixi-donate-slide {
+  min-width: 100%;
+  flex: 0 0 100%;
+  padding: 0.75rem;
+}
+
+.lixi-donate-session {
+  display: grid;
+  align-items: center;
+  gap: 1.25rem;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border: 2px solid var(--lixi-color-border);
+  border-radius: var(--lixi-radius-lg);
+  background: var(--lixi-color-surface);
+  color: var(--lixi-color-ink);
+  box-shadow: var(--lixi-shadow-card);
+}
+
+.lixi-donate-session-copy {
+  min-width: 0;
+}
+
+.lixi-donate-recipient {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.lixi-donate-avatar {
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: 0 0 auto;
+  overflow: hidden;
+  padding: 0;
+  border: 3px solid var(--lixi-color-primary);
+  border-radius: 1.25rem;
+  background: var(--lixi-color-primary-soft);
+}
+
+.lixi-donate-avatar > span {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lixi-color-accent);
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--lixi-motion-fast) ease;
+}
+
+.lixi-donate-avatar:hover > span,
+.lixi-donate-avatar:focus-visible > span {
+  opacity: 1;
+}
+
+.lixi-donate-recipient h4,
+.lixi-donate-recipient p {
+  margin: 0;
+}
+
+.lixi-donate-recipient h4 {
+  color: var(--lixi-color-accent);
+  font-size: 1.25rem;
+}
+
+.lixi-donate-recipient p {
+  margin-top: 0.25rem;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-donate-details {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.lixi-donate-details > div {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.5fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 2px dashed rgba(16, 25, 54, 0.15);
+  border-radius: var(--lixi-radius-sm);
+  background: rgba(16, 25, 54, 0.025);
+}
+
+.lixi-donate-details dt {
+  color: var(--lixi-color-muted);
+  font-weight: 800;
+}
+
+.lixi-donate-details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--lixi-color-accent);
+  font-weight: 900;
+  text-align: right;
+}
+
+.lixi-donate-qr-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.lixi-donate-qr-card p,
+.lixi-donate-qr-card span {
+  margin: 0;
+  color: var(--lixi-color-muted);
+  font-weight: 800;
+}
+
+.lixi-donate-qr {
+  position: relative;
+  width: min(100%, 16rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: 0.75rem;
+  border: 2px dashed rgba(16, 25, 54, 0.2);
+  border-radius: var(--lixi-radius-md);
+  background: #fff;
+  cursor: pointer;
+}
+
+.lixi-donate-qr > span {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lixi-color-accent);
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--lixi-motion-fast) ease;
+}
+
+.lixi-donate-qr:hover > span,
+.lixi-donate-qr:focus-visible > span {
+  opacity: 1;
+}
+
+.lixi-donate-state {
+  min-height: 18rem;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.75rem;
+  border-radius: var(--lixi-radius-md);
+  background: var(--lixi-color-surface);
+  color: var(--lixi-color-muted);
+  text-align: center;
+}
+
+.lixi-donate-state p {
+  margin: 0;
+  font-weight: 800;
+}
+
+.lixi-donate-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.lixi-donate-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lixi-donate-dots button {
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.lixi-donate-dots button.is-active {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.lixi-copy-box,
+.lixi-donate-copy-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--lixi-radius-md);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lixi-donate-copy-box label {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: #fff;
+  font-weight: 900;
+}
+
+.lixi-donate-copy-box > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.65rem;
+}
+
+.lixi-donate-copy-box input {
+  min-width: 0;
+  min-height: 2.875rem;
+  padding: 0.7rem 0.85rem;
+  border: 2px solid transparent;
+  border-radius: var(--lixi-radius-sm);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--lixi-color-ink);
+  font-weight: 800;
+}
+
+.lixi-donate-copy-box p {
+  margin: 0.65rem 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+}
+
+.lixi-image-dialog-frame {
+  max-height: 70vh;
+  overflow: hidden;
+  border-radius: var(--lixi-radius-md);
+  background: #fff;
+}
+
+.lixi-image-dialog > p {
+  margin: 0;
+  color: var(--lixi-color-muted);
+  font-weight: 800;
+  text-align: center;
+}
+
+.lixi-hero-orbit {
+  position: absolute;
+  border: 2px solid rgba(26, 38, 84, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.lixi-hero-orbit-one {
+  width: 25rem;
+  height: 25rem;
+  top: -10rem;
+  right: -12rem;
+}
+
+.lixi-hero-orbit-two {
+  width: 12rem;
+  height: 12rem;
+  bottom: -7rem;
+  left: -5rem;
+}
+
+.lixi-hero-spark {
+  position: absolute;
+  z-index: 4;
+  color: var(--lixi-color-primary-strong);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lixi-hero-spark-one {
+  top: -1.5rem;
+  right: 0;
+  transform: rotate(12deg);
+}
+
+.lixi-hero-spark-two {
+  bottom: -0.5rem;
+  left: -0.5rem;
+  transform: rotate(-12deg);
+}
+
+@keyframes lixi-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lixi-section {
+  position: relative;
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.lixi-section-canvas {
+  background: transparent;
+}
+
+.lixi-section-soft {
+  background: var(--lixi-color-surface-soft);
+}
+
+.lixi-section-accent {
+  background: var(--lixi-color-accent);
+  color: #fff;
+}
+
+.lixi-section-heading {
+  display: grid;
+  gap: var(--lixi-space-3);
+  margin-bottom: var(--lixi-space-6);
+}
+
+.lixi-section-heading-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.lixi-section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.035em;
+}
+
+.lixi-eyebrow {
+  margin: 0;
+  color: var(--lixi-color-primary-strong);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lixi-section-description {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--lixi-color-muted);
+  font-size: 1.05rem;
+}
+
+.lixi-surface {
+  min-width: 0;
+  border: 2px solid var(--lixi-color-border);
+  background: var(--lixi-color-surface);
+  color: var(--lixi-color-ink);
+}
+
+.lixi-surface-card {
+  border-radius: var(--lixi-radius-lg);
+  box-shadow: var(--lixi-shadow-card);
+  transition:
+    transform var(--lixi-motion-standard) ease,
+    border-color var(--lixi-motion-standard) ease,
+    box-shadow var(--lixi-motion-standard) ease;
+}
+
+.lixi-surface-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lixi-color-border-strong);
+  box-shadow: var(--lixi-shadow-hover);
+}
+
+.lixi-surface-panel {
+  border-color: var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-lg);
+  box-shadow: var(--lixi-shadow-ink);
+}
+
+.lixi-surface-inset {
+  border-style: dashed;
+  border-radius: var(--lixi-radius-md);
+  background: color-mix(in srgb, var(--lixi-color-surface) 82%, transparent);
+}
+
+.lixi-action {
+  min-height: 2.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  max-width: 100%;
+  padding: 0.75rem 1.15rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  transition:
+    transform var(--lixi-motion-fast) ease,
+    box-shadow var(--lixi-motion-fast) ease,
+    background-color var(--lixi-motion-fast) ease,
+    border-color var(--lixi-motion-fast) ease,
+    color var(--lixi-motion-fast) ease;
+}
+
+.lixi-action:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.lixi-action:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lixi-action:disabled,
+.lixi-action[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.lixi-action-primary {
+  border-color: var(--lixi-color-accent);
+  background: var(--lixi-color-accent);
+  box-shadow: 0 4px 0 #080d21;
+  color: #fff;
+}
+
+.lixi-action-primary:hover:not(:disabled) {
+  background: var(--lixi-color-accent-strong);
+}
+
+.lixi-action-secondary {
+  border-color: var(--lixi-color-border-strong);
+  background: var(--lixi-color-surface);
+  color: var(--lixi-color-primary-strong);
+}
+
+.lixi-action-secondary:hover:not(:disabled) {
+  border-color: var(--lixi-color-primary);
+  background: var(--lixi-color-primary-soft);
+}
+
+.lixi-action-ghost {
+  background: transparent;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-icon-tile {
+  width: 3.4rem;
+  height: 3.4rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-md);
+  box-shadow: 3px 3px 0 var(--lixi-color-ink);
+}
+
+.lixi-icon-tile-amber {
+  background: #fed7aa;
+}
+
+.lixi-icon-tile-blue {
+  background: #bfdbfe;
+}
+
+.lixi-icon-tile-green {
+  background: #bbf7d0;
+}
+
+.lixi-icon-tile-coral {
+  background: #fecdd3;
+}
+
+@media (min-width: 40rem) {
+  .lixi-shell {
+    width: min(calc(100% - 3rem), 75rem);
+  }
+
+  .lixi-brand-copy strong,
+  .lixi-brand-copy small {
+    max-width: 18rem;
+  }
+
+  .lixi-site-footer-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.8fr);
+    align-items: start;
+  }
+
+  .lixi-footer-nav {
+    justify-content: flex-end;
+  }
+
+  .lixi-footer-copyright {
+    grid-column: 1 / -1;
+  }
+
+  .lixi-hero-highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lixi-dashboard-grid,
+  .lixi-feature-grid,
+  .lixi-commitment-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lixi-expenses-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lixi-goal-card {
+    grid-column: span 2;
+  }
+
+  .lixi-heart-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.65fr);
+  }
+
+  .lixi-donate-session {
+    grid-template-columns: minmax(0, 1.05fr) minmax(16rem, 0.75fr);
+  }
+}
+
+@media (min-width: 60rem) {
+  .lixi-hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(25rem, 0.8fr);
+  }
+
+  .lixi-dashboard-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lixi-goal-card {
+    grid-column: span 2;
+  }
+
+  .lixi-allocation-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  }
+}
+
+@media (min-width: 75rem) {
+  .lixi-expenses-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .lixi-expenses-grid > *:nth-child(1),
+  .lixi-expenses-grid > *:nth-child(2) {
+    grid-column: span 2;
+  }
+
+  .lixi-expenses-grid > *:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .lixi-expenses-grid > *:nth-child(4),
+  .lixi-expenses-grid > *:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 60rem) {
+  .lixi-desktop-nav {
+    display: flex;
+  }
+
+  .lixi-header-actions {
+    display: flex;
+  }
+
+  .lixi-mobile-menu-trigger {
+    display: none;
+  }
+}
+
+@media (max-width: 30rem) {
+  .lixi-hero {
+    padding-block: 3rem;
+  }
+
+  .lixi-hero-copy h1 {
+    font-size: clamp(2.7rem, 14vw, 3.7rem);
+  }
+
+  .lixi-hero-actions .lixi-action {
+    width: 100%;
+  }
+
+  .lixi-hero-visual {
+    padding-right: 0.45rem;
+  }
+
+  .lixi-hero-window {
+    box-shadow: 6px 7px 0 var(--lixi-color-ink);
+    transform: none;
+  }
+
+  .lixi-hero-window-labels strong {
+    max-width: 9rem;
+  }
+
+  .lixi-hero-status-card {
+    align-items: center;
+  }
+
+  .lixi-hero-status-card .lixi-icon-tile {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .lixi-hero-stat {
+    padding: 0.75rem;
+  }
+
+  .lixi-hero-goal-copy {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .lixi-hero-goal-copy strong {
+    text-align: left;
+  }
+
+  .lixi-dashboard-grid,
+  .lixi-expenses-grid,
+  .lixi-feature-grid,
+  .lixi-commitment-grid,
+  .lixi-compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lixi-goal-card {
+    grid-column: auto;
+  }
+
+  .lixi-donate-panel-heading,
+  .lixi-donate-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .lixi-carousel-toggle,
+  .lixi-donate-controls .lixi-action {
+    width: 100%;
+  }
+
+  .lixi-donate-controls {
+    display: grid;
+    justify-items: stretch;
+  }
+
+  .lixi-donate-dots {
+    justify-content: center;
+    order: -1;
+  }
+
+  .lixi-donate-details > div,
+  .lixi-donate-copy-box > div {
+    grid-template-columns: 1fr;
+  }
+
+  .lixi-donate-details dd {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lixi-app *,
+  .lixi-app *::before,
+  .lixi-app *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

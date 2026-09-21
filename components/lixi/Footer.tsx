@@ -1,35 +1,37 @@
+import { Gift } from '@phosphor-icons/react';
 import { useI18n } from '@/hooks/useI18n';
+import { LixiShell } from './ui';
 
 export function DisclaimerBar() {
   const { t } = useI18n('lixi');
 
-  return (
-    <div className="bg-[#1f1a17] px-2.5 py-3 text-center font-bold text-white">
-      {t('footer.disclaimer')}
-    </div>
-  );
+  return <div className="lixi-disclaimer">{t('footer.disclaimer')}</div>;
 }
 
 export function Footer() {
   const { t } = useI18n('lixi');
 
   return (
-    <footer className="bg-[#fff7ed] py-7 pb-10 text-center text-[#6a5c55]">
-      <div className="mx-auto w-[min(1180px,94vw)]">
-        <div className="mb-2.5 flex flex-wrap justify-center gap-3">
-          <a href="#dashboard" className="font-extrabold text-[#1f1a17]">
-            {t('footer.statementLink')}
-          </a>
-          <a href="#heart" className="font-extrabold text-[#1f1a17]">
-            {t('footer.contactLink')}
-          </a>
-          <a href="#donate" className="font-extrabold text-[#1f1a17]">
-            {t('common.donateNow')}
-          </a>
+    <footer className="lixi-site-footer">
+      <LixiShell className="lixi-site-footer-grid">
+        <div className="lixi-footer-brand">
+          <span className="lixi-brand-mark" aria-hidden="true">
+            <Gift size={26} weight="duotone" />
+          </span>
+          <div>
+            <strong>{t('common.brandName')}</strong>
+            <p>{t('footer.description')}</p>
+          </div>
         </div>
-        <p className="my-1">{t('footer.description')}</p>
-        <p className="my-1">{t('footer.copyright')}</p>
-      </div>
+
+        <nav className="lixi-footer-nav" aria-label={t('header.internalLinksAria')}>
+          <a href="#dashboard">{t('footer.statementLink')}</a>
+          <a href="#heart">{t('footer.contactLink')}</a>
+          <a href="#donate">{t('common.donateNow')}</a>
+        </nav>
+
+        <p className="lixi-footer-copyright">{t('footer.copyright')}</p>
+      </LixiShell>
     </footer>
   );
 }

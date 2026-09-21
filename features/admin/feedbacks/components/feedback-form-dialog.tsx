@@ -25,7 +25,10 @@ import { useNotification } from '@/components/ui/notification';
 import { useCreateFeedback, useUpdateFeedback } from '@/hooks/use-feedbacks';
 import { getApiErrorMessage } from '@/lib/api-error';
 import { FEEDBACK_TYPES, type FeedbackItem } from '@/types';
-import { feedbackSchema, type FeedbackFormValues } from '@/features/feedback/schemas/feedback.schema';
+import {
+  feedbackSchema,
+  type FeedbackFormValues,
+} from '@/features/feedback/schemas/feedback.schema';
 
 interface FeedbackFormDialogProps {
   open: boolean;

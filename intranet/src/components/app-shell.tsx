@@ -1,8 +1,8 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { TopNavigation } from "@/components/top-navigation";
-import { hasSupabaseEnv } from "@/lib/supabase/server";
-import type { Employee } from "@/lib/types";
+import { TopNavigation } from '@/components/top-navigation';
+import { hasSupabaseEnv } from '@/lib/supabase/server';
+import type { Employee } from '@/lib/types';
 
 export function AppShell({ children, viewer }: { children: ReactNode; viewer: Employee }) {
   return (

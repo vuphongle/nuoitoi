@@ -72,7 +72,7 @@ const common = {
   notFound: {
     title: 'Page Not Found',
     description:
-      'The page you are looking for does not exist or has been moved. Please return to the homepage or explore HQ Software.',
+      'The page you are looking for does not exist or has been moved. Please return to the homepage or explore NuoiToi.',
     backToHome: 'Back to Home',
     goToSupport: 'Go to Support',
   },
@@ -86,7 +86,7 @@ const common = {
     back: 'Return to the admin area',
   },
   sidebar: {
-    appName: 'HQ Software',
+    appName: 'NuoiToi',
     appSub: 'Management System',
     main: 'Main',
     system: 'System',
@@ -115,10 +115,10 @@ const common = {
     forgotPassword: 'Forgot password?',
     submitButton: 'Sign in',
     backToHome: 'Back to Home',
-    bannerTitleLine1: 'HQ Software',
-    bannerTitleLine2: 'Smart Cards & Campaign Hub',
+    bannerTitleLine1: 'NuoiToi',
+    bannerTitleLine2: 'Lucky Money Platform',
     bannerDescription:
-      'Centralized management system for campaign cards, customer analytics, and enterprise digital products.',
+      'A centralized admin system for managing lucky-money sessions, tracking donations, and running Lunar New Year campaign content.',
     invalidCredentials: 'Invalid email or password',
     profileLoadFailed: 'Login succeeded, but the administrator profile could not be loaded.',
   },

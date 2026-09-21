@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { ArrowDown, Gift, X } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/hooks/useI18n';
 import { SUPPORTED_LANGUAGES, type AppLanguage } from '@/constants/lang';
+import { useI18n } from '@/hooks/useI18n';
 import { navLinks } from './data';
 
 interface MobileMenuProps {
@@ -46,80 +46,72 @@ export function MobileMenu({
 
   return createPortal(
     <motion.div
-      initial={{ opacity: 0, y: -16 }}
+      initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-1100 h-dvh w-screen overflow-y-auto bg-[#fff7ed] p-5 min-[901px]:hidden"
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      className="lixi-mobile-drawer"
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div
-            className="grid h-11 w-11 place-items-center rounded-2xl shadow-[0_24px_60px_rgba(215,38,61,0.12)]"
-            style={{
-              background: 'radial-gradient(circle at 30% 30%, #fff1e6, #ffd2c2 60%, #ffb9a5)',
-            }}
-            aria-hidden="true"
-          >
-            🧧
-          </div>
-          <div className="font-extrabold tracking-wide">{t('common.brandName')}</div>
+      <div className="lixi-mobile-drawer-topline">
+        <div className="lixi-brand-lockup">
+          <span className="lixi-brand-mark" aria-hidden="true">
+            <Gift size={26} weight="duotone" />
+          </span>
+          <span className="lixi-brand-copy">
+            <strong>{t('common.brandName')}</strong>
+            <small>{t('header.subtitle')}</small>
+          </span>
         </div>
         <button
           type="button"
           onClick={onClose}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/6 bg-black/4 text-[#1f1a17] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7263d]"
+          className="lixi-mobile-menu-trigger"
           aria-label={t('mobileMenu.closeMenuAria')}
         >
-          <X className="h-5 w-5" aria-hidden="true" />
+          <X size={22} weight="bold" aria-hidden="true" />
         </button>
       </div>
 
       <motion.nav
-        className="mt-10"
+        className="lixi-mobile-nav"
         aria-label={t('header.internalLinksAria')}
         initial="hidden"
         animate="visible"
         variants={{
           hidden: {},
-          visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
+          visible: { transition: { staggerChildren: 0.035, delayChildren: 0.04 } },
         }}
       >
-        <ul className="space-y-1">
-          {navLinks.map((link) => (
-            <motion.li
-              key={link.href}
-              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-              transition={{ duration: 0.25 }}
-            >
-              {link.action === 'feedback' ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    onClose();
-                    onOpenFeedback();
-                  }}
-                  className="block w-full border-b border-black/6 py-4 text-left text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
-                >
-                  {t(link.labelKey)}
-                </button>
-              ) : (
-                <a
-                  href={link.href}
-                  onClick={onClose}
-                  className="block border-b border-black/6 py-4 text-2xl font-extrabold text-[#1f1a17] transition-colors hover:text-[#d7263d]"
-                >
-                  {t(link.labelKey)}
-                </a>
-              )}
-            </motion.li>
-          ))}
-        </ul>
+        {navLinks.map((link, index) => (
+          <motion.div
+            key={link.href}
+            variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.18 }}
+          >
+            {link.action === 'feedback' ? (
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onOpenFeedback();
+                }}
+              >
+                <span aria-hidden="true">0{index + 1}</span>
+                {t(link.labelKey)}
+              </button>
+            ) : (
+              <a href={link.href} onClick={onClose}>
+                <span aria-hidden="true">0{index + 1}</span>
+                {t(link.labelKey)}
+              </a>
+            )}
+          </motion.div>
+        ))}
       </motion.nav>
 
-      <div className="mt-8 flex items-center gap-3">
+      <div className="lixi-mobile-drawer-footer">
         <div
-          className="inline-flex rounded-full border border-black/6 bg-black/4 p-1"
+          className="lixi-language-switcher"
           role="group"
           aria-label={t('header.languageSelectorAria')}
         >
@@ -128,23 +120,16 @@ export function MobileMenu({
               key={code}
               type="button"
               onClick={() => onChangeLanguage(code)}
-              className={cn(
-                'rounded-full px-3 py-1.5 font-bold text-[#6a5c55]',
-                currentLanguage === code &&
-                  'bg-white text-[#1f1a17] shadow-[0_8px_16px_rgba(0,0,0,0.06)]'
-              )}
+              className={cn(currentLanguage === code && 'is-active')}
+              aria-pressed={currentLanguage === code}
             >
               {code.toUpperCase()}
             </button>
           ))}
         </div>
-        <a
-          href="#donate"
-          onClick={onClose}
-          className="flex-1 rounded-2xl px-4 py-3 text-center font-extrabold text-white shadow-[0_16px_34px_rgba(215,38,61,0.25)]"
-          style={{ background: 'linear-gradient(120deg, #d7263d, #f28c28)' }}
-        >
+        <a className="lixi-action lixi-action-primary" href="#donate" onClick={onClose}>
           {t('common.donateNow')}
+          <ArrowDown size={18} weight="bold" aria-hidden="true" />
         </a>
       </div>
     </motion.div>,

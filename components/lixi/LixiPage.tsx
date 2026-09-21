@@ -12,20 +12,19 @@ import { DonateCarousel } from './DonateCarousel';
 import { Allocation } from './Allocation';
 import { Heart } from './Heart';
 import { DisclaimerBar, Footer } from './Footer';
-import { PetalFireworks } from './PetalFireworks';
 import { BackToTop } from './BackToTop';
+import { SkipLink } from './SkipLink';
 
 interface LixiPageProps {
   className?: string;
-  style?: React.CSSProperties;
 }
 
-export function LixiPage({ className, style }: LixiPageProps) {
+export function LixiPage({ className }: LixiPageProps) {
   return (
-    <div className={cn('relative bg-[#fff7ed] text-[#1f1a17]', className)} style={style}>
+    <div className={cn('lixi-app relative', className)}>
+      <SkipLink />
       <Header />
-      <PetalFireworks />
-      <main>
+      <main id="lixi-main">
         <Hero />
         <Dashboard />
         <Expenses />

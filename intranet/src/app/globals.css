@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #fffaf6;
@@ -28,7 +28,7 @@
   --color-mint-100: var(--mint-100);
   --color-mint-600: var(--mint-600);
   --color-mint-800: var(--mint-800);
-  --font-sans: "Aptos", "Segoe UI", Arial, sans-serif;
+  --font-sans: 'Aptos', 'Segoe UI', Arial, sans-serif;
 }
 
 * {
@@ -89,8 +89,7 @@ a {
   position: relative;
   border: 1px solid rgba(245, 118, 87, 0.18);
   background:
-    linear-gradient(128deg, rgba(255, 255, 255, 0.94), rgba(255, 239, 231, 0.88)),
-    var(--coral-50);
+    linear-gradient(128deg, rgba(255, 255, 255, 0.94), rgba(255, 239, 231, 0.88)), var(--coral-50);
   box-shadow: 0 28px 70px rgba(180, 74, 45, 0.1);
 }
 
@@ -102,7 +101,7 @@ a {
   height: 20rem;
   border-radius: 999px;
   background: rgba(245, 118, 87, 0.13);
-  content: "";
+  content: '';
 }
 
 .hero-note {
@@ -125,7 +124,7 @@ a {
   height: 2px;
   border-radius: 99px;
   background: currentColor;
-  content: "";
+  content: '';
 }
 
 .button {
@@ -138,7 +137,11 @@ a {
   padding: 0.72rem 1.1rem;
   font-size: 0.9rem;
   font-weight: 800;
-  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
 }
 
 .button:hover {
@@ -247,7 +250,9 @@ a {
   background: white;
   padding: 0.72rem 0.9rem;
   color: #1e2b27;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .field-input::placeholder {

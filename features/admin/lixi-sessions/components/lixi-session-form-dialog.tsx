@@ -15,6 +15,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useNotification } from '@/components/ui/notification';
 import { useCreateLixiSession, useUpdateLixiSession } from '@/hooks/use-lixi-sessions';
+import { useI18n } from '@/hooks/useI18n';
 import { getApiErrorMessage } from '@/lib/api-error';
 import type { LixiSessionItem } from '@/types';
 import {
@@ -22,6 +23,9 @@ import {
   LIXI_SESSION_ACCEPTED_IMAGE_TYPES,
   type LixiSessionFormSchemaValues,
 } from '../schemas/lixi-session.schema';
+import { ImageCropperDialog } from './image-cropper-dialog';
+
+type CropField = 'qr' | 'avatar';
 
 interface LixiSessionFormDialogProps {
   open: boolean;
@@ -47,14 +51,14 @@ function ImageFileField({
   existingUrl,
   previewUrl,
   error,
-  onChange,
+  onSelectFile,
 }: {
   id: string;
   label: string;
   existingUrl?: string;
   previewUrl: string | null;
   error?: string;
-  onChange: (file: File | null) => void;
+  onSelectFile: (file: File | null) => void;
 }) {
   const displayUrl = previewUrl || existingUrl;
 
@@ -62,11 +66,15 @@ function ImageFileField({
     <div className="space-y-2">
       <Label htmlFor={id}>{label}</Label>
       <Input
+        className="mt-2 cursor-pointer!"
         id={id}
         type="file"
         accept={LIXI_SESSION_ACCEPTED_IMAGE_TYPES.join(',')}
         error={error}
-        onChange={(event) => onChange(event.target.files?.[0] ?? null)}
+        onChange={(event) => {
+          onSelectFile(event.target.files?.[0] ?? null);
+          event.target.value = '';
+        }}
       />
       {displayUrl ? (
         <div className="mt-2 flex items-center gap-3 rounded-lg border border-border bg-muted/20 p-2">
@@ -117,6 +125,7 @@ export function LixiSessionFormDialog({
   lixiSession,
 }: LixiSessionFormDialogProps) {
   const isEdit = Boolean(lixiSession);
+  const { t } = useI18n('lixiSessions');
   const { success, error } = useNotification();
   const schema = React.useMemo(() => buildLixiSessionSchema(isEdit), [isEdit]);
 
@@ -160,6 +169,31 @@ export function LixiSessionFormDialog({
   const qrPreview = usePreviewUrl(qrFile);
   const avatarPreview = usePreviewUrl(avatarFile);
 
+  const [cropState, setCropState] = React.useState<{
+    field: CropField;
+    imageSrc: string;
+    fileName: string;
+  } | null>(null);
+
+  const handleSelectRawFile = (field: CropField, file: File | null) => {
+    if (!file) return;
+    setCropState({ field, imageSrc: URL.createObjectURL(file), fileName: file.name });
+  };
+
+  const handleCropperOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) {
+      setCropState((current) => {
+        if (current) URL.revokeObjectURL(current.imageSrc);
+        return null;
+      });
+    }
+  };
+
+  const handleCropped = (file: File) => {
+    if (!cropState) return;
+    setValue(cropState.field, file, { shouldValidate: true, shouldDirty: true });
+  };
+
   const onSubmit = handleSubmit((values) => {
     const formData = new FormData();
     formData.append('code', values.code.trim());
@@ -181,146 +215,163 @@ export function LixiSessionFormDialog({
   });
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[640px]">
-        <DialogHeader>
-          <DialogTitle>{isEdit ? 'Chỉnh sửa phiên lì xì' : 'Thêm phiên lì xì mới'}</DialogTitle>
-        </DialogHeader>
+    <>
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-160">
+          <DialogHeader>
+            <DialogTitle>{isEdit ? 'Chỉnh sửa phiên lì xì' : 'Thêm phiên lì xì mới'}</DialogTitle>
+          </DialogHeader>
 
-        <form onSubmit={onSubmit} className="space-y-4 py-2" noValidate>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <form onSubmit={onSubmit} className="space-y-4 py-2" noValidate>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="lixi-code" required>
+                  {t('form.codeLabel')}
+                </Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-code"
+                  placeholder="TET-2026"
+                  error={errors.code?.message}
+                  {...register('code')}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lixi-name" required>
+                  {t('form.nameLabel')}
+                </Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-name"
+                  placeholder="Lì xì Tết 2026"
+                  error={errors.name?.message}
+                  {...register('name')}
+                />
+              </div>
+            </div>
+
             <div className="space-y-2">
-              <Label htmlFor="lixi-code" required>
-                Mã code
+              <Label htmlFor="lixi-tagline" required>
+                {t('form.taglineLabel')}
               </Label>
               <Input
-                id="lixi-code"
-                placeholder="TET-2026"
-                error={errors.code?.message}
-                {...register('code')}
+                className="mt-2"
+                id="lixi-tagline"
+                placeholder="An khang thịnh vượng"
+                error={errors.tagline?.message}
+                {...register('tagline')}
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="lixi-name" required>
-                Tên hiển thị
-              </Label>
-              <Input
-                id="lixi-name"
-                placeholder="Lì xì Tết 2026"
-                error={errors.name?.message}
-                {...register('name')}
-              />
-            </div>
-          </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="lixi-tagline" required>
-              Tagline
-            </Label>
-            <Input
-              id="lixi-tagline"
-              placeholder="An khang thịnh vượng"
-              error={errors.tagline?.message}
-              {...register('tagline')}
-            />
-          </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="space-y-2">
+                <Label htmlFor="lixi-bank" required>
+                  {t('form.bankLabel')}
+                </Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-bank"
+                  placeholder="Vietcombank"
+                  error={errors.bank?.message}
+                  {...register('bank')}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lixi-account" required>
+                  {t('form.accountLabel')}
+                </Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-account"
+                  placeholder="0123456789"
+                  error={errors.account?.message}
+                  {...register('account')}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lixi-owner" required>
+                  {t('form.ownerLabel')}
+                </Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-owner"
+                  placeholder="Nguyễn Minh Huy"
+                  error={errors.owner?.message}
+                  {...register('owner')}
+                />
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="space-y-2">
-              <Label htmlFor="lixi-bank" required>
-                Ngân hàng
-              </Label>
-              <Input
-                id="lixi-bank"
-                placeholder="Vietcombank"
-                error={errors.bank?.message}
-                {...register('bank')}
-              />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="lixi-content" required>
+                  {t('form.contentLabel')}
+                </Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-content"
+                  placeholder="Mung tuoi nam moi 2026"
+                  error={errors.content?.message}
+                  {...register('content')}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lixi-sort-order">{t('form.sortOrderLabel')}</Label>
+                <Input
+                  className="mt-2"
+                  id="lixi-sort-order"
+                  type="number"
+                  min={0}
+                  error={errors.sort_order?.message}
+                  {...register('sort_order', { valueAsNumber: true })}
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="lixi-account" required>
-                Số tài khoản
-              </Label>
-              <Input
-                id="lixi-account"
-                placeholder="0123456789"
-                error={errors.account?.message}
-                {...register('account')}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="lixi-owner" required>
-                Chủ tài khoản
-              </Label>
-              <Input
-                id="lixi-owner"
-                placeholder="Nguyễn Minh Huy"
-                error={errors.owner?.message}
-                {...register('owner')}
-              />
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="lixi-content" required>
-                Nội dung chuyển khoản
-              </Label>
-              <Input
-                id="lixi-content"
-                placeholder="Mung tuoi nam moi 2026"
-                error={errors.content?.message}
-                {...register('content')}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <ImageFileField
+                id="lixi-qr"
+                label={isEdit ? t('form.qrEditLabel') : t('form.qrCreateLabel')}
+                existingUrl={lixiSession?.qr}
+                previewUrl={qrPreview}
+                error={errors.qr?.message as string | undefined}
+                onSelectFile={(file) => handleSelectRawFile('qr', file)}
+              />
+              <ImageFileField
+                id="lixi-avatar"
+                label={isEdit ? t('form.avatarEditLabel') : t('form.avatarCreateLabel')}
+                existingUrl={lixiSession?.avatar}
+                previewUrl={avatarPreview}
+                error={errors.avatar?.message as string | undefined}
+                onSelectFile={(file) => handleSelectRawFile('avatar', file)}
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="lixi-sort-order">Thứ tự hiển thị</Label>
-              <Input
-                id="lixi-sort-order"
-                type="number"
-                min={0}
-                error={errors.sort_order?.message}
-                {...register('sort_order', { valueAsNumber: true })}
-              />
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <ImageFileField
-              id="lixi-qr"
-              label={isEdit ? 'Ảnh mã QR (bỏ trống nếu giữ nguyên)' : 'Ảnh mã QR *'}
-              existingUrl={lixiSession?.qr}
-              previewUrl={qrPreview}
-              error={errors.qr?.message as string | undefined}
-              onChange={(file) => setValue('qr', file, { shouldValidate: true, shouldDirty: true })}
-            />
-            <ImageFileField
-              id="lixi-avatar"
-              label={isEdit ? 'Ảnh đại diện (bỏ trống nếu giữ nguyên)' : 'Ảnh đại diện *'}
-              existingUrl={lixiSession?.avatar}
-              previewUrl={avatarPreview}
-              error={errors.avatar?.message as string | undefined}
-              onChange={(file) =>
-                setValue('avatar', file, { shouldValidate: true, shouldDirty: true })
-              }
-            />
-          </div>
+            <DialogFooter className="pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => onOpenChange(false)}
+                disabled={isPending}
+              >
+                Hủy
+              </Button>
+              <Button type="submit" disabled={isPending} isLoading={isPending}>
+                {isEdit ? 'Lưu thay đổi' : 'Tạo phiên lì xì'}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
-          <DialogFooter className="pt-4">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => onOpenChange(false)}
-              disabled={isPending}
-            >
-              Hủy
-            </Button>
-            <Button type="submit" disabled={isPending} isLoading={isPending}>
-              {isEdit ? 'Lưu thay đổi' : 'Tạo phiên lì xì'}
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+      <ImageCropperDialog
+        key={cropState?.imageSrc ?? 'empty'}
+        open={!!cropState}
+        imageSrc={cropState?.imageSrc ?? null}
+        fileName={cropState?.fileName ?? 'image.png'}
+        onOpenChange={handleCropperOpenChange}
+        onCropped={handleCropped}
+      />
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Avatar } from "@/components/avatar";
-import type { Employee } from "@/lib/types";
+import { Avatar } from '@/components/avatar';
+import type { Employee } from '@/lib/types';
 
 export function EmployeeCard({ employee }: { employee: Employee }) {
   return (
@@ -13,19 +13,27 @@ export function EmployeeCard({ employee }: { employee: Employee }) {
         </span>
       </div>
       <div className="mt-4">
-        <h3 className="text-lg font-black tracking-tight text-slate-950 group-hover:text-coral-700">{employee.fullName}</h3>
+        <h3 className="text-lg font-black tracking-tight text-slate-950 group-hover:text-coral-700">
+          {employee.fullName}
+        </h3>
         <p className="mt-1 text-sm font-semibold text-slate-500">{employee.jobTitle}</p>
         <p className="mt-0.5 text-xs font-bold text-mint-800">{employee.department}</p>
       </div>
       <p className="mt-4 line-clamp-2 text-sm leading-6 text-slate-600">{employee.bio}</p>
       <div className="mt-4 flex flex-wrap gap-1.5">
         {employee.interests.slice(0, 3).map((interest) => (
-          <span key={interest} className="rounded-full bg-coral-50 px-2.5 py-1 text-[0.7rem] font-bold text-coral-700">
+          <span
+            key={interest}
+            className="rounded-full bg-coral-50 px-2.5 py-1 text-[0.7rem] font-bold text-coral-700"
+          >
             {interest}
           </span>
         ))}
       </div>
-      <Link className="mt-5 inline-flex items-center gap-2 text-sm font-black text-slate-800 after:absolute after:inset-0 hover:text-coral-700" href={`/employees/${employee.slug}`}>
+      <Link
+        className="mt-5 inline-flex items-center gap-2 text-sm font-black text-slate-800 after:absolute after:inset-0 hover:text-coral-700"
+        href={`/employees/${employee.slug}`}
+      >
         Xem hồ sơ <span aria-hidden>→</span>
       </Link>
     </article>

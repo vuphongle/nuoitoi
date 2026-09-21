@@ -3,8 +3,7 @@ const support = {
     badge: 'Help Center',
     titlePrefix: 'Platform',
     titleHighlight: 'Support',
-    description:
-      'Documentation, API references, and direct channels to engineering support.',
+    description: 'Documentation, API references, and direct channels to engineering support.',
   },
   resources: {
     guides: {

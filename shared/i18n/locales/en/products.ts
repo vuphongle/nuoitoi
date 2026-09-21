@@ -25,19 +25,16 @@ const products = {
     close: 'Close',
   },
   items: {
-
     aiTranslate: {
       title: 'AI Translate',
       category: 'AI',
-      description:
-        'Real-time text, voice, and document translation with enterprise controls.',
+      description: 'Real-time text, voice, and document translation with enterprise controls.',
       metrics: '120+ Languages',
     },
     commerceCards: {
       title: 'Commerce Cards',
       category: 'Cards',
-      description:
-        'Programmable campaign cards, loyalty cards, and embedded wallet experiences.',
+      description: 'Programmable campaign cards, loyalty cards, and embedded wallet experiences.',
       metrics: '4.8x Activation',
     },
     documentFlow: {
@@ -64,15 +61,13 @@ const products = {
     insightEngine: {
       title: 'Insight Engine',
       category: 'AI',
-      description:
-        'Behavioral segmentation, content recommendations, and campaign intelligence.',
+      description: 'Behavioral segmentation, content recommendations, and campaign intelligence.',
       metrics: '38% Lift',
     },
     creativeStudio: {
       title: 'Creative Studio',
       category: 'Cards',
-      description:
-        'No-code card creation with design tokens, brand rules, and conversion presets.',
+      description: 'No-code card creation with design tokens, brand rules, and conversion presets.',
       metrics: 'Minutes to Ship',
     },
   },

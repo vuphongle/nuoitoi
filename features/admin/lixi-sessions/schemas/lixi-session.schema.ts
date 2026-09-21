@@ -26,7 +26,11 @@ const lixiSessionBaseSchema = z.object({
     .regex(/^[A-Za-z0-9_-]+$/, 'Code chỉ được chứa chữ, số, - hoặc _'),
   name: z.string().trim().min(1, 'Vui lòng nhập tên').max(255, 'Tên tối đa 255 ký tự'),
   tagline: z.string().trim().min(1, 'Vui lòng nhập tagline').max(255, 'Tagline tối đa 255 ký tự'),
-  bank: z.string().trim().min(1, 'Vui lòng nhập ngân hàng').max(100, 'Tên ngân hàng tối đa 100 ký tự'),
+  bank: z
+    .string()
+    .trim()
+    .min(1, 'Vui lòng nhập ngân hàng')
+    .max(100, 'Tên ngân hàng tối đa 100 ký tự'),
   account: z
     .string()
     .trim()

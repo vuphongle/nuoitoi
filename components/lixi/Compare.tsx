@@ -1,40 +1,38 @@
 import { useI18n } from '@/hooks/useI18n';
 import { compareBad, compareGood } from './data';
+import { LixiSection, LixiSectionHeading, LixiShell, LixiSurface } from './ui';
 
 export function Compare() {
   const { t } = useI18n('lixi');
 
   return (
-    <section id="compare" className="bg-[#fff7ed] py-20 scroll-mt-27.5">
-      <div className="mx-auto w-[min(1180px,94vw)]">
-        <div className="mb-8 text-center">
-          <h2 className="mb-2.5 text-3xl font-bold sm:text-4xl">{t('compare.title')}</h2>
-          <p className="text-[#6a5c55]">{t('compare.description')}</p>
-        </div>
+    <LixiSection id="compare">
+      <LixiShell>
+        <LixiSectionHeading
+          eyebrow="05 / A playful comparison"
+          title={t('compare.title')}
+          description={t('compare.description')}
+        />
 
-        <div className="grid gap-4.5 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
-          <article className="rounded-[18px] border-t-4 border-t-[#b91c1c] border-black/6 bg-white p-5 shadow-[0_24px_60px_rgba(215,38,61,0.12)]">
-            <div className="mb-2 font-extrabold">{t('compare.others')}</div>
-            <ul className="m-0 list-disc pl-4.5 text-[#6a5c55]">
+        <div className="lixi-compare-grid">
+          <LixiSurface as="article" className="lixi-compare-card lixi-compare-card-muted">
+            <div className="lixi-compare-title">{t('compare.others')}</div>
+            <ul>
               {compareBad.map((key) => (
-                <li key={key} className="mb-2">
-                  {t(`compare.bad.${key}`)}
-                </li>
+                <li key={key}>{t(`compare.bad.${key}`)}</li>
               ))}
             </ul>
-          </article>
-          <article className="rounded-[18px] border-t-4 border-t-[#0f766e] border-black/6 bg-white p-5 shadow-[0_24px_60px_rgba(215,38,61,0.12)]">
-            <div className="mb-2 font-extrabold">{t('compare.us')}</div>
-            <ul className="m-0 list-disc pl-4.5 text-[#6a5c55]">
+          </LixiSurface>
+          <LixiSurface as="article" className="lixi-compare-card lixi-compare-card-good">
+            <div className="lixi-compare-title">{t('compare.us')}</div>
+            <ul>
               {compareGood.map((key) => (
-                <li key={key} className="mb-2">
-                  {t(`compare.good.${key}`)}
-                </li>
+                <li key={key}>{t(`compare.good.${key}`)}</li>
               ))}
             </ul>
-          </article>
+          </LixiSurface>
         </div>
-      </div>
-    </section>
+      </LixiShell>
+    </LixiSection>
   );
 }

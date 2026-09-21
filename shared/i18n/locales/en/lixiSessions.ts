@@ -1,7 +1,8 @@
 const lixiSessions = {
   pageEyebrow: 'Lixi management',
   pageTitle: 'Lixi sessions',
-  pageDescription: 'Manage the lucky-money sessions shown on the homepage (QR code, bank account, order).',
+  pageDescription:
+    'Manage the lucky-money sessions shown on the homepage (QR code, bank account, order).',
   addSession: 'Add lixi session',
   commandSearchPlaceholder: 'Search lixi sessions by name or code',
   toolbarSearchPlaceholder: 'Search by name, code, owner...',
@@ -35,6 +36,20 @@ const lixiSessions = {
   deleteConfirmButton: 'Delete session',
   deleteSuccess: 'Lixi session deleted successfully!',
   deleteError: 'An error occurred while deleting the lixi session',
+  form: {
+    codeLabel: 'Code',
+    nameLabel: 'Display name',
+    taglineLabel: 'Tagline',
+    bankLabel: 'Bank',
+    accountLabel: 'Account number',
+    ownerLabel: 'Account owner',
+    contentLabel: 'Transfer content',
+    sortOrderLabel: 'Display order',
+    qrCreateLabel: 'QR code image *',
+    qrEditLabel: 'QR code image (leave blank to keep the current image)',
+    avatarCreateLabel: 'Avatar image *',
+    avatarEditLabel: 'Avatar image (leave blank to keep the current image)',
+  },
 } as const;
 
 export default lixiSessions;

@@ -41,9 +41,7 @@ export function FeedbackDetailDialog({ open, onOpenChange, feedback }: FeedbackD
               </p>
               <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Calendar className="h-3 w-3" />
-                {feedback.created_at
-                  ? new Date(feedback.created_at).toLocaleString('vi-VN')
-                  : '—'}
+                {feedback.created_at ? new Date(feedback.created_at).toLocaleString('vi-VN') : '—'}
               </p>
             </div>
             <Badge variant="secondary">{typeLabel(feedback.type)}</Badge>

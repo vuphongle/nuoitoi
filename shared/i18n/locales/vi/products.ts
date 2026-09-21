@@ -25,7 +25,6 @@ const products = {
     close: 'Đóng',
   },
   items: {
-
     aiTranslate: {
       title: 'AI Translate',
       category: 'AI',
@@ -36,15 +35,13 @@ const products = {
     commerceCards: {
       title: 'Commerce Cards',
       category: 'Thẻ số',
-      description:
-        'Thẻ chiến dịch, thẻ thành viên có thể lập trình và nhúng vào ví điện tử.',
+      description: 'Thẻ chiến dịch, thẻ thành viên có thể lập trình và nhúng vào ví điện tử.',
       metrics: 'Kích hoạt 4.8x',
     },
     documentFlow: {
       title: 'Document Flow',
       category: 'Tự động hoá',
-      description:
-        'Tải lên, phân loại, dịch và điều phối luồng tài liệu doanh nghiệp bảo mật.',
+      description: 'Tải lên, phân loại, dịch và điều phối luồng tài liệu doanh nghiệp bảo mật.',
       metrics: 'Nhanh hơn 72%',
     },
     apiCore: {
@@ -64,8 +61,7 @@ const products = {
     insightEngine: {
       title: 'Insight Engine',
       category: 'AI',
-      description:
-        'Phân khúc hành vi người dùng, gợi ý nội dung và tối ưu hiệu quả chiến dịch.',
+      description: 'Phân khúc hành vi người dùng, gợi ý nội dung và tối ưu hiệu quả chiến dịch.',
       metrics: 'Tăng trưởng 38%',
     },
     creativeStudio: {

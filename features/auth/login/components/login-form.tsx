@@ -112,9 +112,9 @@ export function LoginForm() {
   return (
     <div className="min-h-screen flex relative">
       {/* Top Right Language Selector */}
-      <div className="absolute top-6 right-6 z-50">
+      <div className="absolute top-5 right-6 z-50">
         <Select value={displayedLanguage} onValueChange={changeLanguage}>
-          <SelectTrigger className="w-[140px] bg-white/90 backdrop-blur border-slate-200 shadow-sm">
+          <SelectTrigger className="w-35 bg-white/90 backdrop-blur border-slate-200 shadow-sm">
             <Image
               width={16}
               src={displayedLanguage === 'vi' ? icons.iconVN : icons.iconUS}
@@ -141,10 +141,9 @@ export function LoginForm() {
 
         <div className="relative z-10 flex flex-col justify-center items-center w-full px-12 text-white">
           <div className="mb-8 flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
-              <Shield className="w-7 h-7" />
+            <div className="w-24 h-24 rounded-xl flex items-center justify-center backdrop-blur-sm">
+              <Image src={icons.iconLogoHQ} alt="logo" width={96} height={96} />
             </div>
-            <span className="text-3xl font-bold">HQ Software</span>
           </div>
           <h1 className="text-4xl font-bold mb-4 text-center leading-tight">
             {t('login.bannerTitleLine1')}
@@ -165,7 +164,7 @@ export function LoginForm() {
             <div className="w-10 h-10 rounded-xl bg-sidebar-active flex items-center justify-center">
               <Shield className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-sidebar-active">HQ Software</span>
+            <span className="text-2xl font-bold text-sidebar-active">NuoiToi</span>
           </div>
 
           <div className="text-center lg:text-left">
@@ -188,7 +187,7 @@ export function LoginForm() {
                 {t('login.emailLabel')}
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-8 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Mail className="absolute left-3 top-7 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               </div>
               <Input
                 id="email"
@@ -214,11 +213,11 @@ export function LoginForm() {
                 </button>
               </div>
               <div className="relative">
-                <Lock className="absolute left-3 top-6 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Lock className="absolute left-3 top-5 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute cursor-pointer right-3 top-6 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute cursor-pointer right-3 top-5 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>

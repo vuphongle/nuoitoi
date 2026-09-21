@@ -22,7 +22,6 @@ const contact = {
     error: 'Có lỗi xảy ra khi gửi thông tin liên hệ. Vui lòng thử lại sau.',
   },
 
-
   offices: {
     globalHq: 'Trụ sở chính',
     globalAddress: 'Quận Bình Thạnh, TP. Hồ Chí Minh, Việt Nam',

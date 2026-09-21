@@ -1,5 +1,6 @@
 import { useI18n } from '@/hooks/useI18n';
 import { allocationData } from './data';
+import { LixiSection, LixiSectionHeading, LixiShell, LixiSurface } from './ui';
 
 const toneGradient: Record<(typeof allocationData)[number]['tone'], string> = {
   primary: 'linear-gradient(90deg, #d7263d, #f28c28)',
@@ -14,39 +15,36 @@ export function Allocation() {
   const { t } = useI18n('lixi');
 
   return (
-    <section id="allocation" className="bg-[#fff7ed] py-20 scroll-mt-27.5">
-      <div className="mx-auto w-[min(1180px,94vw)]">
-        <div className="mb-8 text-center">
-          <h2 className="mb-2.5 text-3xl font-bold sm:text-4xl">{t('allocation.title')}</h2>
-          <p className="text-[#6a5c55]">{t('allocation.description')}</p>
-        </div>
+    <LixiSection id="allocation" tone="soft">
+      <LixiShell>
+        <LixiSectionHeading
+          eyebrow="07 / Allocation"
+          title={t('allocation.title')}
+          description={t('allocation.description')}
+        />
 
-        <div className="grid items-start gap-5 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
-          <div className="grid gap-3">
+        <div className="lixi-allocation-grid">
+          <div className="lixi-allocation-list">
             {allocationData.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-[18px] border border-black/6 bg-white px-3.5 py-3 shadow-[0_24px_60px_rgba(215,38,61,0.12)]"
-              >
-                <div className="flex justify-between font-extrabold">
+              <LixiSurface as="article" key={item.id} className="lixi-allocation-item">
+                <div className="lixi-allocation-item-heading">
                   <span>{t(`allocation.labels.${item.id}`)}</span>
                   <span>{item.percent}%</span>
                 </div>
-                <div className="mt-2 h-3 overflow-hidden rounded-full bg-black/5">
+                <div className="lixi-allocation-bar">
                   <span
-                    className="block h-full rounded-full"
                     style={{ width: `${item.percent}%`, background: toneGradient[item.tone] }}
                   />
                 </div>
-              </div>
+              </LixiSurface>
             ))}
           </div>
-          <div className="rounded-[18px] border border-black/6 bg-white/86 p-4.5 shadow-[0_24px_60px_rgba(215,38,61,0.12)] backdrop-blur-md">
-            <p className="mb-2 text-lg font-bold">{t('allocation.quote')}</p>
-            <p className="m-0 text-[#6a5c55]">{t('allocation.note')}</p>
-          </div>
+          <LixiSurface variant="panel" className="lixi-allocation-note">
+            <p>{t('allocation.quote')}</p>
+            <p>{t('allocation.note')}</p>
+          </LixiSurface>
         </div>
-      </div>
-    </section>
+      </LixiShell>
+    </LixiSection>
   );
 }

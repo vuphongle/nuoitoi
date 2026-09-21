@@ -29,8 +29,9 @@ function AdminSearchRouteReset({ onNavigate }: { onNavigate: () => void }) {
 }
 
 export function AdminSearchProvider({ children }: { children: React.ReactNode }) {
-  const [registration, setRegistration] =
-    React.useState<AdminSearchRegistrationConfig | null>(null);
+  const [registration, setRegistration] = React.useState<AdminSearchRegistrationConfig | null>(
+    null
+  );
 
   const register = React.useCallback((nextRegistration: AdminSearchRegistrationConfig) => {
     setRegistration(nextRegistration);
@@ -79,9 +80,7 @@ export function useAdminSearch() {
   return context;
 }
 
-export function useAdminSearchRegistration(
-  registration: AdminSearchRegistrationConfig | null
-) {
+export function useAdminSearchRegistration(registration: AdminSearchRegistrationConfig | null) {
   const { register } = useAdminSearch();
   const pathname = usePathname();
   const inputRef = registration?.inputRef;

@@ -22,14 +22,19 @@ export function AdminEmptyState({
 }: AdminEmptyStateProps) {
   return (
     <div
-      className={cn('flex min-h-64 flex-col items-center justify-center px-6 py-12 text-center', className)}
+      className={cn(
+        'flex min-h-64 flex-col items-center justify-center px-6 py-12 text-center',
+        className
+      )}
       {...props}
     >
       <span className="mb-4 rounded-2xl bg-muted p-3 text-muted-foreground">
         <Icon className="size-6" aria-hidden="true" />
       </span>
       <h2 className="text-lg font-semibold">{title}</h2>
-      {description ? <p className="mt-2 max-w-md text-sm text-muted-foreground">{description}</p> : null}
+      {description ? (
+        <p className="mt-2 max-w-md text-sm text-muted-foreground">{description}</p>
+      ) : null}
       {action ? <div className="mt-5">{action}</div> : null}
     </div>
   );
@@ -53,14 +58,19 @@ export function AdminErrorState({
   return (
     <div
       role="alert"
-      className={cn('flex min-h-64 flex-col items-center justify-center px-6 py-12 text-center', className)}
+      className={cn(
+        'flex min-h-64 flex-col items-center justify-center px-6 py-12 text-center',
+        className
+      )}
       {...props}
     >
       <span className="mb-4 rounded-2xl bg-destructive/10 p-3 text-destructive">
         <CircleAlert className="size-6" aria-hidden="true" />
       </span>
       <h2 className="text-lg font-semibold">{title}</h2>
-      {description ? <p className="mt-2 max-w-md text-sm text-muted-foreground">{description}</p> : null}
+      {description ? (
+        <p className="mt-2 max-w-md text-sm text-muted-foreground">{description}</p>
+      ) : null}
       {onRetry ? (
         <Button type="button" variant="outline" className="mt-5" onClick={onRetry}>
           {retryLabel}

@@ -57,7 +57,8 @@ const about = {
     items: [
       {
         title: 'Tốc độ',
-        description: 'Chúng tôi triển khai nhanh nhưng luôn đảm bảo giao diện bền vững, không chắp vá.',
+        description:
+          'Chúng tôi triển khai nhanh nhưng luôn đảm bảo giao diện bền vững, không chắp vá.',
       },
       {
         title: 'Tin cậy',
@@ -66,7 +67,8 @@ const about = {
       },
       {
         title: 'Đồng hành',
-        description: 'Chiến lược sản phẩm, tay nghề thiết kế và quyết định kỹ thuật luôn gắn kết chặt chẽ.',
+        description:
+          'Chiến lược sản phẩm, tay nghề thiết kế và quyết định kỹ thuật luôn gắn kết chặt chẽ.',
       },
     ],
   },

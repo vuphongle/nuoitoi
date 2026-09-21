@@ -28,11 +28,7 @@ interface UserFormDialogProps {
   user?: UserItem | null;
 }
 
-export function UserFormDialog({
-  open,
-  onOpenChange,
-  user,
-}: UserFormDialogProps) {
+export function UserFormDialog({ open, onOpenChange, user }: UserFormDialogProps) {
   const { success, error } = useNotification();
   const isEdit = Boolean(user);
 
@@ -73,11 +69,7 @@ export function UserFormDialog({
       onOpenChange(false);
     },
     onError: (err: any) => {
-      error(
-        err?.response?.data?.message ||
-          err?.message ||
-          'Có lỗi xảy ra khi tạo người dùng'
-      );
+      error(err?.response?.data?.message || err?.message || 'Có lỗi xảy ra khi tạo người dùng');
     },
   });
 
@@ -88,9 +80,7 @@ export function UserFormDialog({
     },
     onError: (err: any) => {
       error(
-        err?.response?.data?.message ||
-          err?.message ||
-          'Có lỗi xảy ra khi cập nhật người dùng'
+        err?.response?.data?.message || err?.message || 'Có lỗi xảy ra khi cập nhật người dùng'
       );
     },
   });
@@ -141,9 +131,7 @@ export function UserFormDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>
-            {isEdit ? 'Chỉnh sửa người dùng' : 'Thêm mới người dùng'}
-          </DialogTitle>
+          <DialogTitle>{isEdit ? 'Chỉnh sửa người dùng' : 'Thêm mới người dùng'}</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 py-2">
@@ -266,9 +254,7 @@ export function UserFormDialog({
                     }}
                   />
                 </div>
-                <span className="text-xs text-muted-foreground">
-                  Xem trước ảnh đại diện
-                </span>
+                <span className="text-xs text-muted-foreground">Xem trước ảnh đại diện</span>
               </div>
             )}
           </div>
@@ -283,11 +269,7 @@ export function UserFormDialog({
               Hủy
             </Button>
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting
-                ? 'Đang lưu...'
-                : isEdit
-                ? 'Lưu thay đổi'
-                : 'Tạo người dùng'}
+              {isSubmitting ? 'Đang lưu...' : isEdit ? 'Lưu thay đổi' : 'Tạo người dùng'}
             </Button>
           </DialogFooter>
         </form>

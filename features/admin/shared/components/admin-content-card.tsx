@@ -44,9 +44,7 @@ export function AdminContentCard({
       <CardContent className={cn(hasHeader ? undefined : 'pt-6', contentClassName)}>
         {children}
       </CardContent>
-      {footer ? (
-        <CardFooter className="border-t bg-muted/20 px-6 py-4">{footer}</CardFooter>
-      ) : null}
+      {footer ? <CardFooter className="border-t bg-muted/20 px-6 py-4">{footer}</CardFooter> : null}
     </Card>
   );
 }

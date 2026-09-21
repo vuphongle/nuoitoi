@@ -8,7 +8,7 @@
 
 **Tech Stack:** Next.js 16 App Router, React 19, TypeScript, Axios, TanStack Query 5, Zustand 5, React Hook Form, Zod 4, shadcn/Radix UI, Node 24 test runner.
 
-**Baseline:** `node --test lib/auth.test.mjs lib/i18n-keys.test.mjs` currently reports 5 passing tests and one unrelated failure: `login translations use the Card Platform brand` because the current locales use `HQ Software`. This feature must not add failures; the baseline branding mismatch is reported rather than changed.
+**Baseline:** `node --test lib/auth.test.mjs lib/i18n-keys.test.mjs` currently reports 5 passing tests and one unrelated failure: `login translations use the Card Platform brand` because the current locales use `NuoiToi`. This feature must not add failures; the baseline branding mismatch is reported rather than changed.
 
 **Test import rule:** Executable Node tests import only production modules whose runtime imports are package imports or explicit relative `.ts` imports. All React/Next modules that use `@/` aliases are verified through alias-free extracted coordinators plus narrow source-contract tests. Index files only re-export; they never own validation logic.
 
@@ -19,6 +19,7 @@
 ### Task 1: Add pure authorization-status normalization
 
 **Files:**
+
 - Create: `lib/admin-auth-response.ts`
 - Test: `lib/admin-auth-response.test.mjs`
 
@@ -33,6 +34,7 @@
 ### Task 2: Add profile-specific models and form validation
 
 **Files:**
+
 - Modify: `types/user.ts`
 - Create: `features/admin/settings/profile-form.ts`
 - Modify: `features/admin/settings/schemas/index.ts`
@@ -48,6 +50,7 @@
 ### Task 3: Add tested admin-session cleanup coordination
 
 **Files:**
+
 - Create: `lib/admin-session.ts`
 - Test: `lib/admin-session.test.mjs`
 
@@ -60,6 +63,7 @@
 ### Task 4: Add the isolated admin API client and migrate only active protected services
 
 **Files:**
+
 - Create: `lib/admin-api-client.ts`
 - Create: `lib/admin-response-handler.ts`
 - Create: `lib/query-client.ts`
@@ -86,6 +90,7 @@
 ### Task 5: Add the profile BFF route and expire cookies on authorization failures
 
 **Files:**
+
 - Modify: `lib/admin-proxy.ts`
 - Create: `app/api/users/profile/route.ts`
 - Test: `lib/admin-proxy-contract.test.mjs`
@@ -104,6 +109,7 @@
 ### Task 6: Add profile service, query options, hooks, and store synchronization
 
 **Files:**
+
 - Create: `services/profile.service.ts`
 - Create: `hooks/profile-query.ts`
 - Create: `hooks/profile-refresh.ts`
@@ -126,6 +132,7 @@
 ### Task 7: Integrate fresh profile checks into login and admin layout
 
 **Files:**
+
 - Create: `features/auth/login/login-profile-flow.ts`
 - Modify: `features/auth/login/components/login-form.tsx`
 - Modify: `app/admin/layout.tsx`
@@ -144,6 +151,7 @@
 ### Task 8: Add admin-scoped not-found routing
 
 **Files:**
+
 - Create: `app/admin/not-found.tsx`
 - Create: `app/admin/[...not-found]/page.tsx`
 - Modify: `shared/i18n/locales/vi/common.ts`
@@ -165,6 +173,7 @@
 ### Task 9: Build the two settings forms
 
 **Files:**
+
 - Modify: `features/admin/settings/components/settings-dashboard.tsx`
 - Create: `features/admin/settings/components/profile-settings-form.tsx`
 - Create: `features/admin/settings/components/security-settings-form.tsx`
@@ -195,6 +204,7 @@
 ### Task 10: Run complete automated verification
 
 **Files:**
+
 - Modify only feature files implicated by failures introduced by this work.
 
 - [ ] **Step 1: Run new tests.** Run `node --test lib/admin-auth-response.test.mjs lib/admin-session.test.mjs lib/admin-response-handler.test.mjs lib/admin-api-client-contract.test.mjs lib/admin-proxy-contract.test.mjs hooks/profile-query.test.mjs hooks/profile-hooks-contract.test.mjs features/auth/login/login-profile-flow.test.mjs app/admin/admin-not-found.test.mjs features/admin/settings/profile-form.test.mjs features/admin/settings/settings-submit.test.mjs features/admin/settings/settings-contract.test.mjs`. Expected: exit 0, zero failures.

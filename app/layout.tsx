@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
+import '@fontsource-variable/fredoka';
+import '@fontsource-variable/nunito-sans';
 import { Providers } from './providers';
 import { SITE_URL } from '@/constants/app';
 import './globals.css';
+import '@/components/lixi/lixi-design.css';
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta',
@@ -16,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-const TITLE = 'HQ Software - Digital Products With Creative Gravity';
+const TITLE = 'NuoiToi - Digital Products With Creative Gravity';
 const DESCRIPTION =
   'A premium product studio website for AI translation, commerce cards, APIs, support, and growth systems.';
 
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: '%s | HQ Software',
+    template: '%s | NuoiToi',
   },
   description: DESCRIPTION,
   keywords: [
@@ -35,9 +38,9 @@ export const metadata: Metadata = {
     'API platform',
     'SaaS website',
   ],
-  authors: [{ name: 'HQ Software' }],
-  creator: 'HQ Software',
-  publisher: 'HQ Software',
+  authors: [{ name: 'NuoiToi' }],
+  creator: 'NuoiToi',
+  publisher: 'NuoiToi',
   alternates: {
     canonical: '/',
   },
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: TITLE,
     description: DESCRIPTION,
-    siteName: 'HQ Software',
+    siteName: 'NuoiToi',
   },
   twitter: {
     card: 'summary_large_image',
