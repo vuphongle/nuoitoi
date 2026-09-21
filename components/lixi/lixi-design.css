@@ -710,6 +710,309 @@ html:has(.lixi-app) {
   font-weight: 750;
 }
 
+.lixi-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-kpi-card {
+  min-height: 100%;
+  padding: 1.25rem;
+}
+
+.lixi-kpi-label,
+.lixi-kpi-note {
+  margin: 0;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-kpi-label {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.lixi-kpi-value {
+  margin: 0.3rem 0 0.45rem;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.lixi-kpi-note {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.lixi-goal-card {
+  display: grid;
+  gap: 1rem;
+  background: linear-gradient(
+    140deg,
+    var(--lixi-color-primary-soft),
+    var(--lixi-color-accent-soft)
+  );
+}
+
+.lixi-goal-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--lixi-color-primary-strong);
+}
+
+.lixi-goal-card-heading .lixi-kpi-label {
+  margin-top: 0;
+}
+
+.lixi-goal-progress,
+.lixi-allocation-bar {
+  height: 0.7rem;
+  overflow: hidden;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: 999px;
+  background: var(--lixi-color-surface);
+}
+
+.lixi-goal-progress span,
+.lixi-allocation-bar span {
+  display: block;
+  height: 100%;
+}
+
+.lixi-expenses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-expense-card {
+  min-height: 16rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+.lixi-expense-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.lixi-expense-icon,
+.lixi-feature-icon {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-md);
+  background: var(--lixi-color-primary-soft);
+  box-shadow: 3px 3px 0 var(--lixi-color-ink);
+  color: var(--lixi-color-accent);
+}
+
+.lixi-expense-title,
+.lixi-expense-date,
+.lixi-expense-note,
+.lixi-expense-amount {
+  margin: 0;
+}
+
+.lixi-expense-title {
+  color: var(--lixi-color-accent);
+  font-weight: 900;
+}
+
+.lixi-expense-date {
+  margin-top: 0.25rem;
+  color: var(--lixi-color-muted);
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.lixi-expense-amount {
+  margin-top: 1.25rem;
+  color: var(--lixi-color-danger);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.lixi-expense-note {
+  flex: 1;
+  margin-block: 0.6rem 1.1rem;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-expense-card .lixi-action {
+  align-self: flex-start;
+}
+
+.lixi-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-feature-card {
+  min-height: 100%;
+  padding: 1.25rem;
+}
+
+.lixi-feature-card h3 {
+  margin: 1.1rem 0 0.55rem;
+}
+
+.lixi-feature-card p {
+  margin: 0;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-commitment-panel {
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-xl);
+  background: linear-gradient(
+    135deg,
+    var(--lixi-color-primary-soft),
+    var(--lixi-color-accent-soft)
+  );
+  box-shadow: var(--lixi-shadow-ink);
+}
+
+.lixi-commitment-panel .lixi-section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.lixi-commitment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lixi-commitment-grid li {
+  padding: 1rem;
+  border: 2px dashed rgba(16, 25, 54, 0.2);
+  border-radius: var(--lixi-radius-md);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.lixi-commitment-grid strong {
+  color: var(--lixi-color-accent);
+}
+
+.lixi-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lixi-compare-card {
+  padding: 1.5rem;
+}
+
+.lixi-compare-card-muted {
+  border-top: 6px solid var(--lixi-color-danger);
+}
+
+.lixi-compare-card-good {
+  border-top: 6px solid var(--lixi-color-success);
+}
+
+.lixi-compare-title {
+  margin-bottom: 1rem;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.35rem;
+}
+
+.lixi-compare-card ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-allocation-grid {
+  display: grid;
+  align-items: start;
+  gap: 1rem;
+}
+
+.lixi-allocation-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lixi-allocation-item {
+  padding: 1rem 1.1rem;
+}
+
+.lixi-allocation-item-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+  color: var(--lixi-color-accent);
+  font-weight: 900;
+}
+
+.lixi-allocation-note {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--lixi-color-accent-soft), var(--lixi-color-surface));
+}
+
+.lixi-allocation-note p:first-child {
+  margin: 0 0 0.75rem;
+  color: var(--lixi-color-accent);
+  font-family: 'Fredoka Variable', sans-serif;
+  font-size: 1.35rem;
+}
+
+.lixi-allocation-note p:last-child {
+  margin: 0;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-heart-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.lixi-heart-message,
+.lixi-heart-disclaimer {
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.lixi-heart-message h2 {
+  margin: 0.6rem 0 1rem;
+}
+
+.lixi-heart-message p:not(.lixi-eyebrow),
+.lixi-heart-disclaimer p:not(.lixi-eyebrow) {
+  color: var(--lixi-color-muted);
+}
+
+.lixi-heart-disclaimer {
+  background: var(--lixi-color-primary-soft);
+}
+
+.lixi-dialog-content {
+  border: 2px solid var(--lixi-color-ink) !important;
+  border-radius: var(--lixi-radius-lg) !important;
+  box-shadow: var(--lixi-shadow-ink) !important;
+}
+
 .lixi-hero-orbit {
   position: absolute;
   border: 2px solid rgba(26, 38, 84, 0.12);
@@ -968,11 +1271,59 @@ html:has(.lixi-app) {
   .lixi-hero-highlights {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .lixi-dashboard-grid,
+  .lixi-feature-grid,
+  .lixi-commitment-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lixi-expenses-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lixi-goal-card {
+    grid-column: span 2;
+  }
+
+  .lixi-heart-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.65fr);
+  }
 }
 
 @media (min-width: 60rem) {
   .lixi-hero-grid {
     grid-template-columns: minmax(0, 1.2fr) minmax(25rem, 0.8fr);
+  }
+
+  .lixi-dashboard-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lixi-goal-card {
+    grid-column: span 2;
+  }
+
+  .lixi-expenses-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .lixi-expenses-grid > *:nth-child(1),
+  .lixi-expenses-grid > *:nth-child(2) {
+    grid-column: span 2;
+  }
+
+  .lixi-expenses-grid > *:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .lixi-expenses-grid > *:nth-child(4),
+  .lixi-expenses-grid > *:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .lixi-allocation-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
   }
 }
 
@@ -1037,6 +1388,18 @@ html:has(.lixi-app) {
 
   .lixi-hero-goal-copy strong {
     text-align: left;
+  }
+
+  .lixi-dashboard-grid,
+  .lixi-expenses-grid,
+  .lixi-feature-grid,
+  .lixi-commitment-grid,
+  .lixi-compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lixi-goal-card {
+    grid-column: auto;
   }
 }
 

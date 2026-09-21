@@ -43,7 +43,7 @@ export function LixiSectionHeading({
 }
 
 interface LixiSurfaceProps extends HTMLAttributes<HTMLElement> {
-  as?: 'article' | 'div';
+  as?: 'article' | 'aside' | 'div';
   variant?: 'card' | 'panel' | 'inset';
 }
 

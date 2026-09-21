@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { ArrowUpRight, Receipt } from '@phosphor-icons/react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { AnimatedView } from '@/components/animations/AnimatedView';
 import { useI18n } from '@/hooks/useI18n';
 import { expenseData, type LixiExpense } from './data';
+import { LixiActionButton, LixiSection, LixiSectionHeading, LixiShell, LixiSurface } from './ui';
 
 export function Expenses() {
   const { t, currentLanguage } = useI18n('lixi');
@@ -15,42 +17,41 @@ export function Expenses() {
     ).format(Math.abs(amount))}${t('common.currencySuffix')}`;
 
   return (
-    <section id="expenses" className="bg-[#fff7ed] py-20 scroll-mt-27.5">
-      <div className="mx-auto w-[min(1180px,94vw)]">
-        <div className="mb-8 text-center">
-          <h2 className="mb-2.5 text-3xl font-bold sm:text-4xl">{t('expenses.title')}</h2>
-          <p className="text-[#6a5c55]">{t('expenses.description')}</p>
-        </div>
+    <LixiSection id="expenses">
+      <LixiShell>
+        <LixiSectionHeading
+          eyebrow="02 / Expenses"
+          title={t('expenses.title')}
+          description={t('expenses.description')}
+        />
 
-        <div className="grid gap-4.5 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+        <div className="lixi-expenses-grid">
           {expenseData.map((expense, index) => (
             <AnimatedView key={expense.id} delay={index * 0.05}>
-              <article className="flex flex-col justify-between min-h-58 relative rounded-[18px] border border-black/6 bg-white p-4.5 shadow-[0_24px_60px_rgba(215,38,61,0.12)]">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="m-0 font-extrabold truncate max-w-34">{t(expense.titleKey)}</p>
-                    <p className="mt-1 mb-0 font-semibold text-[#6a5c55]">{t(expense.dateKey)}</p>
-                  </div>
-                  <span className="font-extrabold text-[#b91c1c]">
-                    {formatAmount(expense.amount)}
+              <LixiSurface as="article" className="lixi-expense-card">
+                <div className="lixi-expense-card-heading">
+                  <span className="lixi-expense-icon" aria-hidden="true">
+                    <Receipt size={23} weight="duotone" />
                   </span>
+                  <div>
+                    <p className="lixi-expense-title">{t(expense.titleKey)}</p>
+                    <p className="lixi-expense-date">{t(expense.dateKey)}</p>
+                  </div>
                 </div>
-                <p className="my-2.5 mb-3.5 line-clamp-2">{t(expense.noteKey)}</p>
-                <button
-                  type="button"
-                  onClick={() => setSelected(expense)}
-                  className="rounded-[14px] border border-black/6 bg-black/4 px-3.5 py-2.5 font-extrabold text-[#1f1a17]"
-                >
-                  {t('expenses.viewDetails')}
-                </button>
-              </article>
+                <p className="lixi-expense-amount">{formatAmount(expense.amount)}</p>
+                <p className="lixi-expense-note">{t(expense.noteKey)}</p>
+                <LixiActionButton variant="secondary" onClick={() => setSelected(expense)}>
+                  <span>{t('expenses.viewDetails')}</span>
+                  <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
+                </LixiActionButton>
+              </LixiSurface>
             </AnimatedView>
           ))}
         </div>
-      </div>
+      </LixiShell>
 
       <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
-        <DialogContent className="max-w-140 rounded-[20px]">
+        <DialogContent className="lixi-dialog-content max-w-140">
           {selected && (
             <>
               <DialogTitle>{t(selected.titleKey)}</DialogTitle>
@@ -68,6 +69,6 @@ export function Expenses() {
           )}
         </DialogContent>
       </Dialog>
-    </section>
+    </LixiSection>
   );
 }
