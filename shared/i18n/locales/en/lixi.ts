@@ -225,6 +225,8 @@ const lixi = {
     suggestedContent: 'Suggested transfer message',
     copied: 'Copied',
     copy: 'Copy',
+    pause: 'Pause autoplay',
+    resume: 'Resume autoplay',
     thankYouHint: 'A thank-you message appears after the transfer (illustration).',
     imageDialogTitle: 'View recipient photo',
   },

@@ -204,6 +204,8 @@ const lixi = {
     suggestedContent: 'Nội dung chuyển khoản gợi ý',
     copied: 'Đã copy',
     copy: 'Sao chép',
+    pause: 'Tạm dừng tự chạy',
+    resume: 'Bật tự chạy',
     thankYouHint: 'Chuyển xong là có lời cảm ơn auto (minh họa).',
     imageDialogTitle: 'Xem ảnh người nhận',
   },
