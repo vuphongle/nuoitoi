@@ -21,7 +21,7 @@ interface LixiPageProps {
 
 export function LixiPage({ className }: LixiPageProps) {
   return (
-    <div className={cn('lixi-app lixi-hub relative', className)}>
+    <div className={cn('lixi-app relative', className)}>
       <SkipLink />
       <Header />
       <main id="lixi-main">
