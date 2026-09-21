@@ -17,12 +17,11 @@ import { BackToTop } from './BackToTop';
 
 interface LixiPageProps {
   className?: string;
-  style?: React.CSSProperties;
 }
 
-export function LixiPage({ className, style }: LixiPageProps) {
+export function LixiPage({ className }: LixiPageProps) {
   return (
-    <div className={cn('lixi-hub relative text-[#101936]', className)} style={style}>
+    <div className={cn('lixi-app lixi-hub relative', className)}>
       <Header />
       <PetalFireworks />
       <main>

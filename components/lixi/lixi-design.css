@@ -1,0 +1,277 @@
+.lixi-app {
+  --lixi-color-primary: #f3b022;
+  --lixi-color-primary-strong: #98530c;
+  --lixi-color-primary-soft: #fff1cf;
+  --lixi-color-accent: #1a2654;
+  --lixi-color-accent-strong: #101936;
+  --lixi-color-accent-soft: #e6eaf7;
+  --lixi-color-background: #fffaf0;
+  --lixi-color-surface: #ffffff;
+  --lixi-color-surface-soft: #fff4da;
+  --lixi-color-ink: #101936;
+  --lixi-color-muted: #5f667b;
+  --lixi-color-border: #ead8b8;
+  --lixi-color-border-strong: #d9bd87;
+  --lixi-color-success: #16794a;
+  --lixi-color-success-soft: #dcfce7;
+  --lixi-color-danger: #b42318;
+  --lixi-color-danger-soft: #fef3f2;
+  --lixi-color-ring: #172033;
+  --lixi-shadow-card: 0 10px 0 rgba(72, 55, 25, 0.07), 0 18px 40px rgba(36, 28, 14, 0.08);
+  --lixi-shadow-hover: 0 7px 0 rgba(72, 55, 25, 0.09), 0 22px 48px rgba(36, 28, 14, 0.12);
+  --lixi-shadow-ink: 5px 6px 0 var(--lixi-color-ink);
+  --lixi-radius-sm: 10px;
+  --lixi-radius-md: 16px;
+  --lixi-radius-lg: 24px;
+  --lixi-radius-xl: 32px;
+  --lixi-space-1: 0.25rem;
+  --lixi-space-2: 0.5rem;
+  --lixi-space-3: 0.75rem;
+  --lixi-space-4: 1rem;
+  --lixi-space-5: 1.5rem;
+  --lixi-space-6: 2rem;
+  --lixi-space-7: 3rem;
+  --lixi-space-8: 4rem;
+  --lixi-motion-fast: 160ms;
+  --lixi-motion-standard: 200ms;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(243, 176, 34, 0.14), transparent 24rem),
+    linear-gradient(180deg, #fffaf4 0%, var(--lixi-color-background) 100%);
+  color: var(--lixi-color-ink);
+  font-family: 'Nunito Sans Variable', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.lixi-app *,
+.lixi-app *::before,
+.lixi-app *::after {
+  box-sizing: border-box;
+}
+
+.lixi-app h1,
+.lixi-app h2,
+.lixi-app h3,
+.lixi-app h4 {
+  color: var(--lixi-color-ink);
+  font-family: 'Fredoka Variable', sans-serif;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.lixi-app :where(button, input, select, textarea) {
+  font: inherit;
+}
+
+.lixi-app :where(button, a, select) {
+  touch-action: manipulation;
+}
+
+.lixi-app :where(a[href], button:not(:disabled), select, label:has(input)) {
+  cursor: pointer;
+}
+
+.lixi-app :where(:focus-visible) {
+  outline: 3px solid var(--lixi-color-ring);
+  outline-offset: 3px;
+}
+
+.lixi-shell {
+  width: min(calc(100% - 2rem), 75rem);
+  margin-inline: auto;
+}
+
+.lixi-section {
+  position: relative;
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.lixi-section-canvas {
+  background: transparent;
+}
+
+.lixi-section-soft {
+  background: var(--lixi-color-surface-soft);
+}
+
+.lixi-section-accent {
+  background: var(--lixi-color-accent);
+  color: #fff;
+}
+
+.lixi-section-heading {
+  display: grid;
+  gap: var(--lixi-space-3);
+  max-width: 46rem;
+  margin-bottom: var(--lixi-space-6);
+}
+
+.lixi-section-heading-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.lixi-section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.035em;
+}
+
+.lixi-eyebrow {
+  margin: 0;
+  color: var(--lixi-color-primary-strong);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lixi-section-description {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--lixi-color-muted);
+  font-size: 1.05rem;
+}
+
+.lixi-surface {
+  min-width: 0;
+  border: 2px solid var(--lixi-color-border);
+  background: var(--lixi-color-surface);
+  color: var(--lixi-color-ink);
+}
+
+.lixi-surface-card {
+  border-radius: var(--lixi-radius-lg);
+  box-shadow: var(--lixi-shadow-card);
+  transition:
+    transform var(--lixi-motion-standard) ease,
+    border-color var(--lixi-motion-standard) ease,
+    box-shadow var(--lixi-motion-standard) ease;
+}
+
+.lixi-surface-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lixi-color-border-strong);
+  box-shadow: var(--lixi-shadow-hover);
+}
+
+.lixi-surface-panel {
+  border-color: var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-lg);
+  box-shadow: var(--lixi-shadow-ink);
+}
+
+.lixi-surface-inset {
+  border-style: dashed;
+  border-radius: var(--lixi-radius-md);
+  background: color-mix(in srgb, var(--lixi-color-surface) 82%, transparent);
+}
+
+.lixi-action {
+  min-height: 2.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  max-width: 100%;
+  padding: 0.75rem 1.15rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  transition:
+    transform var(--lixi-motion-fast) ease,
+    box-shadow var(--lixi-motion-fast) ease,
+    background-color var(--lixi-motion-fast) ease,
+    border-color var(--lixi-motion-fast) ease,
+    color var(--lixi-motion-fast) ease;
+}
+
+.lixi-action:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.lixi-action:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lixi-action:disabled,
+.lixi-action[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.lixi-action-primary {
+  border-color: var(--lixi-color-accent);
+  background: var(--lixi-color-accent);
+  box-shadow: 0 4px 0 #080d21;
+  color: #fff;
+}
+
+.lixi-action-primary:hover:not(:disabled) {
+  background: var(--lixi-color-accent-strong);
+}
+
+.lixi-action-secondary {
+  border-color: var(--lixi-color-border-strong);
+  background: var(--lixi-color-surface);
+  color: var(--lixi-color-primary-strong);
+}
+
+.lixi-action-secondary:hover:not(:disabled) {
+  border-color: var(--lixi-color-primary);
+  background: var(--lixi-color-primary-soft);
+}
+
+.lixi-action-ghost {
+  background: transparent;
+  color: var(--lixi-color-muted);
+}
+
+.lixi-icon-tile {
+  width: 3.4rem;
+  height: 3.4rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--lixi-color-ink);
+  border-radius: var(--lixi-radius-md);
+  box-shadow: 3px 3px 0 var(--lixi-color-ink);
+}
+
+.lixi-icon-tile-amber {
+  background: #fed7aa;
+}
+
+.lixi-icon-tile-blue {
+  background: #bfdbfe;
+}
+
+.lixi-icon-tile-green {
+  background: #bbf7d0;
+}
+
+.lixi-icon-tile-coral {
+  background: #fecdd3;
+}
+
+@media (min-width: 40rem) {
+  .lixi-shell {
+    width: min(calc(100% - 3rem), 75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lixi-app *,
+  .lixi-app *::before,
+  .lixi-app *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
+import '@fontsource-variable/fredoka';
+import '@fontsource-variable/nunito-sans';
 import { Providers } from './providers';
 import { SITE_URL } from '@/constants/app';
 import './globals.css';
+import '@/components/lixi/lixi-design.css';
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta',
