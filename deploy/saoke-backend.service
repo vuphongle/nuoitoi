@@ -1,0 +1,27 @@
+[Unit]
+Description=Sao Ke NestJS backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=saoke
+Group=saoke
+WorkingDirectory=/opt/saoke/current/backend
+EnvironmentFile=/etc/saoke/backend.env
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3069
+ExecStart=/usr/bin/node dist/main.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+SyslogIdentifier=saoke-backend
+
+[Install]
+WantedBy=multi-user.target
