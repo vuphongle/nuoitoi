@@ -63,14 +63,21 @@ async function createApp() {
   return app;
 }
 
-// Local dev
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-  createApp().then(async (app) => {
-    const PORT = process.env.PORT ?? 3069;
-    await app.listen(PORT, () => {
-      Logger.log(`Server running on http://localhost:${PORT}`, 'Bootstrap');
+// Start a persistent server when invoked directly, including in production.
+if (require.main === module && !process.env.VERCEL) {
+  createApp()
+    .then(async (app) => {
+      const port = Number(process.env.PORT ?? 3069);
+      const host = process.env.HOST ?? '0.0.0.0';
+      app.enableShutdownHooks();
+      await app.listen(port, host, () => {
+        Logger.log(`Server running on http://${host}:${port}`, 'Bootstrap');
+      });
+    })
+    .catch((error) => {
+      Logger.error(error, undefined, 'Bootstrap');
+      process.exit(1);
     });
-  });
 }
 
 // Vercel serverless handler

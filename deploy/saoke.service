@@ -1,0 +1,29 @@
+[Unit]
+Description=Sao Ke Next.js frontend
+After=network-online.target saoke-backend.service
+Wants=network-online.target saoke-backend.service
+
+[Service]
+Type=simple
+User=saoke
+Group=saoke
+WorkingDirectory=/opt/saoke/current/frontend
+EnvironmentFile=/etc/saoke/frontend.env
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3000
+Environment=NEXT_TELEMETRY_DISABLED=1
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/saoke/current/frontend/.next/cache
+SyslogIdentifier=saoke
+
+[Install]
+WantedBy=multi-user.target

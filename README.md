@@ -73,3 +73,8 @@ pnpm format:backend
 ## API proxy
 
 The Next.js BFF routes under `app/api/` forward requests to the NestJS API using `BE_API_URL`. The browser continues to call same-origin `/api` routes, so this consolidation does not change the frontend API contract.
+
+## Production deployment
+
+See [deploy/README.md](deploy/README.md) for systemd services, Caddy HTTPS configuration,
+and the single-command deployment script with health checks and automatic rollback.
